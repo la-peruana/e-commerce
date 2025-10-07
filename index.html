@@ -15,254 +15,57 @@
       --amarillo: #ffe059;
       --gris: #f9f9f9;
       --verde-whatsapp: #25D366;
+      --gris-borde:#e5e5e5;
+      --gris-texto:#333;
     }
-    body {
-      margin: 0;
-      font-family: 'Roboto', Arial, sans-serif;
-      background: var(--blanco);
-      min-height: 100vh;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem 1rem;
-      background: transparent;
-    }
-    .logo {
-      max-width: 420px;
-      width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.10);
-      margin-bottom: 0.7em;
-    }
-    .slogan {
-      color: var(--rojo-principal);
-      font-size: 1.2em;
-      margin-bottom: 0.5em;
-    }
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-    }
-    .seccion {
-      margin-bottom: 2.2em;
-    }
-    .seccion-titulo {
-      color: var(--rojo-principal);
-      font-family: 'Monserrat', sans-serif;
-      font-size: 2em;
-      margin: 1em 0 0.7em 0;
-      letter-spacing: 0.03em;
-      border-bottom: 2px solid var(--rojo-principal);
-      display: inline-block;
-      padding-bottom: 0.2em;
-      background: var(--blanco);
-    }
-    .productos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1.3rem;
-    }
-    .producto {
-      background: var(--gris);
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1em;
-      transition: transform 0.18s;
-      position: relative;
-    }
-    .producto:hover {
-      transform: scale(1.04);
-    }
-    .producto-img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 0.7em;
-      background: #eee;
-    }
-    .producto-nombre {
-      font-weight: 700;
-      font-size: 1.1em;
-      color: var(--rojo-principal);
-      margin-bottom: 0.3em;
-      text-align: center;
-    }
-    .producto-precio {
-      color: #333;
-      font-size: 1.1em;
-      margin-bottom: 0.6em;
-    }
-    .cantidad-ctrl {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.6em;
-      gap: 0.5em;
-    }
-    .btn-cantidad {
-      background: var(--rojo-principal);
-      color: var(--blanco);
-      border: none;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      font-size: 1.2em;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .btn-cantidad:active {
-      background: var(--rojo-gradiente);
-    }
-    .cantidad-num {
-      width: 32px;
-      text-align: center;
-      font-size: 1.1em;
-      font-weight: bold;
-      color: var(--rojo-principal);
-    }
-    .carrito-fab {
-      position: fixed;
-      top: 20px;
-      right: 24px;
-      background: var(--rojo-principal);
-      color: var(--blanco);
-      border: none;
-      border-radius: 50px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-      padding: 0.8em 1.4em;
-      font-size: 1.15em;
-      z-index: 99;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.6em;
-      font-weight: bold;
-    }
-    .carrito-fab svg {
-      width: 1.4em;
-      height: 1.4em;
-      vertical-align: middle;
-    }
-    .carrito-cantidad {
-      background: var(--amarillo);
-      color: #a60009;
-      border-radius: 50%;
-      font-weight: bold;
-      font-size: 0.97em;
-      min-width: 28px;
-      text-align: center;
-      padding: 0.1em 0.5em;
-      margin-left: 0.2em;
-    }
-    .modal-carrito-bg {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0; top: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.35);
-      align-items: center;
-      justify-content: center;
-    }
+    body { margin: 0; font-family: 'Roboto', Arial, sans-serif; background: var(--blanco); min-height: 100vh; }
+    header { text-align: center; padding: 2rem 1rem 1rem 1rem; background: transparent; }
+    .logo { max-width: 420px; width: 100%; border-radius: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); margin-bottom: .7em; }
+    main { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+    .seccion { margin-bottom: 2.2em; }
+    .seccion-titulo { color: var(--rojo-principal); font-family: 'Monserrat', sans-serif; font-size: 2em; margin: 1em 0 .7em 0; letter-spacing: .03em; border-bottom: 2px solid var(--rojo-principal); display: inline-block; padding-bottom: .2em; background: var(--blanco); }
+    .productos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.3rem; }
+    .producto { background: var(--gris); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 1em; transition: transform .18s; position: relative; }
+    .producto:hover { transform: scale(1.04); }
+    .producto-img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; margin-bottom: .7em; background: #eee; }
+    .producto-nombre { font-weight: 700; font-size: 1.1em; color: var(--rojo-principal); margin-bottom: .3em; text-align: center; }
+    .producto-precio { color: var(--gris-texto); font-size: 1.1em; margin-bottom: .6em; }
+    .cantidad-ctrl { display: flex; align-items: center; margin-bottom: .6em; gap: .5em; }
+    .btn-cantidad { background: var(--rojo-principal); color: var(--blanco); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1.2em; cursor: pointer; font-weight: bold; transition: background .2s; display: flex; align-items: center; justify-content: center; }
+    .btn-cantidad:active { background: var(--rojo-gradiente); }
+    .cantidad-num { width: 32px; text-align: center; font-size: 1.1em; font-weight: bold; color: var(--rojo-principal); }
+
+    /* FAB Carrito */
+    .carrito-fab { position: fixed; top: 20px; right: 24px; background: var(--rojo-principal); color: var(--blanco); border: none; border-radius: 50px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); padding: .8em 1.2em; font-size: 1.02em; z-index: 99; cursor: pointer; display: flex; align-items: center; gap: .6em; font-weight: bold; }
+    .carrito-fab svg { width: 1.4em; height: 1.4em; vertical-align: middle; }
+    .carrito-pill { display: inline-flex; background: var(--amarillo); color: #a60009; border-radius: 999px; font-weight: 700; font-size: .93em; padding: .12em .6em; align-items:center; gap:.4em; }
+
+    /* Modal Carrito */
+    .modal-carrito-bg { display: none; position: fixed; z-index: 100; inset: 0; background: rgba(0,0,0,0.35); align-items: center; justify-content: center; }
     .modal-carrito-bg.active { display: flex; }
-    .modal-carrito {
-      background: var(--blanco);
-      border-radius: 18px;
-      max-width: 420px;
-      width: 98vw;
-      padding: 2em 1.2em 1.2em 1.2em;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.19);
-      position: relative;
-      animation: fadein .15s;
-    }
-    @keyframes fadein { from { opacity: 0; transform: scale(0.97);} to {opacity: 1; transform: scale(1);} }
-    .modal-carrito h2 {
-      margin-top: 0;
-      color: var(--rojo-principal);
-      text-align: center;
-    }
-    .modal-carrito .cerrar {
-      position: absolute;
-      top: 0.7em;
-      right: 1em;
-      background: transparent;
-      border: none;
-      font-size: 1.5em;
-      color: var(--rojo-gradiente);
-      cursor: pointer;
-    }
-    .carrito-items-list {
-      max-height: 250px;
-      overflow-y: auto;
-      margin-bottom: 1em;
-      margin-top: 1em;
-    }
-    .carrito-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.7em;
-      padding: 0.55em 0;
-      border-bottom: 1px solid #e5e5e5;
-      font-size: 1.04em;
-    }
-    .carrito-item-nombre {
-      flex: 1;
-    }
-    .carrito-item-cantidad {
-      min-width: 40px;
-      text-align: center;
-      font-weight: bold;
-      color: var(--rojo-principal);
-    }
-    .carrito-item-precio {
-      min-width: 65px;
-      text-align: right;
-      color: #333;
-    }
-    .carrito-total {
-      text-align: right;
-      font-size: 1.23em;
-      font-weight: bold;
-      margin-bottom: 1.2em;
-      color: var(--rojo-principal);
-    }
-    .btn-whatsapp {
-      display: block;
-      width: 100%;
-      background: var(--verde-whatsapp);
-      color: var(--blanco);
-      font-weight: bold;
-      border: none;
-      border-radius: 24px;
-      padding: 0.8em 0;
-      font-size: 1.1em;
-      text-decoration: none;
-      transition: background 0.2s;
-      cursor: pointer;
-      margin-top: .4em;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      text-align: center;
-    }
+    .modal-carrito { background: var(--blanco); border-radius: 18px; max-width: 520px; width: 98vw; padding: 1.6em 1em 1.2em 1em; box-shadow: 0 6px 32px rgba(0,0,0,0.19); position: relative; animation: fadein .15s; }
+    @keyframes fadein { from { opacity: 0; transform: scale(.97);} to {opacity: 1; transform: scale(1);} }
+    .modal-carrito h2 { margin: .2em 2.2em .2em 2.2em; color: var(--rojo-principal); text-align: center; }
+    .modal-carrito .cerrar { position: absolute; top: .6em; right: .7em; background: transparent; border: none; font-size: 1.6em; color: var(--rojo-gradiente); cursor: pointer; }
+    .carrito-subtitulo { text-align:center; color:#777; font-size:.95em; margin-bottom:.6em; }
+    .carrito-items-list { max-height: 300px; overflow-y: auto; margin: .8em 0 1em; padding: 0 .4em; }
+    .carrito-item { display: grid; grid-template-columns: 1fr auto auto auto auto; align-items: center; gap: .5em; padding: .55em 0; border-bottom: 1px solid var(--gris-borde); font-size: 1.02em; }
+    .carrito-item-nombre { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .carrito-item-cant { display:flex; align-items:center; gap:.35em; }
+    .carrito-item-cant .mini { width:26px; height:26px; border-radius:50%; border:none; background: var(--rojo-principal); color:#fff; font-weight:700; cursor:pointer; }
+    .carrito-item-cantidad { min-width: 28px; text-align: center; font-weight: bold; color: var(--rojo-principal); }
+    .carrito-item-precio { min-width: 80px; text-align: right; color: var(--gris-texto); font-variant-numeric: tabular-nums; }
+    .carrito-item-quitar { background: transparent; border: 1px solid var(--gris-borde); border-radius: 10px; padding:.25em .55em; cursor: pointer; color:#777; }
+    .carrito-acciones { display:flex; gap:.6em; justify-content: space-between; align-items:center; margin-top:.8em; }
+    .btn-vaciar { background:#fff; color:#c1121f; border:1px solid #f0b1b5; border-radius:12px; padding:.55em .9em; cursor:pointer; font-weight:700; }
+    .carrito-total { text-align: right; font-size: 1.18em; font-weight: bold; color: var(--rojo-principal); flex:1; }
+    .btn-whatsapp { display:block; width:100%; background: var(--verde-whatsapp); color: var(--blanco); font-weight: bold; border: none; border-radius: 24px; padding: .8em 0; font-size: 1.08em; text-decoration: none; transition: background .2s; cursor: pointer; margin-top: .4em; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align:center; }
     .btn-whatsapp:hover { background: #1ebe57; }
-    .carrito-vacio {
-      text-align: center;
-      color: #888;
-      margin-top: 1.5em;
-      font-style: italic;
-    }
+    .carrito-vacio { text-align: center; color: #888; margin-top: 1.2em; font-style: italic; }
     @media (max-width: 600px) {
-      main { padding: 1rem 0.3rem; }
+      main { padding: 1rem .3rem; }
       .productos-grid { gap: 1rem; }
-      .modal-carrito { padding: 1.2em 0.5em 0.5em 0.5em; }
+      .modal-carrito { padding: 1.1em .5em .6em .5em; }
       .seccion-titulo { font-size: 1.3em; }
     }
   </style>
@@ -270,29 +73,42 @@
 <body>
   <header>
     <img src="LOGO-LA-PERUANA.jpg" alt="Logo La Peruana" class="logo">
-    </header>
+  </header>
+
   <main id="main"></main>
+
+  <!-- FAB Carrito -->
   <button class="carrito-fab" id="abrirCarritoBtn" title="Ver carrito">
-    <svg fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M7 20a2 2 0 11.001-3.999A2 2 0 017 20zm10 0a2 2 0 11.001-3.999A2 2 0 0117 20zM7.16 17h9.69c.87 0 1.64-.56 1.89-1.38l2.22-7.06A1 1 0 0020 7H6.21l-.94-2.36A1 1 0 004.34 4H2a1 1 0 100 2h1.34l3.6 9.36-1.35 2.44A1 1 0 006 19h13a1 1 0 100-2H7.42l.74-1.35z"/></svg>
-    <span>Carrito</span>
-    <span class="carrito-cantidad" id="carritoCantidad">0</span>
+    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M7 20a2 2 0 11.001-3.999A2 2 0 017 20zm10 0a2 2 0 11.001-3.999A2 2 0 0117 20zM7.16 17h9.69c.87 0 1.64-.56 1.89-1.38l2.22-7.06A1 1 0 0020 7H6.21l-.94-2.36A1 1 0 004.34 4H2a1 1 0 100 2h1.34l3.6 9.36-1.35 2.44A1 1 0 006 19h13a1 1 0 100-2H7.42l.74-1.35z"/></svg>
+    <span id="fabTexto">Carrito</span>
+    <span class="carrito-pill"><span id="carritoCantidad">0</span> • <span id="carritoMonto">$0</span></span>
   </button>
+
+  <!-- Modal Carrito (Detalle y confirmación) -->
   <div class="modal-carrito-bg" id="modalCarritoBg">
-    <div class="modal-carrito">
-      <button class="cerrar" id="cerrarCarritoBtn" title="Cerrar">&times;</button>
-      <h2>Tu Carrito</h2>
+    <div class="modal-carrito" role="dialog" aria-modal="true" aria-labelledby="tituloCarrito">
+      <button class="cerrar" id="cerrarCarritoBtn" title="Cerrar" aria-label="Cerrar">&times;</button>
+      <h2 id="tituloCarrito">Tu Carrito</h2>
+      <div class="carrito-subtitulo">Revisá tu pedido. Podés sumar, restar o quitar productos antes de confirmar.</div>
+
       <div class="carrito-items-list" id="carritoLista"></div>
-      <div class="carrito-total" id="carritoTotal"></div>
-      <a class="btn-whatsapp" id="carritoWhatsApp" target="_blank">Enviar pedido por WhatsApp</a>
+
+      <div class="carrito-acciones">
+        <button class="btn-vaciar" id="vaciarCarritoBtn" title="Eliminar todo">Eliminar todo</button>
+        <div class="carrito-total" id="carritoTotal"></div>
+      </div>
+
+      <a class="btn-whatsapp" id="carritoWhatsApp" target="_blank" rel="noopener">Confirmar y enviar por WhatsApp</a>
     </div>
   </div>
+
   <script>
-    // Cambia este número por tu WhatsApp (sin + y sin espacios, ej: 5493436123456)
+    // Número de WhatsApp (sin + y sin espacios, ej: 5493436123456)
     const WHATSAPP_NUMERO = "5493435075991";
 
-    // Estructura con 11 secciones y productos ejemplo para cada una (agrega hasta 100 productos)
+    // Catálogo (idéntico al tuyo; recortado aquí por brevedad… puedes mantener/expandir)
     const secciones = [
-        { nombre: "ALMACEN", productos: [
+      { nombre: "ALMACEN", productos: [
         { nombre: "Paté de foie Molto", precio: 957, imagen: "pate-foie-molto.jpg" },
         { nombre: "Puré de tomate Arcor x 520 grs", precio: 1251, imagen: "pure-tomate-Arcor.jpg" },
         { nombre: "Arroz Gallo oro 1Kg", precio: 2909, imagen: "arroz-gallo-oro.jpg" },
@@ -316,7 +132,6 @@
         { nombre: "Cerveza lata Quilmes 473cc", precio: 1900, imagen: "lata-quilmes.jpg" },
         { nombre: "Cerveza lata Budweiser 473cc", precio: 1818, imagen: "cerveza-lata-budweiser.png" },
         { nombre: "Cerveza botella Corona 333cc", precio: 3230, imagen: "cerveza-corona.jpg" }
-
       ]},
       { nombre: "CARNICERIA", productos: [
         { nombre: "Milanesas de carne 1Kg", precio: 13050, imagen: "milanesas-carne.jpg" },
@@ -327,9 +142,8 @@
         { nombre: "Costeletas de cerdo 1Kg", precio: 8391, imagen: "costeletas-cerdo.jpg" },
         { nombre: "Carne picada comun 1Kg", precio: 8990, imagen: "carne-picada-comun.jpg" },
         { nombre: "Carne picada especial 1Kg", precio: 14260, imagen: "carne-picada-especial.jpg" }
-        
       ]},
-        { nombre: "ROTISERIA", productos: [
+      { nombre: "ROTISERIA", productos: [
         { nombre: "Torrejas de arroz x 3 un", precio: 1225, imagen: "torrejas-arroz.jpg" },
         { nombre: "Torrejas de acelga x 3 un", precio: 1225, imagen: "torrejas-acelga.jpg" },
         { nombre: "Bandeja de sandwich de miga simple x 6 un", precio: 12846, imagen: "miga-simple.jpg" },
@@ -356,8 +170,7 @@
         { nombre: "Hamburguesa LP con papas -Pan de papa, carne simple, lechuga, tomate, queso cheddar, bacon, cebolla morada o blanca-", precio: 7447, imagen: "Hamburguesa LP.jpg" },
         { nombre: "Hamburguesa cheddar con papas -Pan de papa, doble carne, cheddar, panceta y cebolla-", precio: 8298, imagen: "Hamburguesa cheddar.jpg" },
         { nombre: "Milanesas de pollo x 3 un", precio: 8344, imagen: "milanesa-pollo.jpg" }
-
-        ]},
+      ]},
       { nombre: "VERDULERIA", productos: [
         { nombre: "Acelga", precio: 650, imagen: "acelga.jpg" },
         { nombre: "Cebolla 1Kg", precio: 3342, imagen: "cebolla.jpg" },
@@ -384,7 +197,6 @@
         { nombre: "Pasta de dientes Colgate x 70 grs", precio: 2561, imagen: "colgate-70.jpg" },
         { nombre: "Cepillo dental Colgate", precio: 1233, imagen: "cepillo-dental-colgate.jpg" },
         { nombre: "Jabón de tocador Plusbelle x 120 grs", precio: 2856, imagen: "jabon-tocador-plusbelle.jpg" }
-        
       ]},
       { nombre: "FIAMBRERIA", productos: [
         { nombre: "Picada de fiambres y quesos surtidos LP x 800 grs", precio: 19600, imagen: "picada-surtidos.jpg" },
@@ -395,7 +207,6 @@
         { nombre: "Jamón cocido Lario feteado x 500 grs", precio: 11318, imagen: "jamón-cocido-Lario.jpg" },
         { nombre: "Mortadela Paladini x 300 grs", precio: 5153, imagen: "mortadela-Paladini.jpg" },
         { nombre: "Queso Port Salut 300g", precio: 1600, imagen: "port-salut.jpg" }
-        
       ]},
       { nombre: "PANADERIA", productos: [
         { nombre: "Facturas con crema x 3 un", precio: 2177, imagen: "facturas-crema.jpg" },
@@ -420,7 +231,6 @@
         { nombre: "Medialunas saladas grandes x 250grs", precio: 3281, imagen: "medialuna-salada-grande.jpg" },
         { nombre: "Medialunas saladas chicas x 250grs", precio: 4024, imagen: "medialuna-salada-chica.jpg" },
         { nombre: "Croissant x 1 un", precio: 2464, imagen: "Croissant.jpg" }
-      
       ]},
       { nombre: "PASTELERIA", productos: [
         { nombre: "Cheese cake individual", precio: 6362, imagen: "cheesecake-individual.jpg" },
@@ -438,14 +248,28 @@
         { nombre: "Alfajores de chocolate grande x 2 un", precio: 1820, imagen: "alfajor-choco-gr.jpg" },
         { nombre: "Alfajores de chocolate mediano x 3 un", precio: 1903, imagen: "alfajor-choco-med.jpg" },
         { nombre: "Alfajores de chocolate mini x 5 un", precio: 1986, imagen: "alfajor-choco-mini.jpg" }
-        
       ]},
-      ];
+    ];
 
-    // Carrito: { [seccionIdx_productoIdx]: cantidad }
+    // Estado del carrito: { "sidx_pidx": cantidad }
     let carrito = {};
 
-    // Renderizado de secciones y productos
+    // Utilidades
+    const fmt = (n)=> n.toLocaleString('es-AR');
+    const ARS = (n)=> '$' + n.toLocaleString('es-AR');
+
+    function getTotales() {
+      let items = 0, monto = 0;
+      for (const key in carrito) {
+        const [sidx, pidx] = key.split('_').map(Number);
+        const p = secciones[sidx]?.productos[pidx];
+        const cant = carrito[key] || 0;
+        if (p && cant > 0) { items += cant; monto += cant * p.precio; }
+      }
+      return { items, monto };
+    }
+
+    // Render de catálogo
     function renderSecciones() {
       const main = document.getElementById('main');
       main.innerHTML = '';
@@ -463,11 +287,11 @@
           card.innerHTML = `
             <img class="producto-img" src="${prod.imagen}" alt="${prod.nombre}">
             <div class="producto-nombre">${prod.nombre}</div>
-            <div class="producto-precio">$${prod.precio.toLocaleString('es-AR')}</div>
+            <div class="producto-precio">${ARS(prod.precio)}</div>
             <div class="cantidad-ctrl">
-              <button class="btn-cantidad" data-key="${key}" data-action="restar">-</button>
+              <button class="btn-cantidad" data-key="${key}" data-action="restar" aria-label="Restar uno">-</button>
               <span class="cantidad-num" id="cantidad-${key}">${carrito[key]||0}</span>
-              <button class="btn-cantidad" data-key="${key}" data-action="sumar">+</button>
+              <button class="btn-cantidad" data-key="${key}" data-action="sumar" aria-label="Sumar uno">+</button>
             </div>
           `;
           grid.appendChild(card);
@@ -477,52 +301,70 @@
       });
     }
 
-    // Manejo de sumar/restar
-    document.addEventListener('click', e => {
-      if(e.target.classList.contains('btn-cantidad')) {
+    // Sumar/restar desde tarjetas
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('btn-cantidad')) {
         const key = e.target.dataset.key;
-        if(!(key in carrito)) carrito[key]=0;
-        if(e.target.dataset.action === 'sumar') carrito[key]++;
-        if(e.target.dataset.action === 'restar' && carrito[key]>0) carrito[key]--;
-        if(carrito[key]===0) delete carrito[key];
-        document.getElementById(`cantidad-${key}`).textContent = carrito[key]||0;
+        if (!(key in carrito)) carrito[key] = 0;
+        if (e.target.dataset.action === 'sumar') carrito[key]++;
+        if (e.target.dataset.action === 'restar' && carrito[key] > 0) carrito[key]--;
+        if (carrito[key] === 0) delete carrito[key];
+
+        const span = document.getElementById(`cantidad-${key}`);
+        if (span) span.textContent = carrito[key] || 0;
+
         actualizarFab();
       }
     });
 
-    // Carrito FAB y Modal
+    // FAB & modal
     function actualizarFab() {
-      const total = Object.values(carrito).reduce((a,b)=>a+b,0);
-      document.getElementById('carritoCantidad').textContent = total;
+      const { items, monto } = getTotales();
+      document.getElementById('carritoCantidad').textContent = fmt(items);
+      document.getElementById('carritoMonto').textContent = ARS(monto);
     }
 
     function renderCarrito() {
       const lista = document.getElementById('carritoLista');
       lista.innerHTML = '';
+
+      const keys = Object.keys(carrito);
+      if (keys.length === 0) {
+        lista.innerHTML = '<div class="carrito-vacio">¡El carrito está vacío!</div>';
+        document.getElementById('carritoTotal').textContent = '';
+        document.getElementById('carritoWhatsApp').style.display = 'none';
+        document.getElementById('vaciarCarritoBtn').style.display = 'none';
+        return;
+      }
+
       let total = 0;
-      Object.keys(carrito).forEach(key => {
+      keys.forEach(key => {
         const [sidx, pidx] = key.split('_').map(Number);
         const p = secciones[sidx].productos[pidx];
         const cant = carrito[key];
-        if (cant > 0) {
-          const subtotal = cant * p.precio;
-          total += subtotal;
-          const div = document.createElement('div');
-          div.className = 'carrito-item';
-          div.innerHTML = `
-            <span class="carrito-item-nombre">${p.nombre}</span>
-            <span class="carrito-item-cantidad">${cant}</span>
-            <span class="carrito-item-precio">$${subtotal.toLocaleString('es-AR')}</span>
-          `;
-          lista.appendChild(div);
-        }
+        const subtotal = cant * p.precio;
+        total += subtotal;
+
+        const row = document.createElement('div');
+        row.className = 'carrito-item';
+        row.innerHTML = `
+          <span class="carrito-item-nombre">${p.nombre}</span>
+          <span class="carrito-item-precio">${ARS(p.precio)}</span>
+          <div class="carrito-item-cant">
+            <button class="mini" data-key="${key}" data-action="restar">-</button>
+            <span class="carrito-item-cantidad" id="carr-cant-${key}">${cant}</span>
+            <button class="mini" data-key="${key}" data-action="sumar">+</button>
+          </div>
+          <span class="carrito-item-precio" id="carr-sub-${key}">${ARS(subtotal)}</span>
+          <button class="carrito-item-quitar" data-key="${key}" data-action="quitar">Quitar</button>
+        `;
+        lista.appendChild(row);
       });
-      if (total === 0) {
-        lista.innerHTML = '<div class="carrito-vacio">¡El carrito está vacío!</div>';
-      }
-      document.getElementById('carritoTotal').textContent = total > 0 ? `Total: $${total.toLocaleString('es-AR')}` : '';
-      document.getElementById('carritoWhatsApp').style.display = total>0 ? 'block' : 'none';
+
+      document.getElementById('carritoTotal').textContent = `Total: ${ARS(total)}`;
+      document.getElementById('carritoWhatsApp').style.display = 'block';
       document.getElementById('carritoWhatsApp').href = generarLinkWhatsApp();
+      document.getElementById('vaciarCarritoBtn').style.display = 'inline-flex';
     }
 
     function generarLinkWhatsApp() {
@@ -532,16 +374,46 @@
         const [sidx, pidx] = key.split('_').map(Number);
         const p = secciones[sidx].productos[pidx];
         const cant = carrito[key];
+        const subtotal = cant * p.precio;
         if (cant > 0) {
-          mensaje += `- ${p.nombre} x${cant} = $${(cant*p.precio).toLocaleString('es-AR')}\n`;
-          total += cant*p.precio;
+          mensaje += `• ${p.nombre} x${cant} = ${ARS(subtotal)}%0A`;
+          total += subtotal;
         }
       });
-      mensaje += `Total: $${total.toLocaleString('es-AR')}`;
-      return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+      mensaje += `Total: ${ARS(total)}`;
+      return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(decodeURIComponent(mensaje))}`;
     }
 
-    // Modal mostrar/ocultar
+    // Acciones dentro del modal (sumar/restar/quitar/vaciar)
+    document.getElementById('carritoLista').addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const key = btn.dataset.key;
+      const action = btn.dataset.action;
+      if (!key || !action) return;
+
+      if (action === 'sumar') carrito[key] = (carrito[key] || 0) + 1;
+      if (action === 'restar') {
+        carrito[key] = (carrito[key] || 0) - 1;
+        if (carrito[key] <= 0) delete carrito[key];
+      }
+      if (action === 'quitar') delete carrito[key];
+
+      // Sincronizar cantidades en tarjetas si están visibles
+      const spanCard = document.getElementById(`cantidad-${key}`);
+      if (spanCard) spanCard.textContent = carrito[key] || 0;
+
+      actualizarFab();
+      renderCarrito();
+    });
+
+    document.getElementById('vaciarCarritoBtn').addEventListener('click', () => {
+      carrito = {};
+      actualizarFab();
+      renderCarrito();
+    });
+
+    // Abrir/cerrar modal
     document.getElementById('abrirCarritoBtn').onclick = ()=>{
       renderCarrito();
       document.getElementById('modalCarritoBg').classList.add('active');
@@ -553,40 +425,9 @@
       if (e.target === this) this.classList.remove('active');
     };
 
+    // Init
     renderSecciones();
     actualizarFab();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
