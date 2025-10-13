@@ -1,255 +1,431 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>La Peruana — Tienda Online</title>
-  <meta name="description" content="E-commerce sin backend — Tienda online de La Peruana" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Peruana | Supermercado Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f8fafc; --card:#ffffff; --muted:#475569; --text:#0f172a;
-      --primary:#e54244; --primary-600:#c12f31; --shadow:0 10px 30px rgba(0,0,0,.10);
-      --radius:18px; --accent:#ffe059;
+    :root {
+      --rojo-principal: #e54244;
+      --rojo-gradiente: #d73a45;
+      --blanco: #fff;
+      --amarillo: #ffe059;
+      --gris: #f9f9f9;
+      --verde-whatsapp: #25D366;
+      --gris-borde:#e5e5e5;
+      --gris-texto:#333;
     }
-    [data-theme="dark"]{
-      --bg:#0f172a; --card:#111827; --muted:#94a3b8; --text:#e2e8f0;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+    body { margin: 0; font-family: 'Roboto', Arial, sans-serif; background: var(--blanco); min-height: 100vh; }
+    header { text-align: center; padding: 2rem 1rem 1rem 1rem; background: transparent; }
+    .logo { max-width: 420px; width: 100%; border-radius: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); margin-bottom: .7em; }
+    main { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+    .seccion { margin-bottom: 2.2em; }
+    .seccion-titulo { color: var(--rojo-principal); font-family: 'Monserrat', sans-serif; font-size: 2em; margin: 1em 0 .7em 0; letter-spacing: .03em; border-bottom: 2px solid var(--rojo-principal); display: inline-block; padding-bottom: .2em; background: var(--blanco); }
+    .productos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.3rem; }
+    .producto { background: var(--gris); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 1em; transition: transform .18s; position: relative; }
+    .producto:hover { transform: scale(1.04); }
+    .producto-img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; margin-bottom: .7em; background: #eee; }
+    .producto-nombre { font-weight: 700; font-size: 1.1em; color: var(--rojo-principal); margin-bottom: .3em; text-align: center; }
+    .producto-precio { color: var(--gris-texto); font-size: 1.1em; margin-bottom: .6em; }
+    .cantidad-ctrl { display: flex; align-items: center; margin-bottom: .6em; gap: .5em; }
+    .btn-cantidad { background: var(--rojo-principal); color: var(--blanco); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1.2em; cursor: pointer; font-weight: bold; transition: background .2s; display: flex; align-items: center; justify-content: center; }
+    .btn-cantidad:active { background: var(--rojo-gradiente); }
+    .cantidad-num { width: 32px; text-align: center; font-size: 1.1em; font-weight: bold; color: var(--rojo-principal); }
+
+    /* FAB Carrito */
+    .carrito-fab { position: fixed; top: 20px; right: 24px; background: var(--rojo-principal); color: var(--blanco); border: none; border-radius: 50px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); padding: .8em 1.2em; font-size: 1.02em; z-index: 99; cursor: pointer; display: flex; align-items: center; gap: .6em; font-weight: bold; }
+    .carrito-fab svg { width: 1.4em; height: 1.4em; vertical-align: middle; }
+    .carrito-pill { display: inline-flex; background: var(--amarillo); color: #a60009; border-radius: 999px; font-weight: 700; font-size: .93em; padding: .12em .6em; align-items:center; gap:.4em; }
+
+    /* Modal Carrito */
+    .modal-carrito-bg { display: none; position: fixed; z-index: 100; inset: 0; background: rgba(0,0,0,0.35); align-items: center; justify-content: center; }
+    .modal-carrito-bg.active { display: flex; }
+    .modal-carrito { background: var(--blanco); border-radius: 18px; max-width: 520px; width: 98vw; padding: 1.6em 1em 1.2em 1em; box-shadow: 0 6px 32px rgba(0,0,0,0.19); position: relative; animation: fadein .15s; }
+    @keyframes fadein { from { opacity: 0; transform: scale(.97);} to {opacity: 1; transform: scale(1);} }
+    .modal-carrito h2 { margin: .2em 2.2em .2em 2.2em; color: var(--rojo-principal); text-align: center; }
+    .modal-carrito .cerrar { position: absolute; top: .6em; right: .7em; background: transparent; border: none; font-size: 1.6em; color: var(--rojo-gradiente); cursor: pointer; }
+    .carrito-subtitulo { text-align:center; color:#777; font-size:.95em; margin-bottom:.6em; }
+    .carrito-items-list { max-height: 300px; overflow-y: auto; margin: .8em 0 1em; padding: 0 .4em; }
+    .carrito-item { display: grid; grid-template-columns: 1fr auto auto auto auto; align-items: center; gap: .5em; padding: .55em 0; border-bottom: 1px solid var(--gris-borde); font-size: 1.02em; }
+    .carrito-item-nombre { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .carrito-item-cant { display:flex; align-items:center; gap:.35em; }
+    .carrito-item-cant .mini { width:26px; height:26px; border-radius:50%; border:none; background: var(--rojo-principal); color:#fff; font-weight:700; cursor:pointer; }
+    .carrito-item-cantidad { min-width: 28px; text-align: center; font-weight: bold; color: var(--rojo-principal); }
+    .carrito-item-precio { min-width: 80px; text-align: right; color: var(--gris-texto); font-variant-numeric: tabular-nums; }
+    .carrito-item-quitar { background: transparent; border: 1px solid var(--gris-borde); border-radius: 10px; padding:.25em .55em; cursor: pointer; color:#777; }
+    .carrito-acciones { display:flex; gap:.6em; justify-content: space-between; align-items:center; margin-top:.8em; }
+    .btn-vaciar { background:#fff; color:#c1121f; border:1px solid #f0b1b5; border-radius:12px; padding:.55em .9em; cursor:pointer; font-weight:700; }
+    .carrito-total { text-align: right; font-size: 1.18em; font-weight: bold; color: var(--rojo-principal); flex:1; }
+    .btn-whatsapp { display:block; width:100%; background: var(--verde-whatsapp); color: var(--blanco); font-weight: bold; border: none; border-radius: 24px; padding: .8em 0; font-size: 1.08em; text-decoration: none; transition: background .2s; cursor: pointer; margin-top: .4em; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align:center; }
+    .btn-whatsapp:hover { background: #1ebe57; }
+    .carrito-vacio { text-align: center; color: #888; margin-top: 1.2em; font-style: italic; }
+    @media (max-width: 600px) {
+      main { padding: 1rem .3rem; }
+      .productos-grid { gap: 1rem; }
+      .modal-carrito { padding: 1.1em .5em .6em .5em; }
+      .seccion-titulo { font-size: 1.3em; }
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    header{
-      position:sticky;top:0;z-index:10;background:var(--bg);backdrop-filter:saturate(180%) blur(8px);
-      border-bottom:1px solid rgba(0,0,0,.06);padding:.8rem 1rem
-    }
-    .toolbar{
-      display:grid;grid-template-columns:1fr 280px 180px;gap:.75rem;align-items:center;max-width:1200px;margin:0 auto
-    }
-    .toolbar .left{
-      display:flex;gap:.5rem;flex-wrap:wrap;align-items:center
-    }
-    .badge{
-      display:inline-flex;align-items:center;gap:.35rem;
-      background:var(--card);border:1px solid rgba(0,0,0,.07);border-radius:999px;padding:.45rem .75rem;box-shadow:var(--shadow)
-    }
-    .controls{display:flex;gap:.5rem;flex-wrap:wrap}
-    select, input, button{
-      font:inherit;border-radius:12px;border:1px solid rgba(0,0,0,.12);background:var(--card);color:var(--text);
-      padding:.6rem .7rem
-    }
-    select[multiple]{min-height:2.8rem}
-    button.primary{background:var(--primary);border-color:var(--primary);color:white}
-    button.ghost{background:var(--card)}
-    main{max-width:1200px;margin:1rem auto;padding:0 1rem 2rem}
-    .grid{
-      display:grid;gap:1rem;
-      grid-template-columns:repeat(1,minmax(0,1fr));
-    }
-    @media(min-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(min-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-    .card{
-      background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
-      overflow:hidden;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column
-    }
-    .media-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#f2f4f7}
-    .media{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
-    }
-    .content{padding:1rem}
-    .title{font-weight:700;margin:0 0 .25rem 0}
-    .muted{color:var(--muted);font-size:.95rem;margin:.25rem 0}
-    .price{font-weight:800;margin-top:.5rem}
-    .hidden{display:none !important}
-    .empty{
-      margin:2rem 0;padding:1rem;border:1px dashed rgba(0,0,0,.2);border-radius:12px;text-align:center;color:var(--muted)
-    }
-    .chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem}
-    .chip{font-size:.75rem;background:#eef2ff;border:1px solid #c7d2fe;border-radius:999px;padding:.2rem .6rem}
-    .footer-note{margin-top:.25rem;font-size:.8rem;color:var(--muted)}
   </style>
 </head>
 <body>
-  <!-- Toolbar: Secciones + Búsqueda -->
   <header>
-    <div class="toolbar">
-      <div class="left">
-        <div class="badge">
-          <strong>La Peruana</strong> <span class="footer-note">· Selector de secciones</span>
-        </div>
-        <div class="controls">
-          <!-- Selector múltiple de secciones -->
-          <select id="sectionSelect" multiple title="Elegí una o más secciones"></select>
-          <button id="selectAll" class="ghost" type="button">Seleccionar todo</button>
-          <button id="selectNone" class="ghost" type="button">Ninguno</button>
-        </div>
-      </div>
-      <!-- Buscador -->
-      <input id="searchInput" type="search" placeholder="Buscar producto o descripción…" aria-label="Buscar" />
-      <!-- Theme (opcional) -->
-      <button id="toggleTheme" class="primary" type="button" title="Cambiar tema">Tema</button>
-    </div>
+    <img src="LOGO-LA-PERUANA.jpg" alt="Logo La Peruana" class="logo">
   </header>
 
-  <main>
-    <!-- Grid de productos (ejemplo). Si ya tenés tus tarjetas, mantené la clase .card y data-section -->
-    <div id="catalog" class="grid">
-      <!-- Ejemplos: cambiá/duplica según tu catálogo o sustituilos por tu render dinámico -->
-      <article class="card" data-section="Panadería" data-name="Pan de Campo" data-desc="Pan artesanal masa madre 700g">
-        <div class="media-wrap">
-          <img class="media" src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=1200&auto=format&fit=crop" alt="Pan de Campo">
-        </div>
-        <div class="content">
-          <h3 class="title">Pan de Campo</h3>
-          <p class="muted">Pan artesanal de masa madre, 700 g.</p>
-          <div class="chips"><span class="chip">Panadería</span></div>
-          <div class="price">$ 3.200</div>
-        </div>
-      </article>
+  <main id="main"></main>
 
-      <article class="card" data-section="Pastelería" data-name="Tarta de Frutillas" data-desc="Base sablée y crema pastelera">
-        <div class="media-wrap">
-          <img class="media" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Tarta de Frutillas">
-        </div>
-        <div class="content">
-          <h3 class="title">Tarta de Frutillas</h3>
-          <p class="muted">Base sablée, crema pastelera y frutillas frescas.</p>
-          <div class="chips"><span class="chip">Pastelería</span></div>
-          <div class="price">$ 6.900</div>
-        </div>
-      </article>
+  <!-- FAB Carrito -->
+  <button class="carrito-fab" id="abrirCarritoBtn" title="Ver carrito">
+    <svg fill="none" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M7 20a2 2 0 11.001-3.999A2 2 0 017 20zm10 0a2 2 0 11.001-3.999A2 2 0 0117 20zM7.16 17h9.69c.87 0 1.64-.56 1.89-1.38l2.22-7.06A1 1 0 0020 7H6.21l-.94-2.36A1 1 0 004.34 4H2a1 1 0 100 2h1.34l3.6 9.36-1.35 2.44A1 1 0 006 19h13a1 1 0 100-2H7.42l.74-1.35z"/></svg>
+    <span id="fabTexto">Carrito</span>
+    <span class="carrito-pill"><span id="carritoCantidad">0</span> • <span id="carritoMonto">$0</span></span>
+  </button>
 
-      <article class="card" data-section="Rotisería" data-name="Milanesa Napolitana" data-desc="Con puré de papas">
-        <div class="media-wrap">
-          <img class="media" src="https://images.unsplash.com/photo-1671585970763-896ea553381e?q=80&w=1200&auto=format&fit=crop" alt="Milanesa Napolitana">
-        </div>
-        <div class="content">
-          <h3 class="title">Milanesa Napolitana</h3>
-          <p class="muted">Milanesa con tomate, jamón y muzzarella. Acompaña puré.</p>
-          <div class="chips"><span class="chip">Rotisería</span></div>
-          <div class="price">$ 8.500</div>
-        </div>
-      </article>
+  <!-- Modal Carrito (Detalle y confirmación) -->
+  <div class="modal-carrito-bg" id="modalCarritoBg">
+    <div class="modal-carrito" role="dialog" aria-modal="true" aria-labelledby="tituloCarrito">
+      <button class="cerrar" id="cerrarCarritoBtn" title="Cerrar" aria-label="Cerrar">&times;</button>
+      <h2 id="tituloCarrito">Tu Carrito</h2>
+      <div class="carrito-subtitulo">Revisá tu pedido. Podés sumar, restar o quitar productos antes de confirmar.</div>
 
-      <article class="card" data-section="Verdulería" data-name="Mix de Hojas" data-desc="Verdes premium listos para servir">
-        <div class="media-wrap">
-          <img class="media" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=1200&auto=format&fit=crop" alt="Mix de Hojas">
-        </div>
-        <div class="content">
-          <h3 class="title">Mix de Hojas</h3>
-          <p class="muted">Verdes premium listos para servir. 250 g.</p>
-          <div class="chips"><span class="chip">Verdulería</span></div>
-          <div class="price">$ 2.950</div>
-        </div>
-      </article>
+      <div class="carrito-items-list" id="carritoLista"></div>
 
-      <article class="card" data-section="Carnicería" data-name="Bife de Chorizo" data-desc="Corte seleccionado">
-        <div class="media-wrap">
-          <img class="media" src="https://images.unsplash.com/photo-1558036117-15d82a90b9b5?q=80&w=1200&auto=format&fit=crop" alt="Bife de Chorizo">
-        </div>
-        <div class="content">
-          <h3 class="title">Bife de Chorizo</h3>
-          <p class="muted">Corte seleccionado. Precio por kg.</p>
-          <div class="chips"><span class="chip">Carnicería</span></div>
-          <div class="price">$ 12.900</div>
-        </div>
-      </article>
+      <div class="carrito-acciones">
+        <button class="btn-vaciar" id="vaciarCarritoBtn" title="Eliminar todo">Eliminar todo</button>
+        <div class="carrito-total" id="carritoTotal"></div>
+      </div>
+
+      <a class="btn-whatsapp" id="carritoWhatsApp" target="_blank" rel="noopener">Confirmar y enviar por WhatsApp</a>
     </div>
-
-    <div id="emptyState" class="empty hidden">
-      No hay productos que cumplan los filtros. Probá ampliando la selección de secciones o limpiando la búsqueda. 😉
-    </div>
-
-    <p class="footer-note">Tip: en tus tarjetas reales, solo asegurá <code>data-section="NombreSección"</code> y listo.</p>
-  </main>
+  </div>
 
   <script>
-    (function(){
-      const root = document.documentElement;
-      const sectionSelect = document.getElementById('sectionSelect');
-      const selectAllBtn   = document.getElementById('selectAll');
-      const selectNoneBtn  = document.getElementById('selectNone');
-      const searchInput    = document.getElementById('searchInput');
-      const toggleThemeBtn = document.getElementById('toggleTheme');
-      const catalog        = document.getElementById('catalog');
-      const emptyState     = document.getElementById('emptyState');
+    // Número de WhatsApp (sin + y sin espacios, ej: 5493436123456)
+    const WHATSAPP_NUMERO = "5493435075991";
 
-      // 1) Descubrir secciones únicas a partir de las tarjetas presentes
-      function discoverSections(){
-        const cards = [...catalog.querySelectorAll('.card')];
-        const set = new Set(cards.map(c=> (c.getAttribute('data-section')||'').trim()).filter(Boolean));
-        return [...set].sort((a,b)=>a.localeCompare(b, 'es', {sensitivity:'base'}));
+    // Catálogo (idéntico al tuyo; recortado aquí por brevedad… puedes mantener/expandir)
+    const secciones = [
+        { nombre: "PANADERIA", productos: [
+        { nombre: "Facturas con crema x 3 un", precio: 2177, imagen: "facturas-crema.jpg" },
+        { nombre: "Facturas con crema y membrillo x 3 un", precio: 2613, imagen: "facturas-crema-membrillo.jpg" },
+        { nombre: "Facturas con crema y dulce de leche x 3 un", precio: 1960, imagen: "facturas-crema-ddl.jpg" },
+        { nombre: "Medialunas con dulce de leche x 3 un", precio: 2449, imagen: "medialuna-ddl.jpg" },
+        { nombre: "Medialunas dulces x 3 un", precio: 1851, imagen: "medialuna-dulce.jpg" },
+        { nombre: "Vigiantes de batata x 3 un", precio: 2504, imagen: "vigilantes-batata.jpg" },
+        { nombre: "Vigilantes de membrillo x 3 un", precio: 2308, imagen: "vigilantes-membrillo.jpg" },
+        { nombre: "Bollitos con crema x 3 un", precio: 2068, imagen: "bollitos-crema.jpg" },
+        { nombre: "Bollitos con dulce de leche x 3 un", precio: 1960, imagen: "bollitos-ddl.jpg" },
+        { nombre: "Empanaditas de dulce de leche x 3 un", precio: 1415, imagen: "empanaditas-ddl.jpg" },
+        { nombre: "Pirulines x 3 un", precio: 2177, imagen: "pirulines.jpg" },
+        { nombre: "Borrachitos x 3 un", precio: 1960, imagen: "borrachitos.jpg" },
+        { nombre: "Medialunas marplatenses x 3 un", precio: 1933, imagen: "medialunas-marplatenses.jpg" },
+        { nombre: "Especiales x 250grs", precio: 2363, imagen: "especiales.jpg" },
+        { nombre: "Pan frances x 250grs", precio: 740, imagen: "pan-frances.jpg" },
+        { nombre: "Galleta de campo x 250grs", precio: 840, imagen: "galleta-comun.jpg" },
+        { nombre: "Galleta hojaldrada x 250grs", precio: 1018, imagen: "galleta-hojaldrada.jpg" },
+        { nombre: "Suizos x 250grs", precio: 3319, imagen: "suizos.jpg" },
+        { nombre: "Medialunas saladas grandes x 250grs", precio: 3281, imagen: "medialuna-salada-grande.jpg" },
+        { nombre: "Medialunas saladas chicas x 250grs", precio: 4024, imagen: "medialuna-salada-chica.jpg" },
+        { nombre: "Croissant x 1 un", precio: 2464, imagen: "Croissant.jpg" }
+      ]},
+      { nombre: "PASTELERIA", productos: [
+        { nombre: "Cheese cake individual", precio: 6362, imagen: "cheesecake-individual.jpg" },
+        { nombre: "Torta mini bombon", precio: 1019, imagen: "torta-mini-bombon.jpg" },
+        { nombre: "Torta mini lemon pie", precio: 1019, imagen: "torta-mini-lemonpie.jpg" },
+        { nombre: "Torta mini frutal", precio: 1551, imagen: "torta-mini-frutal.jpg" },
+        { nombre: "Lingote de durazno", precio: 2038, imagen: "lingote-durazno.jpg" },
+        { nombre: "Lingote de frutilla", precio: 2038, imagen: "lingote-frutilla.jpg" },
+        { nombre: "Red Velvet individual", precio: 1699, imagen: "red-velvet.jpg" },
+        { nombre: "Tiramisú individual", precio: 3057, imagen: "tiramisu-individual.jpg" },
+        { nombre: "Masas finas x 7 un", precio: 7427, imagen: "masas-finas.jpg" },
+        { nombre: "Alfajores de maicena grandes x 2 un", precio: 1362, imagen: "alfajor-maicena-grande.jpg" },
+        { nombre: "Alfajores de maicena medianos x 3 un", precio: 1424, imagen: "alfa-maicena-med.jpg" },
+        { nombre: "Alfajores de maicena mini x 5 un", precio: 1485, imagen: "alfajor-maicena-grande.jpg" },
+        { nombre: "Alfajores de chocolate grande x 2 un", precio: 1820, imagen: "alfajor-choco-gr.jpg" },
+        { nombre: "Alfajores de chocolate mediano x 3 un", precio: 1903, imagen: "alfajor-choco-med.jpg" },
+        { nombre: "Alfajores de chocolate mini x 5 un", precio: 1986, imagen: "alfajor-choco-mini.jpg" }
+     ]},
+      { nombre: "ROTISERIA", productos: [
+        { nombre: "Torrejas de arroz x 3 un", precio: 1225, imagen: "torrejas-arroz.jpg" },
+        { nombre: "Torrejas de acelga x 3 un", precio: 1225, imagen: "torrejas-acelga.jpg" },
+        { nombre: "Bandeja de sandwich de miga simple x 6 un", precio: 12846, imagen: "Sandwich-simples.jpg" },
+        { nombre: "Bandeja de sandwich de miga triples x 6 un", precio: 13588, imagen: "miga-triple.jpg" },
+        { nombre: "Tarta de pollo -porción-", precio: 7096, imagen: "tarta-pollo.jpg" },
+        { nombre: "Tortilla de acelga -porción-", precio: 4863, imagen: "tortilla-acelga.jpg" },
+        { nombre: "Tortilla de verduras -porción-", precio: 4863, imagen: "Tortilla-verduras.jpg" },
+        { nombre: "Terrina acelga -porción-", precio: 3633, imagen: "terrina.jpg" },
+        { nombre: "Terrina verdura -porción-", precio: 3633, imagen: "terrina-verduras.jpg" },
+        { nombre: "Papas fritas -porción-", precio: 2591, imagen: "papas-fritas.jpg" },
+        { nombre: "Patamuslo x 2 un", precio: 13196, imagen: "patamuslo.jpg" },
+        { nombre: "Sandwich milanesa de pollo", precio: 5637, imagen: "sandwich-milanesa-pollo.jpg" },
+        { nombre: "Sandwich milanesa de carne simple", precio: 8176, imagen: "sandwich-mila-carne.jpg" },
+        { nombre: "Sandwich milanesa de carne completo", precio: 9638, imagen: "sandwich-mila-carne-completo.jpg" },
+        { nombre: "Pebete de jamon y queso", precio: 3192, imagen: "Pebete.jpg" },
+        { nombre: "Empanadas de choclo x 3 un", precio: 6168, imagen: "empanada-choclo.jpg" },
+        { nombre: "Empanada de jamon y queso", precio: 4875, imagen: "empanada-jyq.jpg" },
+        { nombre: "Empanadas calabresa x 3 un", precio: 4190, imagen: "empanada-calabresa.jpg" },
+        { nombre: "Empanadas de verdura x 3 un", precio: 4278, imagen: "empanada-verdura.jpg" },
+        { nombre: "Empanadas carne dulce x 3 un", precio: 5551, imagen: "empanada-carne-dulce.jpg" },
+        { nombre: "Empanadas carne salada x 3 un", precio: 4923, imagen: "Empanadas-carne-salada.jpg" },
+        { nombre: "Empanadas de pollo x 3 un", precio: 4713, imagen: "Empanadas-carne-salada.jpg" },
+        { nombre: "Empanadas árabes x 3 un", precio: 5656, imagen: "empanada-pirok.jpg" },
+        { nombre: "Milanesas de carne x 3 un", precio: 11258, imagen: "Milanesa-carne.jpg" },
+        { nombre: "Hamburguesa LP con papas -Pan de papa, carne simple, lechuga, tomate, queso cheddar, bacon, cebolla morada o blanca-", precio: 7447, imagen: "Hamburguesa LP.jpg" },
+        { nombre: "Hamburguesa cheddar con papas -Pan de papa, doble carne, cheddar, panceta y cebolla-", precio: 8298, imagen: "Hamburguesa cheddar.jpg" },
+        { nombre: "Milanesas de pollo x 3 un", precio: 8344, imagen: "milanesa-pollo.jpg" }
+      ]},
+      { nombre: "FIAMBRERIA", productos: [
+        { nombre: "Picada de fiambres y quesos surtidos LP x 800 grs", precio: 19600, imagen: "picada-surtidos.jpg" },
+        { nombre: "Picada de quesos surtidos LP x 500 grs", precio: 12214, imagen: "picada-quesos-500gr.jpg" },
+        { nombre: "Picada Lario x 700 grs", precio: 15681, imagen: "picada-Lario.jpg" },
+        { nombre: "Queso cremoso María Luisa x 500 grs", precio: 3955, imagen: "queso-cremoso.jpg" },
+        { nombre: "Queso barra María Luisa x 500 grs", precio: 4984, imagen: "queso-barra.jpg" },
+        { nombre: "Jamón cocido Lario feteado x 500 grs", precio: 11318, imagen: "jamón-cocido-Lario.jpg" },
+        { nombre: "Mortadela Paladini x 300 grs", precio: 5153, imagen: "mortadela-Paladini.jpg" }
+      ]},
+      { nombre: "VERDULERIA", productos: [
+        { nombre: "Paquete acelga", precio: 2143, imagen: "acelga.jpg" },
+        { nombre: "Cebolla 1Kg", precio: 1056, imagen: "cebolla.jpg" },
+        { nombre: "Tomate 1Kg", precio: 7299, imagen: "tomate-redondo.jpg" },
+        { nombre: "limón 1Kg", precio: 2677, imagen: "limón.jpg" },
+        { nombre: "Bananas 1Kg", precio: 4125, imagen: "banana-ecuador.jpg" }
+      ]},
+      { nombre: "CARNICERIA", productos: [
+        { nombre: "Milanesas de carne 1Kg", precio: 13050, imagen: "milanesas-carne.jpg" },
+        { nombre: "Milanesas de pollo 1Kg", precio: 12000, imagen: "milanesas-pollo.jpg" },
+        { nombre: "Hamburguesa de carne 1Kg", precio: 14384, imagen: "hamburguesas-carne-comun.jpg" },
+        { nombre: "Filet de pechuga 1Kg", precio: 15500, imagen: "filet-pechuga.jpg" },
+        { nombre: "Costeletas de cerdo 1Kg", precio: 8391, imagen: "costeletas-cerdo.jpg" },
+        { nombre: "Carne picada común 1Kg", precio: 8990, imagen: "carne-picada-comun.jpg" },
+        { nombre: "Carne picada especial 1Kg", precio: 14260, imagen: "Carne-picada-especial.jpg" }
+      ]},
+      { nombre: "ALMACEN", productos: [
+        { nombre: "Paté de foie Molto", precio: 957, imagen: "pate-foie-molto.jpg" },
+        { nombre: "Puré de tomate Arcor x 520 grs", precio: 1251, imagen: "pure-tomate-Arcor.jpg" },
+        { nombre: "Arroz Gallo oro 1Kg", precio: 2909, imagen: "arroz-gallo-oro.jpg" },
+        { nombre: "Fideos tallarin Matarazo", precio: 1855, imagen: "tallarin-matarazzo.jpg" },
+        { nombre: "Galletitas Surtido Bagley", precio: 3560, imagen: "surtido-bagley.jpg" },
+        { nombre: "Yerba Sinceridad 1Kg", precio: 3931, imagen: "yerba-sinceridad.jpg" },
+        { nombre: "Aceite Natura 900 ml", precio: 3978, imagen: "aceite-natura.jpg" },
+        { nombre: "Azúcar Ledesma 1Kg", precio: 1648, imagen: "azucar-ledesma.jpg" },
+        { nombre: "Celusal fina 500 grs", precio: 1368, imagen: "celusal-fina.jpg" }
+      ]},
+      { nombre: "BEBIDAS", productos: [
+        { nombre: "Coca-Cola 1.5L", precio: 3992, imagen: "coca-cola-15.jpg" },
+        { nombre: "Coca-Cola 2.5L", precio: 5670, imagen: "coca-cola-25.jpg" },
+        { nombre: "Agua mineral Villa del sur levité 1.5L", precio: 2030, imagen: "levite-nar.jpg" },
+        { nombre: "Pritty limon 2.25L", precio: 2030, imagen: "pritty.jpg" },
+        { nombre: "Vino Otro loco mas", precio: 4736, imagen: "otro-loco-mas.jpg" },
+        { nombre: "Vino Finjamos demencia", precio: 4784, imagen: "Finjamos-demencia.jpg" },
+        { nombre: "Pepsi 3L", precio: 2987, imagen: "pepsi-3.jpg" },
+        { nombre: "Vino Santa Julia chenin dulce", precio: 8233, imagen: "santa-julia.jpg" },
+        { nombre: "Vino Hormiga negra", precio: 3394, imagen: "hormiga-negra.jpg" },
+        { nombre: "Cerveza lata Quilmes 473cc", precio: 1900, imagen: "lata-quilmes.jpg" },
+        { nombre: "Cerveza lata Budweiser 473cc", precio: 1818, imagen: "cerveza-lata-budweiser.png" },
+        { nombre: "Cerveza botella Corona 333cc", precio: 3230, imagen: "cerveza-corona.jpg" }
+      ]},
+        { nombre: "LIMPIEZA", productos: [
+        { nombre: "Ala liq. Ecolavado DP x 800 ml", precio: 2686, imagen: "ala-liquido.jpg" },
+        { nombre: "Suavizante Vivere Esc Prot Clasico x 900 ml", precio: 3050, imagen: "suavizante-vivere.jpg" },
+        { nombre: "Lavandina Ayudín triple poder 2 Lts", precio: 3516, imagen: "lavandina-ayudin.jpg" },
+        { nombre: "Ala ecolavado x 800 grs", precio: 2704, imagen: "ala-polvo-800.jpg" },
+        { nombre: "Ala ecolavado x 400 grs", precio: 1424, imagen: "ala-polvo-400.jpg" },
+        { nombre: "Desodorante de pisos Procenex x 900 ml", precio: 1861, imagen: "procenex.jpg" },
+        { nombre: "Papel higienico Felpita 4x30 h/simple", precio: 1820, imagen: "felpita.jpg" }
+      ]},
+      { nombre: "HIGIENE PERSONAL", productos: [
+        { nombre: "Shampoo Sedal bomba Argán x 190 ml", precio: 2856, imagen: "sedal-argan-190.jpg " },
+        { nombre: "Shampoo Sedal probióticos x 190 ml", precio: 2856, imagen: "sedal-probioticos-190.jpg" },
+        { nombre: "Shampoo Sedal colageno x 190 ml", precio: 2856, imagen: "sedal-colageno-190.jpg " },
+        { nombre: "Shampoo Sedal ceramidas x 190 ml", precio: 2856, imagen: "sedal-ceramidas-190.jpg" },
+        { nombre: "Acondicionador Sedal liso x 190 ml", precio: 2856, imagen: "acondicionador-sedal-liso.jpg" },
+        { nombre: "Acondicionador Sedal rizos x 190 ml", precio: 2856, imagen: "acondicionador-sedal-rizos.jpg" },
+        { nombre: "Pasta de dientes Colgate x 70 grs", precio: 2561, imagen: "colgate-70.jpg" },
+        { nombre: "Cepillo dental Colgate", precio: 1233, imagen: "cepillo-dental-colgate.jpg" },
+        { nombre: "Jabón de tocador Plusbelle x 120 grs", precio: 2856, imagen: "jabon-tocador-plusbelle.jpg" }
+      ]},
+    ];
+
+    // Estado del carrito: { "sidx_pidx": cantidad }
+    let carrito = {};
+
+    // Utilidades
+    const fmt = (n)=> n.toLocaleString('es-AR');
+    const ARS = (n)=> '$' + n.toLocaleString('es-AR');
+
+    function getTotales() {
+      let items = 0, monto = 0;
+      for (const key in carrito) {
+        const [sidx, pidx] = key.split('_').map(Number);
+        const p = secciones[sidx]?.productos[pidx];
+        const cant = carrito[key] || 0;
+        if (p && cant > 0) { items += cant; monto += cant * p.precio; }
       }
+      return { items, monto };
+    }
 
-      // 2) Render del selector múltiple
-      function renderSectionSelect(sections){
-        sectionSelect.innerHTML = '';
-        sections.forEach(sec=>{
-          const opt = document.createElement('option');
-          opt.value = sec;
-          opt.textContent = sec;
-          sectionSelect.appendChild(opt);
+    // Render de catálogo
+    function renderSecciones() {
+      const main = document.getElementById('main');
+      main.innerHTML = '';
+      secciones.forEach((seccion, sidx) => {
+        const divSec = document.createElement('section');
+        divSec.className = 'seccion';
+        divSec.innerHTML = `<h2 class="seccion-titulo">${seccion.nombre}</h2>`;
+        const grid = document.createElement('div');
+        grid.className = 'productos-grid';
+
+        seccion.productos.forEach((prod, pidx) => {
+          const key = `${sidx}_${pidx}`;
+          const card = document.createElement('div');
+          card.className = 'producto';
+          card.innerHTML = `
+            <img class="producto-img" src="${prod.imagen}" alt="${prod.nombre}">
+            <div class="producto-nombre">${prod.nombre}</div>
+            <div class="producto-precio">${ARS(prod.precio)}</div>
+            <div class="cantidad-ctrl">
+              <button class="btn-cantidad" data-key="${key}" data-action="restar" aria-label="Restar uno">-</button>
+              <span class="cantidad-num" id="cantidad-${key}">${carrito[key]||0}</span>
+              <button class="btn-cantidad" data-key="${key}" data-action="sumar" aria-label="Sumar uno">+</button>
+            </div>
+          `;
+          grid.appendChild(card);
         });
-        // Por defecto: todas seleccionadas
-        [...sectionSelect.options].forEach(o=>o.selected = true);
+        divSec.appendChild(grid);
+        main.appendChild(divSec);
+      });
+    }
+
+    // Sumar/restar desde tarjetas
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('btn-cantidad')) {
+        const key = e.target.dataset.key;
+        if (!(key in carrito)) carrito[key] = 0;
+        if (e.target.dataset.action === 'sumar') carrito[key]++;
+        if (e.target.dataset.action === 'restar' && carrito[key] > 0) carrito[key]--;
+        if (carrito[key] === 0) delete carrito[key];
+
+        const span = document.getElementById(`cantidad-${key}`);
+        if (span) span.textContent = carrito[key] || 0;
+
+        actualizarFab();
+      }
+    });
+
+    // FAB & modal
+    function actualizarFab() {
+      const { items, monto } = getTotales();
+      document.getElementById('carritoCantidad').textContent = fmt(items);
+      document.getElementById('carritoMonto').textContent = ARS(monto);
+    }
+
+    function renderCarrito() {
+      const lista = document.getElementById('carritoLista');
+      lista.innerHTML = '';
+
+      const keys = Object.keys(carrito);
+      if (keys.length === 0) {
+        lista.innerHTML = '<div class="carrito-vacio">¡El carrito está vacío!</div>';
+        document.getElementById('carritoTotal').textContent = '';
+        document.getElementById('carritoWhatsApp').style.display = 'none';
+        document.getElementById('vaciarCarritoBtn').style.display = 'none';
+        return;
       }
 
-      // 3) Obtener secciones seleccionadas
-      function getSelectedSections(){
-        return [...sectionSelect.selectedOptions].map(o=>o.value);
+      let total = 0;
+      keys.forEach(key => {
+        const [sidx, pidx] = key.split('_').map(Number);
+        const p = secciones[sidx].productos[pidx];
+        const cant = carrito[key];
+        const subtotal = cant * p.precio;
+        total += subtotal;
+
+        const row = document.createElement('div');
+        row.className = 'carrito-item';
+        row.innerHTML = `
+          <span class="carrito-item-nombre">${p.nombre}</span>
+          <span class="carrito-item-precio">${ARS(p.precio)}</span>
+          <div class="carrito-item-cant">
+            <button class="mini" data-key="${key}" data-action="restar">-</button>
+            <span class="carrito-item-cantidad" id="carr-cant-${key}">${cant}</span>
+            <button class="mini" data-key="${key}" data-action="sumar">+</button>
+          </div>
+          <span class="carrito-item-precio" id="carr-sub-${key}">${ARS(subtotal)}</span>
+          <button class="carrito-item-quitar" data-key="${key}" data-action="quitar">Quitar</button>
+        `;
+        lista.appendChild(row);
+      });
+
+      document.getElementById('carritoTotal').textContent = `Total: ${ARS(total)}`;
+      document.getElementById('carritoWhatsApp').style.display = 'block';
+      document.getElementById('carritoWhatsApp').href = generarLinkWhatsApp();
+      document.getElementById('vaciarCarritoBtn').style.display = 'inline-flex';
+    }
+
+    function generarLinkWhatsApp() {
+      let mensaje = "¡Hola! Quiero hacer el siguiente pedido:%0A";
+      let total = 0;
+      Object.keys(carrito).forEach(key => {
+        const [sidx, pidx] = key.split('_').map(Number);
+        const p = secciones[sidx].productos[pidx];
+        const cant = carrito[key];
+        const subtotal = cant * p.precio;
+        if (cant > 0) {
+          mensaje += `• ${p.nombre} x${cant} = ${ARS(subtotal)}%0A`;
+          total += subtotal;
+        }
+      });
+      mensaje += `Total: ${ARS(total)}`;
+      return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(decodeURIComponent(mensaje))}`;
+    }
+
+    // Acciones dentro del modal (sumar/restar/quitar/vaciar)
+    document.getElementById('carritoLista').addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const key = btn.dataset.key;
+      const action = btn.dataset.action;
+      if (!key || !action) return;
+
+      if (action === 'sumar') carrito[key] = (carrito[key] || 0) + 1;
+      if (action === 'restar') {
+        carrito[key] = (carrito[key] || 0) - 1;
+        if (carrito[key] <= 0) delete carrito[key];
       }
+      if (action === 'quitar') delete carrito[key];
 
-      // 4) Lógica de filtrado (sección + búsqueda por texto)
-      function applyFilters(){
-        const query = (searchInput.value||'').trim().toLowerCase();
-        const selected = new Set(getSelectedSections());
-        let visibleCount = 0;
+      // Sincronizar cantidades en tarjetas si están visibles
+      const spanCard = document.getElementById(`cantidad-${key}`);
+      if (spanCard) spanCard.textContent = carrito[key] || 0;
 
-        [...catalog.querySelectorAll('.card')].forEach(card=>{
-          const sec  = (card.getAttribute('data-section')||'').trim();
-          const name = (card.getAttribute('data-name')||card.querySelector('.title')?.textContent||'').toLowerCase();
-          const desc = (card.getAttribute('data-desc')||card.querySelector('.muted')?.textContent||'').toLowerCase();
+      actualizarFab();
+      renderCarrito();
+    });
 
-          const matchSection = selected.size === 0 ? true : selected.has(sec);
-          const matchQuery   = query === '' ? true : (name.includes(query) || desc.includes(query));
+    document.getElementById('vaciarCarritoBtn').addEventListener('click', () => {
+      carrito = {};
+      actualizarFab();
+      renderCarrito();
+    });
 
-          const show = matchSection && matchQuery;
-          card.classList.toggle('hidden', !show);
-          if(show) visibleCount++;
-        });
+    // Abrir/cerrar modal
+    document.getElementById('abrirCarritoBtn').onclick = ()=>{
+      renderCarrito();
+      document.getElementById('modalCarritoBg').classList.add('active');
+    };
+    document.getElementById('cerrarCarritoBtn').onclick = ()=>{
+      document.getElementById('modalCarritoBg').classList.remove('active');
+    };
+    document.getElementById('modalCarritoBg').onclick = function(e){
+      if (e.target === this) this.classList.remove('active');
+    };
 
-        emptyState.classList.toggle('hidden', visibleCount > 0);
-      }
-
-      // 5) Botones utilitarios
-      selectAllBtn.addEventListener('click', ()=>{
-        [...sectionSelect.options].forEach(o=>o.selected=true);
-        applyFilters();
-      });
-      selectNoneBtn.addEventListener('click', ()=>{
-        [...sectionSelect.options].forEach(o=>o.selected=false);
-        applyFilters();
-      });
-      sectionSelect.addEventListener('change', applyFilters);
-      searchInput.addEventListener('input', applyFilters);
-
-      // 6) Tema claro/oscuro (simple toggle)
-      toggleThemeBtn.addEventListener('click', ()=>{
-        const current = document.body.getAttribute('data-theme') || 'light';
-        const next = current === 'light' ? 'dark' : 'light';
-        document.body.setAttribute('data-theme', next);
-      });
-
-      // INIT
-      renderSectionSelect(discoverSections());
-      applyFilters();
-
-      // Observador opcional: si inyectás productos dinámicamente (p.ej. desde Google Sheets),
-      // re-descubre secciones y re-aplica filtros automáticamente.
-      const mo = new MutationObserver(()=>{
-        renderSectionSelect(discoverSections());
-        applyFilters();
-      });
-      mo.observe(catalog, {childList:true, subtree:false});
-    })();
+    // Init
+    renderSecciones();
+    actualizarFab();
   </script>
 </body>
 </html>
