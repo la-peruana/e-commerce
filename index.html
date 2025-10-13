@@ -71,12 +71,12 @@
     /* Modal Carrito */
     .modal-carrito-bg { display: none; position: fixed; z-index: 100; inset: 0; background: rgba(0,0,0,0.35); align-items: center; justify-content: center; }
     .modal-carrito-bg.active { display: flex; }
-    .modal-carrito { background: var(--blanco); border-radius: 18px; max-width: 520px; width: 98vw; padding: 1.6em 1em 1.2em 1em; box-shadow: 0 6px 32px rgba(0,0,0,0.19); position: relative; animation: fadein .15s; }
+    .modal-carrito { background: var(--blanco); border-radius: 18px; max-width: 560px; width: 98vw; padding: 1.6em 1em 1.2em 1em; box-shadow: 0 6px 32px rgba(0,0,0,0.19); position: relative; animation: fadein .15s; }
     @keyframes fadein { from { opacity: 0; transform: scale(.97);} to {opacity: 1; transform: scale(1);} }
     .modal-carrito h2 { margin: .2em 2.2em .2em 2.2em; color: var(--rojo-principal); text-align: center; }
     .modal-carrito .cerrar { position: absolute; top: .6em; right: .7em; background: transparent; border: none; font-size: 1.6em; color: var(--rojo-gradiente); cursor: pointer; }
     .carrito-subtitulo { text-align:center; color:#777; font-size:.95em; margin-bottom:.6em; }
-    .carrito-items-list { max-height: 300px; overflow-y: auto; margin: .8em 0 1em; padding: 0 .4em; }
+    .carrito-items-list { max-height: 260px; overflow-y: auto; margin: .8em 0 1em; padding: 0 .4em; }
     .carrito-item { display: grid; grid-template-columns: 1fr auto auto auto auto; align-items: center; gap: .5em; padding: .55em 0; border-bottom: 1px solid var(--gris-borde); font-size: 1.02em; }
     .carrito-item-nombre { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .carrito-item-cant { display:flex; align-items:center; gap:.35em; }
@@ -87,16 +87,38 @@
     .carrito-acciones { display:flex; gap:.6em; justify-content: space-between; align-items:center; margin-top:.8em; }
     .btn-vaciar { background:#fff; color:#c1121f; border:1px solid #f0b1b5; border-radius:12px; padding:.55em .9em; cursor:pointer; font-weight:700; }
     .carrito-total { text-align: right; font-size: 1.18em; font-weight: bold; color: var(--rojo-principal); flex:1; }
-    .btn-whatsapp { display:block; width:100%; background: var(--verde-whatsapp); color: var(--blanco); font-weight: bold; border: none; border-radius: 24px; padding: .8em 0; font-size: 1.08em; text-decoration: none; transition: background .2s; cursor: pointer; margin-top: .4em; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align:center; }
+
+    /* Checkout (Datos de entrega) */
+    .checkout { margin-top: 1rem; border-top: 1px dashed var(--gris-borde); padding-top: .8rem; }
+    .checkout h3 { margin: 0 0 .6rem 0; color: var(--rojo-principal); text-align:center; font-size: 1.05rem; }
+    .form-row { display: grid; grid-template-columns: 1fr; gap: .6rem; }
+    .form-group { display:flex; flex-direction: column; gap:.28rem; }
+    .form-group label { font-weight: 700; font-size:.95rem; color:#444; }
+    .form-group input, .form-group textarea, .form-group select {
+      border:1px solid var(--gris-borde); border-radius: 10px; padding:.6rem .7rem; font-size:.98rem; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--rojo-principal); box-shadow: 0 0 0 3px rgba(229,66,68,.12); }
+    .row-inline { display:grid; grid-template-columns: 1fr 1fr; gap:.6rem; }
+    .remember { display:flex; align-items:center; gap:.5rem; font-size:.9rem; color:#555; margin:.4rem 0 .2rem; }
+    .error-msg { color:#c1121f; font-size:.9rem; display:none; margin-top:.2rem; }
+    .btn-whatsapp {
+      display:block; width:100%; background: var(--verde-whatsapp); color: var(--blanco);
+      font-weight: bold; border: none; border-radius: 24px; padding: .8em 0;
+      font-size: 1.08em; text-decoration: none; transition: background .2s; cursor: pointer; margin-top: .6em;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align:center;
+    }
     .btn-whatsapp:hover { background: #1ebe57; }
+    .btn-whatsapp:disabled, .btn-whatsapp[disabled] { opacity:.6; cursor:not-allowed; }
+
     .carrito-vacio { text-align: center; color: #888; margin-top: 1.2em; font-style: italic; }
 
     @media (max-width: 600px) {
       main { padding: 1rem .3rem; }
       .productos-grid { gap: 1rem; }
-      .modal-carrito { padding: 1.1em .5em .6em .5em; }
+      .modal-carrito { padding: 1.1em .5em .8em .5em; }
       .seccion-titulo { font-size: 1.3em; }
       .controles { grid-template-columns: 1fr; }
+      .row-inline { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -137,7 +159,53 @@
         <div class="carrito-total" id="carritoTotal"></div>
       </div>
 
-      <a class="btn-whatsapp" id="carritoWhatsApp" target="_blank" rel="noopener">Confirmar y enviar por WhatsApp</a>
+      <!-- Datos de entrega -->
+      <div class="checkout" id="checkout">
+        <h3>Datos de entrega</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="inpNombre">Nombre y apellido *</label>
+            <input id="inpNombre" type="text" placeholder="Ej: Juan Pérez" autocomplete="name" />
+          </div>
+
+          <div class="row-inline">
+            <div class="form-group">
+              <label for="inpTelefono">Teléfono *</label>
+              <input id="inpTelefono" type="tel" placeholder="Ej: 343 555-1212" autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label for="selFranja">Franja horaria *</label>
+              <select id="selFranja">
+                <option value="">Elegí una opción</option>
+                <option>Lo antes posible (30-60 min)</option>
+                <option>12:00 - 13:00</option>
+                <option>13:00 - 14:00</option>
+                <option>14:00 - 15:00</option>
+                <option>19:00 - 20:00</option>
+                <option>20:00 - 21:00</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inpDireccion">Dirección de entrega *</label>
+            <input id="inpDireccion" type="text" placeholder="Calle 123, Piso/Depto, Barrio" autocomplete="street-address" />
+          </div>
+
+          <div class="form-group">
+            <label for="inpNotas">Aclaraciones (opcional)</label>
+            <textarea id="inpNotas" rows="2" placeholder="Ej: Timbre roto, llamar al llegar"></textarea>
+          </div>
+
+          <label class="remember">
+            <input type="checkbox" id="chkRecordar" checked />
+            Recordar mis datos en este dispositivo
+          </label>
+          <div id="errorCheckout" class="error-msg">Completá nombre, teléfono, franja y dirección para continuar.</div>
+        </div>
+
+        <a class="btn-whatsapp" id="carritoWhatsApp" target="_blank" rel="noopener" disabled>Confirmar y enviar por WhatsApp</a>
+      </div>
     </div>
   </div>
 
@@ -153,7 +221,7 @@
         { nombre: "Facturas con crema y dulce de leche x 3 un", precio: 1960, imagen: "facturas-crema-ddl.jpg" },
         { nombre: "Medialunas con dulce de leche x 3 un", precio: 2449, imagen: "medialuna-ddl.jpg" },
         { nombre: "Medialunas dulces x 3 un", precio: 1851, imagen: "medialuna-dulce.jpg" },
-        { nombre: "Vigiantes de batata x 3 un", precio: 2504, imagen: "vigilantes-batata.jpg" },
+        { nombre: "Vigiantes de batata x 3 un", precio: 2504, imagen: "galleta-comun.jpg" },
         { nombre: "Vigilantes de membrillo x 3 un", precio: 2308, imagen: "vigilantes-membrillo.jpg" },
         { nombre: "Bollitos con crema x 3 un", precio: 2068, imagen: "bollitos-crema.jpg" },
         { nombre: "Bollitos con dulce de leche x 3 un", precio: 1960, imagen: "bollitos-ddl.jpg" },
@@ -386,8 +454,8 @@
       if (keys.length === 0) {
         lista.innerHTML = '<div class="carrito-vacio">¡El carrito está vacío!</div>';
         document.getElementById('carritoTotal').textContent = '';
-        document.getElementById('carritoWhatsApp').style.display = 'none';
         document.getElementById('vaciarCarritoBtn').style.display = 'none';
+        actualizarBotonWhatsApp(); // asegura deshabilitado si no hay items
         return;
       }
 
@@ -416,26 +484,72 @@
       });
 
       document.getElementById('carritoTotal').textContent = `Total: ${ARS(total)}`;
-      document.getElementById('carritoWhatsApp').style.display = 'block';
-      document.getElementById('carritoWhatsApp').href = generarLinkWhatsApp();
       document.getElementById('vaciarCarritoBtn').style.display = 'inline-flex';
+
+      actualizarBotonWhatsApp();
     }
 
-    function generarLinkWhatsApp() {
-      let mensaje = "¡Hola! Quiero hacer el siguiente pedido:%0A";
+    function generarLinkWhatsApp(nombre, telefono, franja, direccion, notas) {
+      // Cabecera con datos del cliente
+      let cabecera = `*Pedido Online - La Peruana*%0A`;
+      cabecera += `👤 ${nombre}%0A📞 ${telefono}%0A🕒 ${franja}%0A📍 ${direccion}%0A`;
+      if (notas && notas.trim()) cabecera += `📝 ${notas.trim()}%0A`;
+      cabecera += `%0A*Detalle del pedido:*%0A`;
+
+      // Items
       let total = 0;
+      let itemsTxt = '';
       Object.keys(carrito).forEach(key => {
         const [sidx, pidx] = key.split('_').map(Number);
         const p = secciones[sidx].productos[pidx];
         const cant = carrito[key];
         const subtotal = cant * p.precio;
         if (cant > 0) {
-          mensaje += `• ${p.nombre} x${cant} = ${ARS(subtotal)}%0A`;
+          itemsTxt += `• ${p.nombre} x${cant} = ${ARS(subtotal)}%0A`;
           total += subtotal;
         }
       });
-      mensaje += `Total: ${ARS(total)}`;
-      return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(decodeURIComponent(mensaje))}`;
+
+      const pie = `%0A*Total:* ${ARS(total)}%0A%0AGracias 🙌`;
+      const texto = cabecera + itemsTxt + pie;
+
+      return `https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`;
+    }
+
+    function validarTelefono(value){
+      // Tolerante: dígitos, espacios, +, -, paréntesis. Debe tener al menos 6 dígitos reales.
+      const soloDigitos = (value.match(/\d/g)||[]).length;
+      return soloDigitos >= 6;
+    }
+
+    function actualizarBotonWhatsApp() {
+      const btn = document.getElementById('carritoWhatsApp');
+      const nombre = document.getElementById('inpNombre').value.trim();
+      const telefono = document.getElementById('inpTelefono').value.trim();
+      const franja = document.getElementById('selFranja').value.trim();
+      const direccion = document.getElementById('inpDireccion').value.trim();
+      const notas = document.getElementById('inpNotas').value;
+
+      const hayItems = Object.keys(carrito).length > 0;
+      const valido = nombre.length > 0 && validarTelefono(telefono) && franja.length > 0 && direccion.length > 0;
+
+      // Mostrar/ocultar error
+      const err = document.getElementById('errorCheckout');
+      if (!valido && hayItems) {
+        err.style.display = 'block';
+      } else {
+        err.style.display = 'none';
+      }
+
+      if (hayItems && valido) {
+        btn.removeAttribute('disabled');
+        btn.style.pointerEvents = 'auto';
+        btn.href = generarLinkWhatsApp(nombre, telefono, franja, direccion, notas);
+      } else {
+        btn.setAttribute('disabled', 'true');
+        btn.style.pointerEvents = 'none';
+        btn.removeAttribute('href');
+      }
     }
 
     // Acciones dentro del modal (sumar/restar/quitar/vaciar)
@@ -470,6 +584,16 @@
     // Abrir/cerrar modal
     document.getElementById('abrirCarritoBtn').onclick = ()=>{
       renderCarrito();
+      // precargar datos si existen en localStorage
+      const datos = JSON.parse(localStorage.getItem('lp_datos_cliente')||'{}');
+      if (datos.nombre) document.getElementById('inpNombre').value = datos.nombre;
+      if (datos.telefono) document.getElementById('inpTelefono').value = datos.telefono;
+      if (datos.franja) document.getElementById('selFranja').value = datos.franja;
+      if (datos.direccion) document.getElementById('inpDireccion').value = datos.direccion;
+      if (datos.notas) document.getElementById('inpNotas').value = datos.notas;
+      if (typeof datos.recordar === 'boolean') document.getElementById('chkRecordar').checked = datos.recordar;
+      actualizarBotonWhatsApp();
+
       document.getElementById('modalCarritoBg').classList.add('active');
     };
     document.getElementById('cerrarCarritoBtn').onclick = ()=>{
@@ -478,6 +602,28 @@
     document.getElementById('modalCarritoBg').onclick = function(e){
       if (e.target === this) this.classList.remove('active');
     };
+
+    // Guardar/validar campos checkout en tiempo real
+    ['inpNombre','inpTelefono','selFranja','inpDireccion','inpNotas','chkRecordar'].forEach(id=>{
+      document.getElementById(id).addEventListener((id==='chkRecordar'||id==='selFranja')?'change':'input', ()=>{
+        // persistencia
+        const recordar = document.getElementById('chkRecordar').checked;
+        if (recordar) {
+          const payload = {
+            nombre: document.getElementById('inpNombre').value,
+            telefono: document.getElementById('inpTelefono').value,
+            franja: document.getElementById('selFranja').value,
+            direccion: document.getElementById('inpDireccion').value,
+            notas: document.getElementById('inpNotas').value,
+            recordar
+          };
+          localStorage.setItem('lp_datos_cliente', JSON.stringify(payload));
+        } else {
+          localStorage.removeItem('lp_datos_cliente');
+        }
+        actualizarBotonWhatsApp();
+      });
+    });
 
     // Eventos del selector de sección
     document.getElementById('selectorSeccion').addEventListener('change', (e) => {
@@ -499,20 +645,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
