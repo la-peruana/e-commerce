@@ -21,9 +21,37 @@
     body { margin: 0; font-family: 'Roboto', Arial, sans-serif; background: var(--blanco); min-height: 100vh; }
     header { text-align: center; padding: 2rem 1rem 1rem 1rem; background: transparent; }
     .logo { max-width: 420px; width: 100%; border-radius: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); margin-bottom: .7em; }
-    main { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+
+    /* Barra de controles (selector de sección) */
+    .controles {
+      max-width: 1200px; margin: 0 auto; padding: 0 1rem 0;
+      display: grid; grid-template-columns: 1fr auto; gap: .8rem; align-items: center;
+    }
+    .selector-wrap {
+      display: flex; gap: .6rem; align-items: center; flex-wrap: wrap;
+      background: #fff; border: 1px solid var(--gris-borde); border-radius: 14px; padding: .6rem .8rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,.06);
+    }
+    .selector-wrap label { font-weight: 700; color: var(--rojo-principal); }
+    select#selectorSeccion {
+      appearance: none;
+      border: 1px solid var(--gris-borde);
+      padding: .5rem .8rem;
+      border-radius: 12px;
+      background: #fff;
+      font-weight: 700;
+      color: var(--gris-texto);
+      cursor: pointer;
+    }
+    button#limpiarFiltro {
+      border: 1px solid var(--gris-borde);
+      background: #fff; color: #666;
+      padding: .5rem .8rem; border-radius: 12px; cursor: pointer;
+    }
+
+    main { max-width: 1200px; margin: 0 auto; padding: 1.2rem 1rem 2rem; }
     .seccion { margin-bottom: 2.2em; }
-    .seccion-titulo { color: var(--rojo-principal); font-family: 'Monserrat', sans-serif; font-size: 2em; margin: 1em 0 .7em 0; letter-spacing: .03em; border-bottom: 2px solid var(--rojo-principal); display: inline-block; padding-bottom: .2em; background: var(--blanco); }
+    .seccion-titulo { color: var(--rojo-principal); font-size: 2em; margin: 1em 0 .7em 0; letter-spacing: .03em; border-bottom: 2px solid var(--rojo-principal); display: inline-block; padding-bottom: .2em; background: var(--blanco); }
     .productos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.3rem; }
     .producto { background: var(--gris); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 1em; transition: transform .18s; position: relative; }
     .producto:hover { transform: scale(1.04); }
@@ -62,11 +90,13 @@
     .btn-whatsapp { display:block; width:100%; background: var(--verde-whatsapp); color: var(--blanco); font-weight: bold; border: none; border-radius: 24px; padding: .8em 0; font-size: 1.08em; text-decoration: none; transition: background .2s; cursor: pointer; margin-top: .4em; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align:center; }
     .btn-whatsapp:hover { background: #1ebe57; }
     .carrito-vacio { text-align: center; color: #888; margin-top: 1.2em; font-style: italic; }
+
     @media (max-width: 600px) {
       main { padding: 1rem .3rem; }
       .productos-grid { gap: 1rem; }
       .modal-carrito { padding: 1.1em .5em .6em .5em; }
       .seccion-titulo { font-size: 1.3em; }
+      .controles { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -74,6 +104,15 @@
   <header>
     <img src="LOGO-LA-PERUANA.jpg" alt="Logo La Peruana" class="logo">
   </header>
+
+  <!-- Controles superiores -->
+  <div class="controles">
+    <div class="selector-wrap">
+      <label for="selectorSeccion">Sección:</label>
+      <select id="selectorSeccion" title="Elegí una sección"></select>
+      <button id="limpiarFiltro" title="Mostrar todas">Mostrar todas</button>
+    </div>
+  </div>
 
   <main id="main"></main>
 
@@ -106,9 +145,9 @@
     // Número de WhatsApp (sin + y sin espacios, ej: 5493436123456)
     const WHATSAPP_NUMERO = "5493435075991";
 
-    // Catálogo (idéntico al tuyo; recortado aquí por brevedad… puedes mantener/expandir)
+    // Catálogo
     const secciones = [
-        { nombre: "PANADERIA", productos: [
+      { nombre: "PANADERIA", productos: [
         { nombre: "Facturas con crema x 3 un", precio: 2177, imagen: "facturas-crema.jpg" },
         { nombre: "Facturas con crema y membrillo x 3 un", precio: 2613, imagen: "facturas-crema-membrillo.jpg" },
         { nombre: "Facturas con crema y dulce de leche x 3 un", precio: 1960, imagen: "facturas-crema-ddl.jpg" },
@@ -147,7 +186,7 @@
         { nombre: "Alfajores de chocolate grande x 2 un", precio: 1820, imagen: "alfajor-choco-gr.jpg" },
         { nombre: "Alfajores de chocolate mediano x 3 un", precio: 1903, imagen: "alfajor-choco-med.jpg" },
         { nombre: "Alfajores de chocolate mini x 5 un", precio: 1986, imagen: "alfajor-choco-mini.jpg" }
-     ]},
+      ]},
       { nombre: "ROTISERIA", productos: [
         { nombre: "Torrejas de arroz x 3 un", precio: 1225, imagen: "torrejas-arroz.jpg" },
         { nombre: "Torrejas de acelga x 3 un", precio: 1225, imagen: "torrejas-acelga.jpg" },
@@ -227,7 +266,7 @@
         { nombre: "Cerveza lata Budweiser 473cc", precio: 1818, imagen: "cerveza-lata-budweiser.png" },
         { nombre: "Cerveza botella Corona 333cc", precio: 3230, imagen: "cerveza-corona.jpg" }
       ]},
-        { nombre: "LIMPIEZA", productos: [
+      { nombre: "LIMPIEZA", productos: [
         { nombre: "Ala liq. Ecolavado DP x 800 ml", precio: 2686, imagen: "ala-liquido.jpg" },
         { nombre: "Suavizante Vivere Esc Prot Clasico x 900 ml", precio: 3050, imagen: "suavizante-vivere.jpg" },
         { nombre: "Lavandina Ayudín triple poder 2 Lts", precio: 3516, imagen: "lavandina-ayudin.jpg" },
@@ -251,6 +290,7 @@
 
     // Estado del carrito: { "sidx_pidx": cantidad }
     let carrito = {};
+    let filtroSeccion = -1; // -1 = todas
 
     // Utilidades
     const fmt = (n)=> n.toLocaleString('es-AR');
@@ -267,11 +307,18 @@
       return { items, monto };
     }
 
-    // Render de catálogo
-    function renderSecciones() {
+    // Render de catálogo (con filtro)
+    function renderSecciones(filtroIdx = filtroSeccion) {
+      filtroSeccion = filtroIdx;
       const main = document.getElementById('main');
       main.innerHTML = '';
-      secciones.forEach((seccion, sidx) => {
+
+      const indices = (filtroIdx === -1)
+        ? secciones.map((_, i) => i)
+        : [filtroIdx];
+
+      indices.forEach((sidx) => {
+        const seccion = secciones[sidx];
         const divSec = document.createElement('section');
         divSec.className = 'seccion';
         divSec.innerHTML = `<h2 class="seccion-titulo">${seccion.nombre}</h2>`;
@@ -297,6 +344,14 @@
         divSec.appendChild(grid);
         main.appendChild(divSec);
       });
+    }
+
+    // Poblar selector de sección
+    function poblarSelector() {
+      const sel = document.getElementById('selectorSeccion');
+      sel.innerHTML = `<option value="-1">Todas las secciones</option>` +
+        secciones.map((s, i) => `<option value="${i}">${s.nombre}</option>`).join('');
+      sel.value = String(filtroSeccion);
     }
 
     // Sumar/restar desde tarjetas
@@ -423,7 +478,21 @@
       if (e.target === this) this.classList.remove('active');
     };
 
+    // Eventos del selector de sección
+    document.getElementById('selectorSeccion').addEventListener('change', (e) => {
+      const idx = parseInt(e.target.value, 10);
+      renderSecciones(isNaN(idx) ? -1 : idx);
+      // scroll suave al inicio del catálogo
+      window.scrollTo({ top: document.getElementById('main').offsetTop - 12, behavior: 'smooth' });
+    });
+    document.getElementById('limpiarFiltro').addEventListener('click', () => {
+      renderSecciones(-1);
+      document.getElementById('selectorSeccion').value = "-1";
+      window.scrollTo({ top: document.getElementById('main').offsetTop - 12, behavior: 'smooth' });
+    });
+
     // Init
+    poblarSelector();
     renderSecciones();
     actualizarFab();
   </script>
