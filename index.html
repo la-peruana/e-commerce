@@ -213,49 +213,7 @@
     // Número de WhatsApp (sin + y sin espacios, ej: 5493436123456)
     const WHATSAPP_NUMERO = "5493435075991";
 
-    // === Datos KIOSCO (desde tu listado) ===
-    const KIOSCO_PRODUCTOS = [
-      { nombre: 'GALLETITA TITA 18G', precio: 893, imagen: "Tita.jpg" },
-      { nombre: 'OBLEA  RHODESIA CLÁSICA 22G', precio: 1094, imagen: "facturas-crema.jpg" },
-      { nombre: 'TURRON Y MANÍ ARCOR 25G', precio: 363, imagen: "facturas-crema.jpg" },
-      { nombre: 'BILLIKEN CORAZÓN BOMBÓN FRUTAL  200GR', precio: 4530, imagen: "facturas-crema.jpg" },
-      { nombre: 'CARAMELOS ROLLO GOMA MOGUL 12G', precio: 711, imagen: "facturas-crema.jpg" },
-      { nombre: 'MANTECOL 41G', precio: 1693, imagen: "facturas-crema.jpg" },
-      { nombre: 'TABLETA TOBLERONE 100G', precio: 9745, imagen: "facturas-crema.jpg" },
-      { nombre: 'CHOCOLATE SHOT CON MANÍ 90G', precio: 4992, imagen: "facturas-crema.jpg" },
-      { nombre: 'TABLETA MILKA 67,5G', precio: 4923, imagen: "facturas-crema.jpg" },
-      { nombre: 'CHICLES BELDENT 10G', precio: 940, imagen: "facturas-crema.jpg" },
-      { nombre: 'ALFAJOR TRIPLE OREO 56G', precio: 2028, imagen: "facturas-crema.jpg" },
-      { nombre: 'ALFAJOR TRIPLE SHOT 60GR', precio: 2028, imagen: "facturas-crema.jpg" },
-      { nombre: 'CHOCOLATE COFLER BLOCK CON MANÍ 110GR', precio: 5680, imagen: "facturas-crema.jpg" },
-      { nombre: 'CARAMELOS SUGUS CONFITADOS 50GR', precio: 1498, imagen: "facturas-crema.jpg" },
-      { nombre: 'CHOCOLATE DOS CORAZONES 26GR', precio: 2300, imagen: "facturas-crema.jpg" },
-      { nombre: 'SALADIX 40GR', precio: 811, imagen: "facturas-crema.jpg" },
-      { nombre: 'BAGLEY REX', precio: 1335, imagen: "facturas-crema.jpg" },
-      { nombre: 'BARRA CERREAL FORT 19GR', precio: 1029, imagen: "facturas-crema.jpg" },
-      { nombre: 'JUGO EN POLVO CLIGHT 7,5G', precio: 403, imagen: "facturas-crema.jpg" },
-      { nombre: 'JUGO EN POLVO TANG 15G', precio: 300, imagen: "facturas-crema.jpg" },
-      { nombre: 'BARRITA CEREAL MIX 23G', precio: 1009, imagen: "facturas-crema.jpg" },
-      { nombre: 'FANTOOCHE TRIPLE BLANCO 85 GR', precio: 1294, imagen: "facturas-crema.jpg" },
-      { nombre: 'FANTOCHE TRIPLE NEGRO 85 GR ', precio: 1294, imagen: "facturas-crema.jpg" },
-      { nombre: 'CARAMELOS HALLS MENTA ', precio: 1093, imagen: "facturas-crema.jpg" },
-      { nombre: 'CARAMELOS HALLS MENTHOL', precio: 1093, imagen: "facturas-crema.jpg" },
-      { nombre: 'PASTILLAS DRF 23 GR FRUTUS ROJAS ', precio: 443, imagen: "facturas-crema.jpg" },
-      { nombre: 'PASTILLAS DRF 23 GR FRUTOS CITRICOS ', precio: 443, imagen: "facturas-crema.jpg" },
-      { nombre: 'PASTILLAS DRF 26 G NARANJA ', precio: 443, imagen: "facturas-crema.jpg" },
-      { nombre: 'PASTILLAS DRF 23 G MENTA ', precio: 443, imagen: "facturas-crema.jpg" },
-      { nombre: 'PASTILLAS DRF 23 G MENTOL ', precio: 443, imagen: "facturas-crema.jpg" },
-      { nombre: 'GMITAS LA CASA GONGYS FRUTILLA X 200 GR ', precio: 3053, imagen: "facturas-crema.jpg" },
-      { nombre: 'GMITAS LA CASA GONGYS MINI X200 GR ', precio: 3053, imagen: "facturas-crema.jpg" },
-      { nombre: 'BARRA FLOW PURO CACAO 24 GR ', precio: 926, imagen: "facturas-crema.jpg" },
-      { nombre: 'BARRA CREAL GEORGALOS 27 G YOGURT ', precio: 926, imagen: "facturas-crema.jpg" },
-      { nombre: 'TABLETA TABLERONE 100 GR LECHE ', precio: 9745, imagen: "facturas-crema.jpg" },
-      { nombre: 'MANTECOL LINGOTE X 500 GR ', precio: 15834, imagen: "facturas-crema.jpg" },
-      { nombre: 'BARRA CEREAL GEORGALOS 23 G FRUTAS Y ALME ', precio: 1008, imagen: "facturas-crema.jpg" }
-    ].map(p => ({ ...p, imagen: 'kiosco.jpg' })); // imagen genérica
-
-    // Catálogo: KIOSCO posicionado DEBAJO de BEBIDAS
-    const secciones = [
+         const secciones = [
       { nombre: "PANADERIA", productos: [
         { nombre: "Facturas con crema x 3 un", precio: 2177, imagen: "facturas-crema.jpg" },
         { nombre: "Facturas con crema y membrillo x 3 un", precio: 2613, imagen: "facturas-crema-membrillo.jpg" },
@@ -382,10 +340,46 @@
         { nombre: "Cerveza lata Budweiser 473cc", precio: 1873, imagen: "cerveza-lata-budweiser.png" },
         { nombre: "Cerveza botella Corona 333cc", precio: 3230, imagen: "cerveza-corona.jpg" }
       ]},
-
-      // 👇 KIOSCO va inmediatamente después de BEBIDAS
-      { nombre: "KIOSCO", productos: KIOSCO_PRODUCTOS },
-
+  { nombre: "KIOSCO", productos: [
+      { nombre: 'GALLETITA TITA 18G', precio: 893, imagen: "Tita.jpg" },
+      { nombre: 'OBLEA  RHODESIA CLÁSICA 22G', precio: 1094, imagen: "facturas-crema.jpg" },
+      { nombre: 'TURRON Y MANÍ ARCOR 25G', precio: 363, imagen: "facturas-crema.jpg" },
+      { nombre: 'BILLIKEN CORAZÓN BOMBÓN FRUTAL  200GR', precio: 4530, imagen: "facturas-crema.jpg" },
+      { nombre: 'CARAMELOS ROLLO GOMA MOGUL 12G', precio: 711, imagen: "facturas-crema.jpg" },
+      { nombre: 'MANTECOL 41G', precio: 1693, imagen: "facturas-crema.jpg" },
+      { nombre: 'TABLETA TOBLERONE 100G', precio: 9745, imagen: "facturas-crema.jpg" },
+      { nombre: 'CHOCOLATE SHOT CON MANÍ 90G', precio: 4992, imagen: "facturas-crema.jpg" },
+      { nombre: 'TABLETA MILKA 67,5G', precio: 4923, imagen: "facturas-crema.jpg" },
+      { nombre: 'CHICLES BELDENT 10G', precio: 940, imagen: "facturas-crema.jpg" },
+      { nombre: 'ALFAJOR TRIPLE OREO 56G', precio: 2028, imagen: "facturas-crema.jpg" },
+      { nombre: 'ALFAJOR TRIPLE SHOT 60GR', precio: 2028, imagen: "facturas-crema.jpg" },
+      { nombre: 'CHOCOLATE COFLER BLOCK CON MANÍ 110GR', precio: 5680, imagen: "facturas-crema.jpg" },
+      { nombre: 'CARAMELOS SUGUS CONFITADOS 50GR', precio: 1498, imagen: "facturas-crema.jpg" },
+      { nombre: 'CHOCOLATE DOS CORAZONES 26GR', precio: 2300, imagen: "facturas-crema.jpg" },
+      { nombre: 'SALADIX 40GR', precio: 811, imagen: "facturas-crema.jpg" },
+      { nombre: 'BAGLEY REX', precio: 1335, imagen: "facturas-crema.jpg" },
+      { nombre: 'BARRA CERREAL FORT 19GR', precio: 1029, imagen: "facturas-crema.jpg" },
+      { nombre: 'JUGO EN POLVO CLIGHT 7,5G', precio: 403, imagen: "facturas-crema.jpg" },
+      { nombre: 'JUGO EN POLVO TANG 15G', precio: 300, imagen: "facturas-crema.jpg" },
+      { nombre: 'BARRITA CEREAL MIX 23G', precio: 1009, imagen: "facturas-crema.jpg" },
+      { nombre: 'FANTOOCHE TRIPLE BLANCO 85 GR', precio: 1294, imagen: "facturas-crema.jpg" },
+      { nombre: 'FANTOCHE TRIPLE NEGRO 85 GR ', precio: 1294, imagen: "facturas-crema.jpg" },
+      { nombre: 'CARAMELOS HALLS MENTA ', precio: 1093, imagen: "facturas-crema.jpg" },
+      { nombre: 'CARAMELOS HALLS MENTHOL', precio: 1093, imagen: "facturas-crema.jpg" },
+      { nombre: 'PASTILLAS DRF 23 GR FRUTUS ROJAS ', precio: 443, imagen: "facturas-crema.jpg" },
+      { nombre: 'PASTILLAS DRF 23 GR FRUTOS CITRICOS ', precio: 443, imagen: "facturas-crema.jpg" },
+      { nombre: 'PASTILLAS DRF 26 G NARANJA ', precio: 443, imagen: "facturas-crema.jpg" },
+      { nombre: 'PASTILLAS DRF 23 G MENTA ', precio: 443, imagen: "facturas-crema.jpg" },
+      { nombre: 'PASTILLAS DRF 23 G MENTOL ', precio: 443, imagen: "facturas-crema.jpg" },
+      { nombre: 'GMITAS LA CASA GONGYS FRUTILLA X 200 GR ', precio: 3053, imagen: "facturas-crema.jpg" },
+      { nombre: 'GMITAS LA CASA GONGYS MINI X200 GR ', precio: 3053, imagen: "facturas-crema.jpg" },
+      { nombre: 'BARRA FLOW PURO CACAO 24 GR ', precio: 926, imagen: "facturas-crema.jpg" },
+      { nombre: 'BARRA CREAL GEORGALOS 27 G YOGURT ', precio: 926, imagen: "facturas-crema.jpg" },
+      { nombre: 'TABLETA TABLERONE 100 GR LECHE ', precio: 9745, imagen: "facturas-crema.jpg" },
+      { nombre: 'MANTECOL LINGOTE X 500 GR ', precio: 15834, imagen: "facturas-crema.jpg" },
+      { nombre: 'BARRA CEREAL GEORGALOS 23 G FRUTAS Y ALME ', precio: 1008, imagen: "facturas-crema.jpg" }
+]},
+  
       { nombre: "LIMPIEZA", productos: [
         { nombre: "Ala liq. Ecolavado DP x 800 ml", precio: 2946, imagen: "ala-liquido.jpg" },
         { nombre: "Suavizante Vivere Esc Prot Clásico x 900 ml", precio: 3263, imagen: "suavizante-vivere.jpg" },
@@ -688,5 +682,6 @@
   </script>
 </body>
 </html>
+
 
 
