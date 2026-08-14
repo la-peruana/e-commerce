@@ -172,8 +172,10 @@ main{max-width:1180px;margin:0 auto;padding:1.4rem 1rem 2rem}
 }
 .producto:hover{border-color:#D6CFC6;box-shadow:var(--sombra);transform:translateY(-2px)}
 .producto.en-carrito{border-color:var(--rojo);box-shadow:0 0 0 1px var(--rojo)}
-.producto-foto{position:relative;aspect-ratio:1/1;background:#F2EEE9}
-.producto-foto img{width:100%;height:100%;object-fit:cover}
+/* La foto va absoluta dentro del cuadrado: así una imagen grande no puede
+   estirar la tarjeta (los ítems flex no se achican por debajo de su contenido). */
+.producto-foto{position:relative;aspect-ratio:1/1;background:#F2EEE9;overflow:hidden;flex:none;min-height:0}
+.producto-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* Firma visual: el precio va en una etiqueta de papel, como en el mostrador */
 .etiqueta{
@@ -281,6 +283,11 @@ main{max-width:1180px;margin:0 auto;padding:1.4rem 1rem 2rem}
 .totales{margin-top:1rem;border-top:2px solid var(--tinta);padding-top:.8rem}
 .fila-total{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;color:var(--gris);margin-bottom:.3rem}
 .fila-total.grande{color:var(--tinta);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.3rem;margin-top:.4rem}
+.nota-envio{
+  background:#FFF6E0;border:1px solid #F2D89A;border-radius:10px;
+  padding:.6rem .75rem;margin:.7rem 0 0;font-size:.85rem;color:#6B4A00;line-height:1.4;
+}
+.nota-envio strong{display:block}
 .fila-total .num{font-variant-numeric:tabular-nums}
 .btn-vaciar{
   background:none;border:none;color:var(--gris);font-size:.85rem;
@@ -325,6 +332,30 @@ main{max-width:1180px;margin:0 auto;padding:1.4rem 1rem 2rem}
 .btn-wa[aria-disabled="true"]{background:#C9C2BA;pointer-events:none}
 .btn-wa svg{width:21px;height:21px;flex:none}
 .nota-pie{text-align:center;font-size:.78rem;color:var(--gris);margin:.6rem 0 0}
+
+/* ---------- Aviso antes de enviar ---------- */
+.fondo-cartel{
+  position:fixed;inset:0;z-index:120;background:rgba(28,25,23,.62);
+  display:none;align-items:center;justify-content:center;padding:1rem;
+}
+.fondo-cartel.abierto{display:flex}
+.cartel{
+  background:var(--blanco);border-radius:18px;max-width:420px;width:100%;
+  padding:1.6rem 1.3rem 1.3rem;text-align:center;
+  box-shadow:0 12px 40px rgba(0,0,0,.3);animation:aparecer .18s cubic-bezier(.4,0,.2,1);
+}
+@keyframes aparecer{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.cartel-icono{font-size:2.4rem;line-height:1;margin-bottom:.5rem}
+.cartel h2{font-size:1.15rem;margin-bottom:.6rem}
+.cartel p{margin:0 0 .6rem;font-size:.95rem;color:#494340;line-height:1.5}
+.cartel p strong{color:var(--rojo)}
+.cartel-chico{font-size:.83rem !important;color:var(--gris) !important}
+.cartel-botones{display:grid;gap:.55rem;margin-top:1.1rem}
+.btn-volver{
+  background:var(--blanco);color:var(--gris);border:1.5px solid var(--linea);
+  border-radius:12px;padding:.75rem;font-weight:700;font-size:.95rem;cursor:pointer;
+}
+.btn-volver:hover{background:var(--papel);color:var(--tinta)}
 
 /* ---------- Pie ---------- */
 footer{border-top:1px solid var(--linea);background:var(--blanco);padding:1.6rem 1rem;text-align:center}
@@ -371,12 +402,13 @@ footer a:hover{text-decoration:underline}
 
 <!-- ===================== BIENVENIDA ===================== -->
 <section class="bienvenida">
-  <h1>Toda la calidad <em>a domicilio</em></h1>
+  <h1>Todo el barrio, <em>a domicilio</em></h1>
   <p>Elegí lo que necesitás y te lo llevamos a tu casa en Paraná. Confirmás por WhatsApp en un toque.</p>
   <div class="tiras">
     <span class="tira">🥐 Panadería propia</span>
     <span class="tira">🕒 Elegís la franja horaria</span>
     <span class="tira">💬 Confirmás por WhatsApp</span>
+    <span class="tira">🛵 El envío se cotiza aparte</span>
   </div>
 </section>
 
@@ -418,6 +450,27 @@ footer a:hover{text-decoration:underline}
 
 <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
 
+<!-- ===================== AVISO ANTES DE ENVIAR ===================== -->
+<div class="fondo-cartel" id="fondoCartel">
+  <div class="cartel" role="dialog" aria-modal="true" aria-labelledby="tituloCartel" aria-describedby="textoCartel">
+    <div class="cartel-icono" aria-hidden="true">🛑</div>
+    <h2 id="tituloCartel">Antes de enviar tu pedido</h2>
+    <p id="textoCartel">
+      <strong>No transfieras ni pagues nada todavía.</strong>
+      Esperá a que te confirmemos el pedido por WhatsApp. Recién ahí te decimos
+      el total final, cuánto sale el envío y cómo abonar.
+    </p>
+    <p class="cartel-chico">Nunca te vamos a pedir un pago por fuera de ese chat.</p>
+    <div class="cartel-botones">
+      <button class="btn-volver" type="button" id="btnVolverCartel">Volver al pedido</button>
+      <a class="btn-wa" id="btnIrWhatsApp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2z"/></svg>
+        Entendido, enviar pedido
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- ===================== PANEL DE PEDIDO ===================== -->
 <div class="fondo-panel" id="fondoPanel">
   <div class="panel" role="dialog" aria-modal="true" aria-labelledby="tituloPanel">
@@ -436,6 +489,10 @@ footer a:hover{text-decoration:underline}
         <div class="fila-total"><span>Subtotal</span><span class="num" id="subtotal">$0</span></div>
         <div class="fila-total" id="filaEnvio" hidden><span id="rotuloEnvio">Envío</span><span class="num" id="montoEnvio">$0</span></div>
         <div class="fila-total grande"><span>Total</span><span class="num" id="total">$0</span></div>
+        <p class="nota-envio">
+          <strong>El envío no está incluido en este total.</strong>
+          Te pasamos cuánto sale por WhatsApp cuando confirmemos el pedido.
+        </p>
         <button class="btn-vaciar" id="btnVaciar">Vaciar el pedido</button>
       </div>
 
@@ -1120,7 +1177,9 @@ const secciones = [
       L.push('Envío: ' + (t.envio === 0 ? 'bonificado' : pesos(t.envio)));
     }
     L.push('*TOTAL: ' + pesos(t.total) + '*');
+    L.push('_(sin incluir el envío)_');
     L.push('');
+    L.push('Quedo a la espera de la confirmación y del costo del envío.');
     L.push('Gracias 🙌');
     return L.join('\n');
   }
@@ -1200,6 +1259,7 @@ const secciones = [
   $('#btnCerrarPanel').addEventListener('click', cerrarPanel);
   $('#fondoPanel').addEventListener('click', (e) => { if (e.target.id === 'fondoPanel') cerrarPanel(); });
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && $('#fondoCartel').classList.contains('abierto')) { cerrarCartel(); return; }
     if (e.key === 'Escape' && $('#fondoPanel').classList.contains('abierto')) cerrarPanel();
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
       e.preventDefault(); $('#inpBuscar').focus();
@@ -1230,16 +1290,43 @@ const secciones = [
 
   // Confirmación
   $('#btnWhatsApp').addEventListener('click', (e) => {
-    if ($('#btnWhatsApp').getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
+    e.preventDefault();   // el envío pasa siempre por el cartel de aviso
+    if ($('#btnWhatsApp').getAttribute('aria-disabled') === 'true') return;
+
     const r = validar(true);
     if (!r.ok) {
-      e.preventDefault();
       const campo = $('#' + r.primerError);
       campo.scrollIntoView({ behavior: 'smooth', block: 'center' });
       const foco = campo.querySelector('input, select');
       if (foco) foco.focus({ preventScroll: true });
       avisar('Faltan datos de entrega');
+      return;
     }
+    abrirCartel();
+  });
+
+  function abrirCartel(){
+    $('#btnIrWhatsApp').href = $('#btnWhatsApp').href;
+    $('#fondoCartel').classList.add('abierto');
+    $('#btnIrWhatsApp').focus();
+  }
+  function cerrarCartel(){
+    $('#fondoCartel').classList.remove('abierto');
+    $('#btnWhatsApp').focus();
+  }
+  $('#btnVolverCartel').addEventListener('click', cerrarCartel);
+  $('#fondoCartel').addEventListener('click', (e) => { if (e.target.id === 'fondoCartel') cerrarCartel(); });
+  // El link se abre solo (es un gesto del usuario, no lo bloquea el navegador)
+  $('#btnIrWhatsApp').addEventListener('click', () => setTimeout(cerrarCartel, 200));
+
+  // El foco no se escapa del cartel mientras está abierto
+  $('#fondoCartel').addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const foco = $$('#fondoCartel button, #fondoCartel a[href]');
+    if (!foco.length) return;
+    const primero = foco[0], ultimo = foco[foco.length - 1];
+    if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
   });
 
   // Foco atrapado dentro del panel
