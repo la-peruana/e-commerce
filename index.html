@@ -3,27 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>La Peruana | Supermercado online con envío a domicilio en Paraná</title>
+<title>La Peruana | Supermercado online en el corazón de Paraná</title>
 
 <!-- ===================== SEO ===================== -->
-<meta name="description" content="Panadería, pastelería, rotisería, fiambrería, verdulería, carnicería y almacén. Armá tu pedido online y confirmalo por WhatsApp. Envíos a domicilio en Paraná, Entre Ríos.">
+<meta name="description" content="En el corazón de Paraná. Panadería, pastelería, rotisería, fiambrería, verdulería, carnicería y almacén con envío a domicilio. Armá tu pedido online y confirmalo por WhatsApp.">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#D6272B">
+<meta name="theme-color" content="#B70E09">
 <link rel="canonical" href="https://la-peruana.github.io/e-commerce/">
 
 <!-- Vista previa al compartir el link por WhatsApp / Facebook / Instagram -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="La Peruana">
-<meta property="og:title" content="La Peruana | Supermercado online con envío a domicilio">
+<meta property="og:title" content="La Peruana | En el corazón de Paraná">
 <meta property="og:description" content="Elegí tus productos y confirmá el pedido por WhatsApp. Panadería, rotisería, fiambrería, verdulería, carnicería y almacén.">
 <meta property="og:url" content="https://la-peruana.github.io/e-commerce/">
-<meta property="og:image" content="https://la-peruana.github.io/e-commerce/LOGO-LA-PERUANA.jpg">
+<meta property="og:image" content="https://la-peruana.github.io/e-commerce/compartir.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- Ícono de la pestaña y del acceso directo en el celular -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23D6272B'/><text x='50' y='72' font-size='62' font-family='Georgia,serif' font-weight='bold' text-anchor='middle' fill='%23FFD447'>P</text></svg>">
-<link rel="apple-touch-icon" href="LOGO-LA-PERUANA.jpg">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icono-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="icono-180.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +37,12 @@
    LA PERUANA — hoja de estilos
    ============================================================ */
 :root{
-  --rojo:#D6272B;
-  --rojo-osc:#A3161A;
-  --rojo-suave:#FDECEC;
-  --amarillo:#FFD447;
+  --rojo:#B70E09;        /* el rojo exacto del fondo del logo */
+  --rojo-osc:#8E0A05;
+  --rojo-tinta:#630600;  /* la sombra de las letras */
+  --rojo-suave:#FCEAE9;
+  --oro:#FBBA19;         /* el dorado de las letras */
+  --oro-claro:#FFE751;
   --verde:#128C4A;
   --verde-wa:#25D366;
   --tinta:#1C1917;
@@ -68,28 +73,28 @@ img{display:block;max-width:100%}
 .solo-lectores{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- Encabezado ---------- */
-.barra-marca{
-  background:var(--blanco);
-  border-bottom:1px solid var(--linea);
-  padding:.55rem 1rem;
+.marca{
+  position:relative;background:var(--rojo);
+  padding:.9rem 1rem 1rem;text-align:center;
+  border-bottom:3px solid var(--oro);
 }
-.barra-marca-int{
-  max-width:1180px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-}
-.logo{height:46px;width:auto;border-radius:8px}
-.marca-txt{display:none}
+.marca-logo{display:inline-block}
+.marca-logo img{width:min(230px,56vw);height:auto;margin:0 auto}
 .btn-carrito-top{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--rojo);color:#fff;border:none;border-radius:999px;
-  padding:.55rem .95rem;font-weight:700;cursor:pointer;
-  transition:background .15s ease, transform .12s ease;
+  position:absolute;top:.9rem;right:.9rem;
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:linear-gradient(180deg,var(--oro-claro),var(--oro));
+  color:var(--rojo-tinta);border:none;border-radius:999px;
+  padding:.5rem .8rem;font-weight:700;cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.28);
+  transition:filter .15s ease, transform .12s ease;
 }
-.btn-carrito-top:hover{background:var(--rojo-osc)}
+.btn-carrito-top:hover{filter:brightness(1.07)}
 .btn-carrito-top:active{transform:scale(.97)}
-.btn-carrito-top svg{width:20px;height:20px;flex:none}
+.btn-carrito-top:focus-visible{outline-color:#fff}
+.btn-carrito-top svg{width:19px;height:19px;flex:none}
 .pastilla{
-  background:var(--amarillo);color:#7A1114;border-radius:999px;
+  background:var(--rojo-osc);color:var(--oro-claro);border-radius:999px;
   padding:.05rem .5rem;font-size:.82rem;font-weight:700;font-variant-numeric:tabular-nums;
 }
 
@@ -97,7 +102,7 @@ img{display:block;max-width:100%}
 .bienvenida{
   background:linear-gradient(180deg,#fff 0%,var(--papel) 100%);
   border-bottom:1px solid var(--linea);
-  padding:1.1rem 1rem 1.3rem;
+  padding:1rem 1rem 1.2rem;
   text-align:center;
 }
 .bienvenida h1{font-size:clamp(1.35rem,4.6vw,2rem);line-height:1.1}
@@ -106,7 +111,7 @@ img{display:block;max-width:100%}
 .tiras{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-top:.9rem;overflow-x:auto;scrollbar-width:none}
 .tiras::-webkit-scrollbar{display:none}
 @media (max-width:520px){
-  .tiras{flex-wrap:nowrap;justify-content:flex-start;padding-inline:max(0px,calc(50% - 260px))}
+  .tiras{flex-wrap:nowrap;justify-content:flex-start;padding-inline:1rem}
   .bienvenida{padding-inline:0}
   .bienvenida h1,.bienvenida p{padding-inline:1rem}
 }
@@ -155,8 +160,8 @@ img{display:block;max-width:100%}
 /* ---------- Catálogo ---------- */
 main{max-width:1180px;margin:0 auto;padding:1.4rem 1rem 2rem}
 .seccion{margin-bottom:2.4rem;scroll-margin-top:var(--alto-barra)}
-.seccion-cab{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:2px solid var(--linea)}
-.seccion-cab h2{font-size:1.15rem;text-transform:uppercase;letter-spacing:.01em;color:var(--tinta)}
+.seccion-cab{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.9rem;padding-bottom:.5rem;border-bottom:2px solid var(--oro)}
+.seccion-cab h2{font-size:1.15rem;text-transform:uppercase;letter-spacing:.01em;color:var(--rojo)}
 .seccion-cab span{font-size:.82rem;color:var(--gris);font-variant-numeric:tabular-nums}
 .grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:.9rem}
 
@@ -173,7 +178,7 @@ main{max-width:1180px;margin:0 auto;padding:1.4rem 1rem 2rem}
 /* Firma visual: el precio va en una etiqueta de papel, como en el mostrador */
 .etiqueta{
   position:absolute;left:.5rem;bottom:.5rem;
-  background:var(--amarillo);color:#5C1A00;
+  background:linear-gradient(160deg,var(--oro-claro) 0%,var(--oro) 65%);color:var(--rojo-tinta);
   font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.98rem;
   font-variant-numeric:tabular-nums;letter-spacing:-.01em;
   padding:.2rem .55rem .2rem .95rem;border-radius:4px;
@@ -181,7 +186,7 @@ main{max-width:1180px;margin:0 auto;padding:1.4rem 1rem 2rem}
 }
 .etiqueta::before{
   content:"";position:absolute;left:.32rem;top:50%;transform:translateY(-50%);
-  width:7px;height:7px;border-radius:50%;background:rgba(92,26,0,.28);
+  width:7px;height:7px;border-radius:50%;background:rgba(99,6,0,.32);
 }
 .etiqueta small{font-weight:600;font-size:.72em;opacity:.75}
 
@@ -330,7 +335,9 @@ footer a:hover{text-decoration:underline}
 /* ---------- Pantallas grandes ---------- */
 @media (min-width:640px){
   .grilla{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.1rem}
-  .marca-txt{display:block;font-size:1rem;color:var(--gris)}
+  .marca-logo img{width:250px}
+  .btn-carrito-top{top:50%;transform:translateY(-50%);right:2rem}
+  .btn-carrito-top:active{transform:translateY(-50%) scale(.97)}
   .fondo-panel{align-items:center}
   .panel{border-radius:20px;max-height:88dvh}
   .producto-nombre{font-size:.94rem}
@@ -348,21 +355,23 @@ footer a:hover{text-decoration:underline}
 <body>
 
 <!-- ===================== ENCABEZADO ===================== -->
-<header class="barra-marca">
-  <div class="barra-marca-int">
-    <a href="#" aria-label="La Peruana, inicio"><img src="LOGO-LA-PERUANA.jpg" alt="La Peruana" class="logo" width="180" height="46"></a>
-    <span class="marca-txt">Supermercado online</span>
-    <button class="btn-carrito-top" id="btnCarritoTop" aria-label="Ver mi pedido">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="currentColor" d="M7 20a2 2 0 110-4 2 2 0 010 4zm10 0a2 2 0 110-4 2 2 0 010 4zM7.16 17h9.69c.87 0 1.64-.56 1.89-1.38l2.22-7.06A1 1 0 0020 7H6.21l-.94-2.36A1 1 0 004.34 4H2a1 1 0 100 2h1.34l3.6 9.36-1.35 2.44A1 1 0 006 19h13a1 1 0 100-2H7.42l.74-1.35z"/></svg>
-      <span class="pastilla"><span id="topCant">0</span> · <span id="topMonto">$0</span></span>
-    </button>
-  </div>
+<header class="marca">
+  <a class="marca-logo" href="#" aria-label="La Peruana, inicio">
+    <picture>
+      <source srcset="logo-la-peruana.webp" type="image/webp">
+      <img src="logo-la-peruana.jpg" alt="La Peruana — En el corazón de Paraná" width="380" height="313" fetchpriority="high">
+    </picture>
+  </a>
+  <button class="btn-carrito-top" id="btnCarritoTop" aria-label="Ver mi pedido">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="currentColor" d="M7 20a2 2 0 110-4 2 2 0 010 4zm10 0a2 2 0 110-4 2 2 0 010 4zM7.16 17h9.69c.87 0 1.64-.56 1.89-1.38l2.22-7.06A1 1 0 0020 7H6.21l-.94-2.36A1 1 0 004.34 4H2a1 1 0 100 2h1.34l3.6 9.36-1.35 2.44A1 1 0 006 19h13a1 1 0 100-2H7.42l.74-1.35z"/></svg>
+    <span class="pastilla"><span id="topCant">0</span> · <span id="topMonto">$0</span></span>
+  </button>
 </header>
 
 <!-- ===================== BIENVENIDA ===================== -->
 <section class="bienvenida">
   <h1>Todo el barrio, <em>a domicilio</em></h1>
-  <p>Elegí lo que necesitás, sumalo al pedido y confirmalo por WhatsApp en un toque.</p>
+  <p>Elegí lo que necesitás y te lo llevamos a tu casa en Paraná. Confirmás por WhatsApp en un toque.</p>
   <div class="tiras">
     <span class="tira">🥐 Panadería propia</span>
     <span class="tira">🕒 Elegís la franja horaria</span>
@@ -388,7 +397,7 @@ footer a:hover{text-decoration:underline}
 
 <!-- ===================== PIE ===================== -->
 <footer>
-  <p><strong>La Peruana</strong> · Supermercado y panadería</p>
+  <p><strong>La Peruana</strong> · En el corazón de Paraná</p>
   <p>Pedidos por WhatsApp: <a id="waPie" href="#" target="_blank" rel="noopener">Escribinos</a></p>
   <p style="font-size:.78rem;opacity:.8">Los precios pueden cambiar sin previo aviso. Confirmamos el total al recibir tu pedido.</p>
 </footer>
@@ -502,8 +511,9 @@ footer a:hover{text-decoration:underline}
   "@context": "https://schema.org",
   "@type": "GroceryStore",
   "name": "La Peruana",
-  "description": "Supermercado y panadería con pedidos online y envío a domicilio.",
-  "image": "https://la-peruana.github.io/e-commerce/LOGO-LA-PERUANA.jpg",
+  "description": "Supermercado y panadería en el corazón de Paraná, con pedidos online y envío a domicilio.",
+  "slogan": "En el corazón de Paraná",
+  "image": "https://la-peruana.github.io/e-commerce/compartir.jpg",
   "url": "https://la-peruana.github.io/e-commerce/",
   "telephone": "+5493435075991",
   "priceRange": "$$",
@@ -1049,6 +1059,202 @@ const CONFIG = {
     if (!r) return;
     $('#' + r.campo).classList.toggle('error', !r.prueba());
   }
+
+  // Saca el aviso de error apenas el dato pasa a ser correcto. Nunca lo agrega.
+  function limpiarErrores(){
+    Object.keys(REGLAS).forEach((id) => {
+      if (REGLAS[id].prueba()) $('#' + REGLAS[id].campo).classList.remove('error');
+    });
+  }
+
+  // Revisa todo junto, al confirmar
+  function validar(marcar){
+    let ok = true, primerError = null;
+    Object.keys(REGLAS).forEach((id) => {
+      const valido = REGLAS[id].prueba();
+      if (!valido) { ok = false; if (!primerError) primerError = REGLAS[id].campo; }
+      if (marcar) $('#' + REGLAS[id].campo).classList.toggle('error', !valido);
+    });
+    return { ok, primerError };
+  }
+
+  /* ---------- Mensaje de WhatsApp ---------- */
+  function armarMensaje(){
+    const t = totales();
+    const L = [];
+    L.push('*NUEVO PEDIDO — La Peruana*');
+    L.push('');
+    L.push('👤 ' + $('#inpNombre').value.trim());
+    L.push('📞 ' + $('#inpTelefono').value.trim());
+    L.push('📍 ' + $('#inpDireccion').value.trim());
+    L.push('🕒 ' + $('#selFranja').value);
+    L.push('💵 ' + $('#selPago').value + ($('#selPago').value === 'Efectivo' && $('#inpVuelto').value.trim()
+      ? ' (abona con $' + $('#inpVuelto').value.trim() + ')' : ''));
+    const notas = $('#inpNotas').value.trim();
+    if (notas) L.push('📝 ' + notas);
+    L.push('');
+    L.push('*Detalle*');
+    Object.keys(pedido).forEach((id) => {
+      const p = porId[id];
+      L.push('• ' + pedido[id] + ' x ' + p.nombre + ' — ' + pesos(pedido[id] * p.precio));
+    });
+    L.push('');
+    if (CONFIG.envio.activo) {
+      L.push('Subtotal: ' + pesos(t.subtotal));
+      L.push('Envío: ' + (t.envio === 0 ? 'bonificado' : pesos(t.envio)));
+    }
+    L.push('*TOTAL: ' + pesos(t.total) + '*');
+    L.push('');
+    L.push('Gracias 🙌');
+    return L.join('\n');
+  }
+
+  function actualizarBotonWa(){
+    const btn = $('#btnWhatsApp');
+    const txt = $('#txtBtnWa');
+    const nota = $('#notaPie');
+    const t = totales();
+
+    if (t.items === 0) {
+      btn.setAttribute('aria-disabled', 'true');
+      btn.removeAttribute('href');
+      txt.textContent = 'Agregá productos al pedido';
+      nota.textContent = 'Tu pedido está vacío.';
+      return;
+    }
+    if (CONFIG.minimoCompra > 0 && t.subtotal < CONFIG.minimoCompra) {
+      btn.setAttribute('aria-disabled', 'true');
+      btn.removeAttribute('href');
+      txt.textContent = 'Mínimo ' + pesos(CONFIG.minimoCompra);
+      nota.textContent = 'Te faltan ' + pesos(CONFIG.minimoCompra - t.subtotal) + ' para llegar al mínimo.';
+      return;
+    }
+    btn.removeAttribute('aria-disabled');
+    txt.textContent = 'Confirmar por WhatsApp';
+    nota.textContent = 'Se abre WhatsApp con el pedido escrito. Vos solo tocás enviar.';
+    btn.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(armarMensaje());
+  }
+
+  /* ---------- Eventos ---------- */
+  // Sumar y restar (catálogo y panel, con un solo listener)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-accion]');
+    if (!btn) return;
+    cambiarCantidad(btn.dataset.id, btn.dataset.accion === 'mas' ? 1 : -1);
+  });
+
+  // Categorías
+  $('#fichas').addEventListener('click', (e) => {
+    const f = e.target.closest('.ficha');
+    if (!f) return;
+    seccionActiva = f.dataset.seccion;
+    pintarFichas();
+    pintarCatalogo();
+    window.scrollTo({ top: $('#catalogo').offsetTop - 130, behavior: 'smooth' });
+  });
+
+  // Buscador
+  let temporizadorBusqueda;
+  $('#inpBuscar').addEventListener('input', (e) => {
+    textoBusqueda = e.target.value;
+    $('#btnLimpiarBusq').classList.toggle('visible', textoBusqueda.length > 0);
+    clearTimeout(temporizadorBusqueda);
+    temporizadorBusqueda = setTimeout(pintarCatalogo, 130);
+  });
+  $('#btnLimpiarBusq').addEventListener('click', () => {
+    textoBusqueda = '';
+    $('#inpBuscar').value = '';
+    $('#btnLimpiarBusq').classList.remove('visible');
+    pintarCatalogo();
+    $('#inpBuscar').focus();
+  });
+  document.addEventListener('click', (e) => {
+    if (e.target.id !== 'btnReiniciarFiltros') return;
+    textoBusqueda = '';
+    seccionActiva = 'TODO';
+    $('#inpBuscar').value = '';
+    $('#btnLimpiarBusq').classList.remove('visible');
+    pintarFichas();
+    pintarCatalogo();
+  });
+
+  // Abrir y cerrar el panel
+  $('#btnVerPedido').addEventListener('click', abrirPanel);
+  $('#btnCarritoTop').addEventListener('click', abrirPanel);
+  $('#btnCerrarPanel').addEventListener('click', cerrarPanel);
+  $('#fondoPanel').addEventListener('click', (e) => { if (e.target.id === 'fondoPanel') cerrarPanel(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && $('#fondoPanel').classList.contains('abierto')) cerrarPanel();
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault(); $('#inpBuscar').focus();
+    }
+  });
+
+  // Vaciar
+  $('#btnVaciar').addEventListener('click', () => {
+    if (!confirm('¿Querés vaciar el pedido?')) return;
+    pedido = {};
+    guardarPedido();
+    pintarCatalogo();
+    pintarPedido();
+    refrescarIndicadores();
+  });
+
+  // Formulario
+  CAMPOS.concat('chkRecordar').forEach((id) => {
+    const el = $('#' + id);
+    if (!el) return;
+    el.addEventListener('input', () => { limpiarErrores(); guardarDatos(); actualizarBotonWa(); });
+    el.addEventListener('change', () => {
+      if (id === 'selPago') alternarVuelto();
+      limpiarErrores(); guardarDatos(); actualizarBotonWa();
+    });
+    el.addEventListener('blur', () => validarCampo(id));
+  });
+
+  // Confirmación
+  $('#btnWhatsApp').addEventListener('click', (e) => {
+    if ($('#btnWhatsApp').getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
+    const r = validar(true);
+    if (!r.ok) {
+      e.preventDefault();
+      const campo = $('#' + r.primerError);
+      campo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const foco = campo.querySelector('input, select');
+      if (foco) foco.focus({ preventScroll: true });
+      avisar('Faltan datos de entrega');
+    }
+  });
+
+  // Foco atrapado dentro del panel
+  $('#fondoPanel').addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const foco = $$('#fondoPanel button, #fondoPanel input, #fondoPanel select, #fondoPanel textarea, #fondoPanel a[href]')
+      .filter((el) => el.offsetParent !== null);
+    if (!foco.length) return;
+    const primero = foco[0], ultimo = foco[foco.length - 1];
+    if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+  });
+
+  // Altura real de la barra pegajosa, para que los títulos no queden tapados
+  function medirBarra(){
+    const alto = $('#barraFiltros').offsetHeight + 12;
+    document.documentElement.style.setProperty('--alto-barra', alto + 'px');
+  }
+  window.addEventListener('resize', medirBarra);
+
+  /* ---------- Arranque ---------- */
+  $('#waPie').href = 'https://wa.me/' + CONFIG.whatsapp;
+  $('#inpBuscar').placeholder = 'Buscar entre ' + catalogo.length + ' productos…';
+  pintarFichas();
+  pintarCatalogo();
+  refrescarIndicadores();
+  medirBarra();
+})();
+</script>
+</body>
+</html>
 
   // Saca el aviso de error apenas el dato pasa a ser correcto. Nunca lo agrega.
   function limpiarErrores(){
