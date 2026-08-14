@@ -398,6 +398,8 @@ footer a:hover{text-decoration:underline}
 <!-- ===================== PIE ===================== -->
 <footer>
   <p><strong>La Peruana</strong> · En el corazón de Paraná</p>
+  <p>Av. Ramírez 2134 · Paraná, Entre Ríos ·
+     <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Ram%C3%ADrez+2134+Paran%C3%A1+Entre+R%C3%ADos" target="_blank" rel="noopener">Ver en el mapa</a></p>
   <p>Pedidos por WhatsApp: <a id="waPie" href="#" target="_blank" rel="noopener">Escribinos</a></p>
   <p style="font-size:.78rem;opacity:.8">Los precios pueden cambiar sin previo aviso. Confirmamos el total al recibir tu pedido.</p>
 </footer>
@@ -505,7 +507,8 @@ footer a:hover{text-decoration:underline}
     </div>
   </div>
 </div>
-<!-- Datos estructurados para Google (completá dirección y horarios reales) -->
+<!-- Datos estructurados para Google. OJO: los horarios de abajo son un ejemplo,
+     cambiá "opens" y "closes" por los reales antes de que Google los indexe. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -516,12 +519,13 @@ footer a:hover{text-decoration:underline}
   "image": "https://la-peruana.github.io/e-commerce/compartir.jpg",
   "url": "https://la-peruana.github.io/e-commerce/",
   "telephone": "+5493435075991",
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.+Ram%C3%ADrez+2134+Paran%C3%A1+Entre+R%C3%ADos",
   "priceRange": "$$",
   "currenciesAccepted": "ARS",
   "paymentAccepted": "Efectivo, Transferencia, Tarjeta de débito y crédito",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "COMPLETAR: calle y número",
+    "streetAddress": "Av. Ramírez 2134",
     "addressLocality": "Paraná",
     "addressRegion": "Entre Ríos",
     "addressCountry": "AR"
@@ -1255,203 +1259,6 @@ const CONFIG = {
 </script>
 </body>
 </html>
-
-  // Saca el aviso de error apenas el dato pasa a ser correcto. Nunca lo agrega.
-  function limpiarErrores(){
-    Object.keys(REGLAS).forEach((id) => {
-      if (REGLAS[id].prueba()) $('#' + REGLAS[id].campo).classList.remove('error');
-    });
-  }
-
-  // Revisa todo junto, al confirmar
-  function validar(marcar){
-    let ok = true, primerError = null;
-    Object.keys(REGLAS).forEach((id) => {
-      const valido = REGLAS[id].prueba();
-      if (!valido) { ok = false; if (!primerError) primerError = REGLAS[id].campo; }
-      if (marcar) $('#' + REGLAS[id].campo).classList.toggle('error', !valido);
-    });
-    return { ok, primerError };
-  }
-
-  /* ---------- Mensaje de WhatsApp ---------- */
-  function armarMensaje(){
-    const t = totales();
-    const L = [];
-    L.push('*NUEVO PEDIDO — La Peruana*');
-    L.push('');
-    L.push('👤 ' + $('#inpNombre').value.trim());
-    L.push('📞 ' + $('#inpTelefono').value.trim());
-    L.push('📍 ' + $('#inpDireccion').value.trim());
-    L.push('🕒 ' + $('#selFranja').value);
-    L.push('💵 ' + $('#selPago').value + ($('#selPago').value === 'Efectivo' && $('#inpVuelto').value.trim()
-      ? ' (abona con $' + $('#inpVuelto').value.trim() + ')' : ''));
-    const notas = $('#inpNotas').value.trim();
-    if (notas) L.push('📝 ' + notas);
-    L.push('');
-    L.push('*Detalle*');
-    Object.keys(pedido).forEach((id) => {
-      const p = porId[id];
-      L.push('• ' + pedido[id] + ' x ' + p.nombre + ' — ' + pesos(pedido[id] * p.precio));
-    });
-    L.push('');
-    if (CONFIG.envio.activo) {
-      L.push('Subtotal: ' + pesos(t.subtotal));
-      L.push('Envío: ' + (t.envio === 0 ? 'bonificado' : pesos(t.envio)));
-    }
-    L.push('*TOTAL: ' + pesos(t.total) + '*');
-    L.push('');
-    L.push('Gracias 🙌');
-    return L.join('\n');
-  }
-
-  function actualizarBotonWa(){
-    const btn = $('#btnWhatsApp');
-    const txt = $('#txtBtnWa');
-    const nota = $('#notaPie');
-    const t = totales();
-
-    if (t.items === 0) {
-      btn.setAttribute('aria-disabled', 'true');
-      btn.removeAttribute('href');
-      txt.textContent = 'Agregá productos al pedido';
-      nota.textContent = 'Tu pedido está vacío.';
-      return;
-    }
-    if (CONFIG.minimoCompra > 0 && t.subtotal < CONFIG.minimoCompra) {
-      btn.setAttribute('aria-disabled', 'true');
-      btn.removeAttribute('href');
-      txt.textContent = 'Mínimo ' + pesos(CONFIG.minimoCompra);
-      nota.textContent = 'Te faltan ' + pesos(CONFIG.minimoCompra - t.subtotal) + ' para llegar al mínimo.';
-      return;
-    }
-    btn.removeAttribute('aria-disabled');
-    txt.textContent = 'Confirmar por WhatsApp';
-    nota.textContent = 'Se abre WhatsApp con el pedido escrito. Vos solo tocás enviar.';
-    btn.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(armarMensaje());
-  }
-
-  /* ---------- Eventos ---------- */
-  // Sumar y restar (catálogo y panel, con un solo listener)
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-accion]');
-    if (!btn) return;
-    cambiarCantidad(btn.dataset.id, btn.dataset.accion === 'mas' ? 1 : -1);
-  });
-
-  // Categorías
-  $('#fichas').addEventListener('click', (e) => {
-    const f = e.target.closest('.ficha');
-    if (!f) return;
-    seccionActiva = f.dataset.seccion;
-    pintarFichas();
-    pintarCatalogo();
-    window.scrollTo({ top: $('#catalogo').offsetTop - 130, behavior: 'smooth' });
-  });
-
-  // Buscador
-  let temporizadorBusqueda;
-  $('#inpBuscar').addEventListener('input', (e) => {
-    textoBusqueda = e.target.value;
-    $('#btnLimpiarBusq').classList.toggle('visible', textoBusqueda.length > 0);
-    clearTimeout(temporizadorBusqueda);
-    temporizadorBusqueda = setTimeout(pintarCatalogo, 130);
-  });
-  $('#btnLimpiarBusq').addEventListener('click', () => {
-    textoBusqueda = '';
-    $('#inpBuscar').value = '';
-    $('#btnLimpiarBusq').classList.remove('visible');
-    pintarCatalogo();
-    $('#inpBuscar').focus();
-  });
-  document.addEventListener('click', (e) => {
-    if (e.target.id !== 'btnReiniciarFiltros') return;
-    textoBusqueda = '';
-    seccionActiva = 'TODO';
-    $('#inpBuscar').value = '';
-    $('#btnLimpiarBusq').classList.remove('visible');
-    pintarFichas();
-    pintarCatalogo();
-  });
-
-  // Abrir y cerrar el panel
-  $('#btnVerPedido').addEventListener('click', abrirPanel);
-  $('#btnCarritoTop').addEventListener('click', abrirPanel);
-  $('#btnCerrarPanel').addEventListener('click', cerrarPanel);
-  $('#fondoPanel').addEventListener('click', (e) => { if (e.target.id === 'fondoPanel') cerrarPanel(); });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && $('#fondoPanel').classList.contains('abierto')) cerrarPanel();
-    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-      e.preventDefault(); $('#inpBuscar').focus();
-    }
-  });
-
-  // Vaciar
-  $('#btnVaciar').addEventListener('click', () => {
-    if (!confirm('¿Querés vaciar el pedido?')) return;
-    pedido = {};
-    guardarPedido();
-    pintarCatalogo();
-    pintarPedido();
-    refrescarIndicadores();
-  });
-
-  // Formulario
-  CAMPOS.concat('chkRecordar').forEach((id) => {
-    const el = $('#' + id);
-    if (!el) return;
-    el.addEventListener('input', () => { limpiarErrores(); guardarDatos(); actualizarBotonWa(); });
-    el.addEventListener('change', () => {
-      if (id === 'selPago') alternarVuelto();
-      limpiarErrores(); guardarDatos(); actualizarBotonWa();
-    });
-    el.addEventListener('blur', () => validarCampo(id));
-  });
-
-  // Confirmación
-  $('#btnWhatsApp').addEventListener('click', (e) => {
-    if ($('#btnWhatsApp').getAttribute('aria-disabled') === 'true') { e.preventDefault(); return; }
-    const r = validar(true);
-    if (!r.ok) {
-      e.preventDefault();
-      const campo = $('#' + r.primerError);
-      campo.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      const foco = campo.querySelector('input, select');
-      if (foco) foco.focus({ preventScroll: true });
-      avisar('Faltan datos de entrega');
-    }
-  });
-
-  // Foco atrapado dentro del panel
-  $('#fondoPanel').addEventListener('keydown', (e) => {
-    if (e.key !== 'Tab') return;
-    const foco = $$('#fondoPanel button, #fondoPanel input, #fondoPanel select, #fondoPanel textarea, #fondoPanel a[href]')
-      .filter((el) => el.offsetParent !== null);
-    if (!foco.length) return;
-    const primero = foco[0], ultimo = foco[foco.length - 1];
-    if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
-    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
-  });
-
-  // Altura real de la barra pegajosa, para que los títulos no queden tapados
-  function medirBarra(){
-    const alto = $('#barraFiltros').offsetHeight + 12;
-    document.documentElement.style.setProperty('--alto-barra', alto + 'px');
-  }
-  window.addEventListener('resize', medirBarra);
-
-  /* ---------- Arranque ---------- */
-  $('#waPie').href = 'https://wa.me/' + CONFIG.whatsapp;
-  $('#inpBuscar').placeholder = 'Buscar entre ' + catalogo.length + ' productos…';
-  pintarFichas();
-  pintarCatalogo();
-  refrescarIndicadores();
-  medirBarra();
-})();
-</script>
-</body>
-</html>
-
 
 
 
