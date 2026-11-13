@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Administración · La Peruana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rojo:#B70E09;--rojo-osc:#8E0A05;--rojo-suave:#FDECEC;--tinta:#1C1917;--gris:#6E6763;--linea:#E7E2DC;--papel:#FAF7F2;--verde:#128C4A}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--papel);color:var(--tinta);font-size:15px}
+h1,h2,h3{font-family:'Bricolage Grotesque',Arial,sans-serif;margin:0}
+main{max-width:820px;margin:0 auto;padding:1.4rem 1rem 3rem}
+.cab{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.cab img{width:70px;height:auto;border-radius:12px}
+.cab h1{font-size:1.6rem;color:var(--rojo)}
+.cab p{margin:.15rem 0 0;color:var(--gris);font-size:.9rem}
+.cab a{margin-left:auto;color:var(--gris);font-size:.88rem}
+.caja{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:1.2rem 1.2rem 1.3rem;margin-bottom:1rem}
+.caja h2{font-size:1.12rem;margin-bottom:.35rem;display:flex;align-items:center;gap:.6rem}
+.n{background:var(--rojo);color:#fff;border-radius:50%;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;flex:none}
+.sub{margin:0 0 .9rem;color:var(--gris);font-size:.9rem;line-height:1.45}
+.fila{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);border-radius:10px;padding:.7rem .8rem;font-size:1rem}
+.btn{background:var(--rojo);color:#fff;border:none;border-radius:10px;padding:.75rem 1.15rem;font-weight:700;cursor:pointer;font-size:.95rem;font-family:inherit}
+.btn:hover{background:var(--rojo-osc)}
+.btn.sec{background:#fff;color:var(--tinta);border:1.5px solid var(--linea)}
+.btn.sec:hover{border-color:var(--rojo);color:var(--rojo)}
+.btn.publicar{width:100%;padding:1.05rem;font-size:1.2rem;font-weight:800;border-radius:12px;box-shadow:0 4px 14px rgba(183,14,9,.35)}
+.btn[disabled]{background:#C9C2BA;color:#fff;box-shadow:none;cursor:not-allowed;border:none}
+.pista{font-size:.82rem;color:var(--gris);margin:.55rem 0 0;line-height:1.45}
+.error{color:var(--rojo);font-size:.88rem;margin:.55rem 0 0;font-weight:600}
+.ok{color:var(--verde);font-size:.92rem;margin:.55rem 0 0;font-weight:700}
+.subir{display:block;border:2px dashed #D6CFC6;border-radius:12px;padding:1.5rem 1rem;text-align:center;cursor:pointer;background:var(--papel)}
+.subir:hover,.subir.encima{border-color:var(--rojo);background:var(--rojo-suave)}
+.subir strong{display:block;font-size:1.05rem;margin-bottom:.2rem}
+.subir span{font-size:.85rem;color:var(--gris)}
+.subir input{display:none}
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.55rem;margin:.4rem 0 .9rem}
+.cifra{border-radius:12px;padding:.75rem .85rem;background:var(--papel);border:1px solid var(--linea)}
+.cifra b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.7rem;line-height:1}
+.cifra span{font-size:.82rem;color:var(--gris)}
+.cifra.mal{background:#FDECEC;border-color:#F0B1B5}.cifra.mal b{color:var(--rojo)}
+.lista{border:1px solid var(--linea);border-radius:12px;overflow:hidden;margin-bottom:.9rem}
+.lista h3{font-size:.9rem;background:var(--papel);padding:.6rem .85rem;border-bottom:1px solid var(--linea)}
+.lf{display:flex;justify-content:space-between;gap:.8rem;padding:.5rem .85rem;border-bottom:1px solid var(--linea);font-size:.88rem;align-items:center}
+.lf:last-child{border-bottom:none}
+.lf .der{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.lf s{color:var(--gris)}
+.lf.err{color:var(--rojo)}
+.pct{display:inline-block;font-size:.75rem;font-weight:700;border-radius:999px;padding:.05rem .45rem;margin-left:.3rem;background:#E7F5EC;color:var(--verde)}
+.pct.baja{background:#EEF2FF;color:#3949AB}.pct.ojo{background:#FDECEC;color:var(--rojo)}
+.foto-res{display:flex;gap:1rem;align-items:center;margin-top:.8rem}
+.foto-res img{width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid var(--linea)}
+.foto-res code{background:var(--papel);border:1px solid var(--linea);border-radius:6px;padding:.25rem .45rem;font-size:.95rem}
+[hidden]{display:none !important}
+</style>
+</head>
+<body>
+<main>
+  <div class="cab">
+    <img src="logo-la-peruana.webp" alt="">
+    <div>
+      <h1>Administración</h1>
+      <p>Actualizar precios, productos y fotos de la tienda online</p>
+    </div>
+    <a href="./">Ver la tienda →</a>
+  </div>
+
+  <!-- PASO 1: CLAVE -->
+  <div class="caja" id="cajaClave">
+    <h2><span class="n">1</span>Clave de publicación</h2>
+    <p class="sub">Se pide una sola vez en cada computadora. Después queda guardada y entrás directo.</p>
+    <form class="fila" id="formClave">
+      <input type="password" id="inpClave" placeholder="Pegá la clave acá" autocomplete="off" aria-label="Clave de publicación">
+      <button class="btn" type="submit">Entrar</button>
+    </form>
+    <p class="error" id="errClave" hidden></p>
+  </div>
+
+  <div id="zona" hidden>
+    <!-- PASO 2: EXCEL -->
+    <div class="caja">
+      <h2><span class="n">2</span>Subí el Excel de precios</h2>
+      <p class="sub">Columnas: Categoría, Producto, Precio, Unidad, Descripción, Foto y Activo. Precio sin $ ni puntos. Activo: SI se muestra, NO se oculta.</p>
+      <label class="subir" id="zonaSubir">
+        <input type="file" id="inpExcel" accept=".xlsx,.xls,.csv">
+        <strong>📄 Hacé clic acá para elegir el Excel</strong>
+        <span>o arrastralo a este recuadro</span>
+      </label>
+      <p class="error" id="errExcel" hidden></p>
+      <div class="fila" style="margin-top:.8rem">
+        <button class="btn sec" type="button" id="btnDescargar">⬇ Descargar la lista actual en Excel</button>
+      </div>
+    </div>
+
+    <!-- PASO 3: REVISAR Y PUBLICAR -->
+    <div class="caja" id="cajaRevisar" hidden>
+      <h2><span class="n">3</span>Revisá los cambios y publicá</h2>
+      <p class="sub" id="txtArchivo"></p>
+      <div class="cifras" id="cifras"></div>
+      <div id="detalle"></div>
+      <button class="btn publicar" id="btnPublicar">✔ PUBLICAR CAMBIOS</button>
+      <p class="pista" id="txtPublicar"></p>
+    </div>
+    <p class="ok" id="txtListo" hidden></p>
+
+    <!-- FOTOS -->
+    <div class="caja">
+      <h2><span class="n">📷</span>Subir una foto nueva</h2>
+      <p class="sub">La foto se achica sola antes de subirla, para que la tienda cargue rápido en el celular. Después copiá el nombre que aparece en la columna <b>Foto</b> del Excel.</p>
+      <label class="subir" id="zonaFoto">
+        <input type="file" id="inpFoto" accept="image/*">
+        <strong>🖼 Hacé clic acá para elegir la foto</strong>
+        <span>JPG o PNG</span>
+      </label>
+      <p class="error" id="errFoto" hidden></p>
+      <div class="foto-res" id="fotoRes" hidden>
+        <img id="fotoPrev" alt="">
+        <div>
+          <p class="ok" style="margin:0 0 .4rem">✅ Foto subida</p>
+          <div>Nombre para el Excel: <code id="fotoNombre"></code></div>
+          <button class="btn sec" type="button" id="btnCopiar" style="margin-top:.6rem;padding:.45rem .8rem">Copiar nombre</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="pista" style="text-align:right"><a href="#" id="btnSalir" style="color:var(--gris)">Olvidar la clave en esta computadora</a></p>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  const REPO = 'la-peruana/e-commerce';
+  const RAMA = 'main';
+  const API = 'https://api.github.com/repos/' + REPO;
+  const ARCHIVO = 'catalogo.json';
+  const $ = (s) => document.querySelector(s);
+  const norm = (t) => String(t == null ? '' : t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  const clave = (p) => norm(p.categoria) + '|' + norm(p.producto);
+  const pesos = (n) => '$' + Math.round(n).toLocaleString('es-AR');
+  const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const mostrar = (sel, txt) => { const el = $(sel); if (txt !== undefined) el.textContent = txt; el.hidden = false; };
+  const ocultar = (sel) => { $(sel).hidden = true; };
+
+  let token = '';
+  try { token = localStorage.getItem('lp_admin_clave') || ''; } catch(e){}
+  let actual = null;      // { lista, fecha, sha }
+  let propuesta = null;
+
+  // ---------- GitHub ----------
+  async function gh(ruta, opciones){
+    const r = await fetch(API + ruta, Object.assign({ headers: {
+      'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28'
+    } }, opciones || {}));
+    return r;
+  }
+  const aBase64 = (texto) => { const b = new TextEncoder().encode(texto); let s = ''; b.forEach((x) => s += String.fromCharCode(x)); return btoa(s); };
+  const deBase64 = (b64) => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\n/g,'')), (c) => c.charCodeAt(0)));
+
+  async function cargarActual(){
+    const r = await gh('/contents/' + ARCHIVO + '?ref=' + RAMA + '&t=' + Date.now());
+    if (!r.ok) throw new Error('No se pudo leer la lista publicada (' + r.status + ')');
+    const j = await r.json();
+    const datos = JSON.parse(deBase64(j.content));
+    actual = { lista: datos.lista || [], fecha: datos.fecha || '', sha: j.sha };
+  }
+
+  // ---------- Paso 1: clave ----------
+  async function entrar(){
+    ocultar('#errClave');
+    try {
+      const r = await gh('');
+      if (r.status === 401) throw new Error('La clave no es válida o venció.');
+      if (!r.ok) throw new Error('No se pudo verificar la clave (' + r.status + ').');
+      const j = await r.json();
+      if (!j.permissions || !j.permissions.push) throw new Error('Esta clave no tiene permiso para publicar.');
+      await cargarActual();
+      try { localStorage.setItem('lp_admin_clave', token); } catch(e){}
+      ocultar('#cajaClave'); $('#zona').hidden = false;
+    } catch (e) {
+      try { localStorage.removeItem('lp_admin_clave'); } catch(_){}
+      mostrar('#errClave', e.message || 'No se pudo entrar.');
+      $('#cajaClave').hidden = false; $('#zona').hidden = true;
+    }
+  }
+  $('#formClave').addEventListener('submit', (e) => { e.preventDefault(); token = $('#inpClave').value.trim(); if (token) entrar(); });
+  $('#btnSalir').addEventListener('click', (e) => { e.preventDefault(); try { localStorage.removeItem('lp_admin_clave'); } catch(_){} location.reload(); });
+  if (token) entrar();
+
+  // ---------- Paso 2: Excel ----------
+  const zona = $('#zonaSubir');
+  ['dragenter','dragover'].forEach((ev) => zona.addEventListener(ev, (e) => { e.preventDefault(); zona.classList.add('encima'); }));
+  ['dragleave','drop'].forEach((ev) => zona.addEventListener(ev, () => zona.classList.remove('encima')));
+  zona.addEventListener('drop', (e) => { e.preventDefault(); if (e.dataTransfer.files[0]) leerExcel(e.dataTransfer.files[0]); });
+  $('#inpExcel').addEventListener('change', (e) => { if (e.target.files[0]) leerExcel(e.target.files[0]); e.target.value = ''; });
+
+  function fallaExcel(msg){ mostrar('#errExcel', msg); ocultar('#cajaRevisar'); }
+
+  function leerExcel(archivo){
+    ocultar('#errExcel'); ocultar('#txtListo');
+    if (typeof XLSX === 'undefined') return fallaExcel('No se pudo cargar el lector de Excel. Revisá la conexión y recargá la página.');
+    const r = new FileReader();
+    r.onload = async () => {
+      try {
+        await cargarActual();
+        const libro = XLSX.read(new Uint8Array(r.result), { type: 'array' });
+        const filas = XLSX.utils.sheet_to_json(libro.Sheets[libro.SheetNames[0]], { defval: '' });
+        analizar(filas, archivo.name);
+      } catch (err) { fallaExcel(err && err.message && err.message.indexOf('lista publicada') >= 0 ? err.message : 'No pudimos leer el archivo. ¿Es un Excel (.xlsx)?'); }
+    };
+    r.readAsArrayBuffer(archivo);
+  }
+
+  const COLS = ['categoria','producto','precio','unidad','descripcion','foto','activo'];
+  function analizar(filas, nombre){
+    if (!filas.length) return fallaExcel('El Excel está vacío.');
+    const mapa = {};
+    Object.keys(filas[0]).forEach((h) => { const k = norm(h); if (COLS.includes(k)) mapa[k] = h; });
+    const faltan = ['categoria','producto','precio'].filter((k) => !mapa[k]);
+    if (faltan.length) return fallaExcel('Al Excel le falta la columna: ' + faltan.join(', ') + '. La primera fila tiene que tener los títulos.');
+
+    const errores = [], lista = [], vistos = new Set();
+    filas.forEach((f, i) => {
+      const fila = i + 2;
+      const val = (k) => mapa[k] ? String(f[mapa[k]] == null ? '' : f[mapa[k]]).trim() : '';
+      const producto = val('producto'), categoria = val('categoria');
+      if (!producto && !val('precio') && !categoria) return;
+      if (!producto) { errores.push(`Fila ${fila}: falta el nombre del producto.`); return; }
+      if (!categoria) errores.push(`Fila ${fila} (${producto}): falta la categoría.`);
+      const crudo = f[mapa.precio];
+      const precio = typeof crudo === 'number' ? Math.round(crudo) : Number(String(crudo).replace(/[$\s.]/g,'').replace(',','.'));
+      if (!Number.isFinite(precio) || precio <= 0) errores.push(`Fila ${fila} (${producto}): el precio "${crudo}" no es un número válido.`);
+      const activo = (val('activo').toUpperCase().replace('SÍ','SI')) || 'SI';
+      if (activo !== 'SI' && activo !== 'NO') errores.push(`Fila ${fila} (${producto}): en Activo va SI o NO.`);
+      const k = clave({ categoria, producto });
+      if (vistos.has(k)) errores.push(`Fila ${fila}: "${producto}" está repetido en ${categoria}.`);
+      vistos.add(k);
+      lista.push({ categoria, producto, precio: Math.round(precio), unidad: val('unidad'), descripcion: val('descripcion'), foto: val('foto'), activo });
+    });
+
+    const previo = Object.fromEntries(actual.lista.map((p) => [clave(p), p]));
+    const precios = [], nuevos = [], ocultos = [], vuelven = [], otros = [];
+    lista.forEach((p) => {
+      const a = previo[clave(p)];
+      if (!a) { nuevos.push(p); return; }
+      if (a.activo === 'SI' && p.activo === 'NO') ocultos.push(p);
+      if (a.activo !== 'SI' && p.activo === 'SI') vuelven.push(p);
+      if (a.precio !== p.precio) precios.push({ p, antes: a.precio });
+      else if ((a.unidad||'') !== p.unidad || (a.descripcion||'') !== p.descripcion || (a.foto||'') !== p.foto) otros.push(p);
+    });
+    const enExcel = new Set(lista.map(clave));
+    const faltantes = actual.lista.filter((p) => p.activo === 'SI' && !enExcel.has(clave(p)));
+    const raros = precios.filter((c) => Math.abs(c.p.precio / c.antes - 1) > 0.3);
+
+    $('#txtArchivo').textContent = `Archivo: ${nombre} · ${lista.length} productos · Publicado ahora: lista del ${actual.fecha || '—'}`;
+    const cifra = (n, t, mal) => `<div class="cifra${mal ? ' mal' : ''}"><b>${n}</b><span>${t}</span></div>`;
+    $('#cifras').innerHTML = cifra(precios.length, 'precios cambian') + cifra(nuevos.length, 'productos nuevos') +
+      cifra(ocultos.length + faltantes.length, 'se ocultan') +
+      (errores.length ? cifra(errores.length, 'errores para corregir', true) : '') +
+      (raros.length ? cifra(raros.length, 'cambios de más de 30%', true) : '');
+    const bloque = (t, f) => f.length ? `<div class="lista"><h3>${t}</h3>${f.join('')}</div>` : '';
+    const pct = (a, d) => { const v = d / a - 1, r = Math.round(v * 100); return `<span class="pct${Math.abs(v) > .3 ? ' ojo' : (v < 0 ? ' baja' : '')}">${r > 0 ? '+' : ''}${r}%</span>`; };
+    $('#detalle').innerHTML =
+      bloque('❌ Errores: corregilos en el Excel y volvé a subirlo', errores.map((e) => `<div class="lf err">${esc(e)}</div>`)) +
+      bloque('💲 Cambios de precio', precios.map((c) => `<div class="lf"><span>${esc(c.p.producto)} <small style="color:var(--gris)">· ${esc(c.p.categoria)}</small></span><span class="der"><s>${pesos(c.antes)}</s> → <b>${pesos(c.p.precio)}</b>${pct(c.antes, c.p.precio)}</span></div>`)) +
+      bloque('🆕 Productos nuevos', nuevos.map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der">${pesos(p.precio)}</span></div>`)) +
+      bloque('🙈 Se ocultan de la tienda', ocultos.concat(faltantes).map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der">${enExcel.has(clave(p)) ? 'Activo = NO' : 'no está en el Excel'}</span></div>`)) +
+      bloque('👀 Vuelven a mostrarse', vuelven.map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der">${pesos(p.precio)}</span></div>`)) +
+      bloque('✏️ Cambian texto, unidad o foto', otros.map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der"></span></div>`));
+
+    const sinCambios = !precios.length && !nuevos.length && !ocultos.length && !faltantes.length && !vuelven.length && !otros.length;
+    $('#btnPublicar').disabled = errores.length > 0 || sinCambios;
+    $('#txtPublicar').textContent = errores.length ? 'Hay errores: no se puede publicar hasta corregirlos.'
+      : sinCambios ? 'El Excel es igual a lo que ya está publicado: no hay nada para publicar.' : 'Si está todo bien, tocá PUBLICAR CAMBIOS.';
+    propuesta = errores.length ? null : lista.concat(faltantes.map((p) => Object.assign({}, p, { activo: 'NO' })));
+    $('#cajaRevisar').hidden = false;
+    $('#cajaRevisar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ---------- Paso 3: publicar ----------
+  $('#btnPublicar').addEventListener('click', async () => {
+    if (!propuesta) return;
+    const btn = $('#btnPublicar'); btn.disabled = true; $('#txtPublicar').textContent = 'Publicando…';
+    const f = new Date();
+    const fecha = f.toLocaleDateString('es-AR') + ' ' + f.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' });
+    const cuerpo = JSON.stringify({ fecha, lista: propuesta }, null, 1);
+    try {
+      const r = await gh('/contents/' + ARCHIVO, { method: 'PUT', body: JSON.stringify({
+        message: 'Precios actualizados ' + fecha, content: aBase64(cuerpo), sha: actual.sha, branch: RAMA }) });
+      if (r.status === 409) throw new Error('Alguien publicó otra lista recién. Volvé a subir el Excel para ver los cambios actualizados.');
+      if (!r.ok) throw new Error('No se pudo publicar (' + r.status + '). Probá de nuevo en un momento.');
+      const j = await r.json();
+      actual = { lista: propuesta, fecha, sha: j.content.sha };
+      propuesta = null; ocultar('#cajaRevisar');
+      mostrar('#txtListo', '✅ Publicado. En 1 o 2 minutos la tienda muestra los precios nuevos (' + fecha + ').');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) { $('#txtPublicar').textContent = e.message; btn.disabled = false; }
+  });
+
+  // ---------- Descargar la lista actual ----------
+  $('#btnDescargar').addEventListener('click', async () => {
+    try {
+      await cargarActual();
+      const filas = actual.lista.map((p) => ({ 'Categoría': p.categoria, 'Producto': p.producto, 'Precio': p.precio, 'Unidad': p.unidad || '', 'Descripción': p.descripcion || '', 'Foto': p.foto || '', 'Activo': p.activo }));
+      const hoja = XLSX.utils.json_to_sheet(filas);
+      hoja['!cols'] = [16,42,11,14,34,28,8].map((w) => ({ wch: w }));
+      hoja['!rows'] = filas.concat([{}]).map(() => ({ hpt: 22 }));
+      const libro = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(libro, hoja, 'Lista de precios');
+      XLSX.writeFile(libro, 'La_Peruana_lista_de_precios.xlsx');
+    } catch (e) { mostrar('#errExcel', 'No se pudo descargar la lista.'); }
+  });
+
+  // ---------- Fotos ----------
+  const zonaFoto = $('#zonaFoto');
+  ['dragenter','dragover'].forEach((ev) => zonaFoto.addEventListener(ev, (e) => { e.preventDefault(); zonaFoto.classList.add('encima'); }));
+  ['dragleave','drop'].forEach((ev) => zonaFoto.addEventListener(ev, () => zonaFoto.classList.remove('encima')));
+  zonaFoto.addEventListener('drop', (e) => { e.preventDefault(); if (e.dataTransfer.files[0]) subirFoto(e.dataTransfer.files[0]); });
+  $('#inpFoto').addEventListener('change', (e) => { if (e.target.files[0]) subirFoto(e.target.files[0]); e.target.value = ''; });
+
+  async function subirFoto(archivo){
+    ocultar('#errFoto'); ocultar('#fotoRes');
+    try {
+      const bmp = await createImageBitmap(archivo, { imageOrientation: 'from-image' });
+      const lado = 480, esc = Math.min(1, lado / Math.max(bmp.width, bmp.height));
+      const c = document.createElement('canvas'); c.width = Math.round(bmp.width * esc); c.height = Math.round(bmp.height * esc);
+      c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+      const dataUrl = c.toDataURL('image/jpeg', 0.75);
+      const base = norm(archivo.name.replace(/\.[^.]+$/, '')).replace(/ /g, '-') || 'foto';
+      let nombre = base + '.jpg', ruta = 'fotos/' + nombre, sha;
+      const prev = await gh('/contents/' + encodeURIComponent(ruta).replace(/%2F/g,'/') + '?ref=' + RAMA);
+      if (prev.ok) { nombre = base + '-' + Date.now().toString(36).slice(-4) + '.jpg'; ruta = 'fotos/' + nombre; }
+      const r = await gh('/contents/' + ruta, { method: 'PUT', body: JSON.stringify({
+        message: 'Foto nueva ' + nombre, content: dataUrl.split(',')[1], branch: RAMA, sha }) });
+      if (!r.ok) throw new Error('No se pudo subir la foto (' + r.status + ').');
+      $('#fotoPrev').src = dataUrl; $('#fotoNombre').textContent = nombre; $('#fotoRes').hidden = false;
+    } catch (e) { mostrar('#errFoto', e.message || 'No se pudo leer la foto.'); }
+  }
+  $('#btnCopiar').addEventListener('click', () => {
+    const t = $('#fotoNombre').textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(
+      () => { $('#btnCopiar').textContent = '¡Copiado!'; setTimeout(() => $('#btnCopiar').textContent = 'Copiar nombre', 1500); },
+      () => {});
+  });
+})();
+</script>
+</body>
+</html>

@@ -381,6 +381,7 @@ footer a:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
+.producto-desc{font-size:.78rem;color:var(--gris);line-height:1.3;margin:-.3rem 0 0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 </style>
 </head>
 <body>
@@ -434,7 +435,9 @@ footer a:hover{text-decoration:underline}
   <p>Av. Ramírez 2134 · Paraná, Entre Ríos ·
      <a href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Ram%C3%ADrez+2134+Paran%C3%A1+Entre+R%C3%ADos" target="_blank" rel="noopener">Ver en el mapa</a></p>
   <p>Pedidos por WhatsApp: <a id="waPie" href="#" target="_blank" rel="noopener">Escribinos</a></p>
+  <p id="fechaPrecios" style="font-size:.78rem;opacity:.8">Precios actualizados el 14/8/2026</p>
   <p style="font-size:.78rem;opacity:.8">Los precios pueden cambiar sin previo aviso. Confirmamos el total al recibir tu pedido.</p>
+  <p style="margin-top:.9rem"><a href="admin.html" style="font-size:.76rem;opacity:.55">Administración</a></p>
 </footer>
 
 <!-- ===================== BARRA INFERIOR ===================== -->
@@ -627,191 +630,31 @@ const CONFIG = {
    entrando a actualizar-precios.html
    ============================================================ */
 
-/* === CATALOGO-INICIO — no borres esta línea: la usa la página de actualización === */
-const secciones = [
-      { nombre: "PANADERIA", productos: [
-        { nombre: "Facturas con crema x 3 un", precio: 2584, imagen: "facturas-crema.jpg" },
-        { nombre: "Facturas con crema y membrillo x 3 un", precio: 3058, imagen: "facturas-crema-membrillo.jpg" },
-        { nombre: "Facturas con crema y dulce de leche x 3 un", precio: 3058, imagen: "facturas-crema-ddl.jpg" },
-        { nombre: "Medialunas con dulce de leche x 3 un", precio: 2867, imagen: "medialuna-ddl.jpg" },
-        { nombre: "Medialunas dulces x 3 un", precio: 2166, imagen: "medialuna-dulce.jpg" },
-        { nombre: "Vigiantes de batata x 3 un", precio: 2931, imagen: "galleta-comun.jpg" },
-        { nombre: "Vigilantes de membrillo x 3 un", precio: 3058, imagen: "vigilantes-membrillo.jpg" },
-        { nombre: "Bollitos con crema x 3 un", precio: 2421, imagen: "bollitos-crema.jpg" },
-        { nombre: "Bollitos con dulce de leche x 3 un", precio: 2294, imagen: "bollitos-ddl.jpg" },
-        { nombre: "Empanaditas de dulce de leche x 3 un", precio: 1911, imagen: "empanaditas-ddl.jpg" },
-        { nombre: "Pirulines x 3 un", precio: 2548, imagen: "pirulines.jpg" },
-        { nombre: "Borrachitos x 3 un", precio: 2294, imagen: "borrachitos.jpg" },
-        { nombre: "Medialunas marplatenses x 3 un", precio: 2155, imagen: "medialunas-marplatenses.jpg" },
-        { nombre: "Especiales x 250grs", precio: 2765, imagen: "especiales.jpg" },
-        { nombre: "Pan frances x 250grs", precio: 866, imagen: "pan-frances.jpg" },
-        { nombre: "Galleta de campo x 250grs", precio: 983, imagen: "galleta-comun.jpg" },
-        { nombre: "Galleta hojaldrada x 250grs", precio: 1191, imagen: "galleta-hojaldrada.jpg" },
-        { nombre: "Suizos x 250grs", precio: 3884, imagen: "suizos.jpg" },
-        { nombre: "Medialunas saladas grandes x 250grs", precio: 3840, imagen: "medialuna-salada-grande.jpg" },
-        { nombre: "Medialunas saladas chicas x 250grs", precio: 4709, imagen: "medialuna-salada-chica.jpg" },
-        { nombre: "Croissant x 1 un", precio: 2746, imagen: "Croissant.jpg" }
-      ]},
-
-      { nombre: "PASTELERIA", productos: [
-        { nombre: "Cheese cake individual", precio: 7091, imagen: "cheesecake-individual.jpg" },
-        { nombre: "Torta mini bombon", precio: 1353, imagen: "torta-mini-bombon.jpg" },
-        { nombre: "Torta mini lemon pie", precio: 1353, imagen: "torta-mini-lemonpie.jpg" },
-        { nombre: "Torta mini frutal", precio: 1729, imagen: "torta-mini-frutal.jpg" },
-        { nombre: "Lingote de durazno", precio: 2327, imagen: "lingote-durazno.jpg" },
-        { nombre: "Lingote de frutilla", precio: 2327, imagen: "lingote-frutilla.jpg" },
-        { nombre: "Red Velvet individual", precio: 2327, imagen: "red-velvet.jpg" },
-        { nombre: "Tiramisú individual", precio: 7091, imagen: "tiramisu-individual.jpg" },
-        { nombre: "Masas finas x 7 un", precio: 8278, imagen: "masas-finas.jpg" },
-        { nombre: "Alfajores de maicena grandes x 2 un", precio: 2478, imagen: "alfajor-maicena-grande.jpg" },
-        { nombre: "Alfajores de maicena medianos x 3 un", precio: 2478, imagen: "alfa-maicena-med.jpg" },
-        { nombre: "Alfajores de maicena mini x 5 un", precio: 2478, imagen: "alfajor-maicena-grande.jpg" },
-        { nombre: "Alfajores de chocolate grande x 2 un", precio: 2435, imagen: "alfajor-choco-gr.jpg" },
-        { nombre: "Alfajores de chocolate mediano x 3 un", precio: 2435, imagen: "alfajor-choco-med.jpg" },
-        { nombre: "Alfajores de chocolate mini x 5 un", precio: 2435, imagen: "alfajor-choco-mini.jpg" }
-      ]},
-
-      { nombre: "ROTISERIA", productos: [
-        { nombre: "Torrejas de arroz x 3 un", precio: 2205, imagen: "torrejas-arroz.jpg" },
-        { nombre: "Torrejas de acelga x 3 un", precio: 2205, imagen: "torrejas-acelga.jpg" },
-        { nombre: "Bandeja de sandwich de miga simple x 12 un", precio: 15034, imagen: "Sandwich-simples.jpg" },
-        { nombre: "Bandeja de sandwich de miga triples x 6 un", precio: 15902, imagen: "miga-triple.jpg" },
-        { nombre: "Tarta de pollo -porción-", precio: 5310, imagen: "tarta-pollo.jpg" },
-        { nombre: "Tortilla de acelga -porción-", precio: 5692, imagen: "tortilla-acelga.jpg" },
-        { nombre: "Tortilla de verduras -porción-", precio: 4863, imagen: "Tortilla-verduras.jpg" },
-        { nombre: "Terrina acelga -porción-", precio: 4252, imagen: "terrina.jpg" },
-        { nombre: "Terrina verdura -porción-", precio: 4252, imagen: "terrina-verduras.jpg" },
-        { nombre: "Papas fritas -porción-", precio: 3033, imagen: "papas-fritas.jpg" },
-        { nombre: "Patamuslo x 2 un", precio: 16215, imagen: "patamuslo.jpg" },
-        { nombre: "Sandwich milanesa de pollo", precio: 6928, imagen: "sandwich-milanesa-pollo.jpg" },
-        { nombre: "Sandwich milanesa de carne simple", precio: 10046, imagen: "sandwich-mila-carne.jpg" },
-        { nombre: "Sandwich milanesa de carne completo", precio: 11843, imagen: "sandwich-mila-carne-completo.jpg" },
-        { nombre: "Pebete de jamon y queso", precio: 3735, imagen: "Pebete.jpg" },
-        { nombre: "Empanadas de choclo x 3 un", precio: 7219, imagen: "empanada-choclo.jpg" },
-        { nombre: "Empanada de jamon y queso", precio: 5705, imagen: "empanada-jyq.jpg" },
-        { nombre: "Empanadas calabresa x 3 un", precio: 4903, imagen: "empanada-calabresa.jpg" },
-        { nombre: "Empanadas de verdura x 3 un", precio: 5007, imagen: "empanada-verdura.jpg" },
-        { nombre: "Empanadas carne dulce x 3 un", precio: 6243, imagen: "empanada-carne-dulce.jpg" },
-        { nombre: "Empanadas carne salada x 3 un", precio: 6049, imagen: "Empanadas-carne-salada.jpg" },
-        { nombre: "Empanadas de pollo x 3 un", precio: 5792, imagen: "Empanadas-carne-salada.jpg" },
-        { nombre: "Empanadas árabes x 3 un", precio: 6950, imagen: "empanada-pirok.jpg" },
-        { nombre: "Milanesas de carne x 3 un", precio: 13835, imagen: "Milanesa-carne.jpg" },
-        { nombre: "Hamburguesa LP con papas -Pan de papa, carne simple, lechuga, tomate, queso cheddar, bacon, cebolla morada o blanca-", precio: 8885, imagen: "Hamburguesa LP.jpg" },
-        { nombre: "Hamburguesa cheddar con papas -Pan de papa, doble carne, cheddar, panceta y cebolla-", precio: 9901, imagen: "Hamburguesa cheddar.jpg" },
-        { nombre: "Milanesas de pollo x 3 un", precio: 10253, imagen: "milanesa-pollo.jpg" }
-      ]},
-
-      { nombre: "FIAMBRERIA", productos: [
-        { nombre: "Picada de fiambres y quesos surtidos LP x 800 grs", precio: 21890, imagen: "Picada-fiambres-surtidos.jpg" },
-        { nombre: "Picada de quesos surtidos LP x 700 grs", precio: 21798, imagen: "picada-quesos.jpg" },
-        { nombre: "Picada Lario x 700 grs", precio: 17679, imagen: "Picada-Lario.jpg" },
-        { nombre: "Picada Paladini x 700 grs", precio: 17703, imagen: "Picada Paladini.jpg" },
-        { nombre: "Queso cremoso María Luisa x 500 grs", precio: 4875, imagen: "queso-cremoso.jpg" },
-        { nombre: "Queso barra María Luisa x 500 grs", precio: 6150, imagen: "queso-barra.jpg" },
-        { nombre: "Jamón cocido Lario feteado x 500 grs", precio: 8950, imagen: "jamón-cocido-Lario.jpg" },
-        { nombre: "Mortadela Paladini x 300 grs", precio: 5103, imagen: "mortadela-Paladini.jpg" }
-      ]},
-
-      { nombre: "VERDULERIA", productos: [
-        { nombre: "Paquete acelga", precio: 4204, imagen: "acelga.jpg" },
-        { nombre: "Cebolla 1Kg", precio: 1500, imagen: "cebolla.jpg" },
-        { nombre: "Tomate 1Kg", precio: 4726, imagen: "tomate-redondo.jpg" },
-        { nombre: "limón 1Kg", precio: 2025, imagen: "limón.jpg" },
-        { nombre: "Bananas 1Kg", precio: 3542, imagen: "banana-ecuador.jpg" }
-      ]},
-
-      { nombre: "CARNICERIA", productos: [
-        { nombre: "Milanesas de carne 1Kg", precio: 20998, imagen: "milanesas-carne.jpg" },
-        { nombre: "Milanesas de pollo 1Kg", precio: 14400, imagen: "milanesas-pollo.jpg" },
-        { nombre: "Hamburguesa de carne 1Kg", precio: 19900, imagen: "hamburguesas-carne-comun.jpg" },
-        { nombre: "Filet de pechuga 1Kg", precio: 13333, imagen: "filet-pechuga.jpg" },
-        { nombre: "Costeletas de cerdo 1Kg", precio: 9887, imagen: "costeletas-cerdo.jpg" },
-        { nombre: "Carne picada común 1Kg", precio: 15900, imagen: "carne-picada-comun.jpg" },
-        { nombre: "Carne picada especial 1Kg", precio: 22600, imagen: "Carne-picada-especial.jpg" }
-      ]},
-
-      { nombre: "ALMACEN", productos: [
-        { nombre: "Paté de foie Molto", precio: 957, imagen: "pate-foie-molto.jpg" },
-        { nombre: "Puré de tomate Arcor x 520 grs", precio: 1377, imagen: "pure-tomate-Arcor.jpg" },
-        { nombre: "Arroz Gallo oro 1Kg", precio: 2965, imagen: "arroz-gallo-oro.jpg" },
-        { nombre: "Fideos tallarin Matarazo", precio: 2137, imagen: "tallarin-matarazzo.jpg" },
-        { nombre: "Galletitas Surtido Bagley", precio: 3942, imagen: "surtido-bagley.jpg" },
-        { nombre: "Yerba Sinceridad 1Kg", precio: 4334, imagen: "yerba-sinceridad.jpg" },
-        { nombre: "Aceite Natura 900 ml", precio: 5606, imagen: "aceite-natura.jpg" },
-        { nombre: "Azúcar Ledesma 1Kg", precio: 1980, imagen: "azucar-ledesma.jpg" },
-        { nombre: "Celusal fina 500 grs", precio: 1480, imagen: "celusal-fina.jpg" }
-      ]},
-
-      { nombre: "BEBIDAS", productos: [
-        { nombre: "Coca-Cola 1.5L", precio: 4786, imagen: "coca-cola-15.jpg" },
-        { nombre: "Coca-Cola 2.5L", precio: 6000, imagen: "coca-cola-25.jpg" },
-        { nombre: "Agua mineral Villa del sur levité 1.5L", precio: 2133, imagen: "levite-nar.jpg" },
-        { nombre: "Pritty limon 2.25L", precio: 2225, imagen: "pritty.jpg" },
-        { nombre: "Vino Otro loco mas", precio: 4957, imagen: "otro-loco-mas.jpg" },
-        { nombre: "Vino Finjamos demencia", precio: 5577, imagen: "Finjamos-demencia.jpg" },
-        { nombre: "Pepsi 3L", precio: 3300, imagen: "pepsi-3.jpg" },
-        { nombre: "Vino Santa Julia chenin dulce", precio: 9223, imagen: "santa-julia-chenin.jpg" },
-        { nombre: "Vino Hormiga negra", precio: 3263, imagen: "hormiga-negra.jpg" },
-        { nombre: "Cerveza lata Quilmes 473cc", precio: 2275, imagen: "lata-quilmes.jpg" },
-        { nombre: "Cerveza lata Budweiser 473cc", precio: 2120, imagen: "cerveza-lata-budweiser.png" },
-        { nombre: "Cerveza botella Corona 330cc", precio: 3910, imagen: "cerveza-corona.jpg" }
-      ]},
-  { nombre: "KIOSCO", productos: [
-      { nombre: 'GALLETITA TITA 18G', precio: 1182, imagen: "Tita.jpg" },
-      { nombre: 'OBLEA  RHODESIA CLÁSICA 22G', precio: 1105, imagen: "Rhodesia.jpg" },
-      { nombre: 'TURRON Y MANÍ ARCOR 25G', precio: 354, imagen: "Turron.jpg" },
-      { nombre: 'BILLIKEN CORAZÓN BOMBÓN FRUTAL  200GR', precio: 4564, imagen: "billiken-corazon-C.jpg" },
-      { nombre: 'CARAMELOS ROLLO GOMA MOGUL 12G', precio: 832, imagen: "Gomitas.jpg" },
-      { nombre: 'MANTECOL 41G', precio: 1524, imagen: "Mantecol.jpg" },
-      { nombre: 'TABLETA TOBLERONE 100G', precio: 10622, imagen: "Toblerone.jpg" },
-      { nombre: 'CHOCOLATE SHOT CON MANÍ 90G', precio: 5341, imagen: "Chocolate-shot.jpg" },
-      { nombre: 'TABLETA MILKA 67,5G', precio: 4568, imagen: "Chocolate-milka.jpg" },
-      { nombre: 'CHICLES BELDENT 10G', precio: 777, imagen: "Chicle-Beldent.jpg" },
-      { nombre: 'ALFAJOR TRIPLE OREO 56G', precio: 1747, imagen: "Alfajor-oreo.jpg" },
-      { nombre: 'ALFAJOR TRIPLE SHOT 60GR', precio: 2282, imagen: "Alfajor-shot.jpg" },
-      { nombre: 'CHOCOLATE COFLER BLOCK CON MANÍ 110GR', precio: 6297, imagen: "Chocolate-block.jpg" },
-      { nombre: 'CARAMELOS SUGUS CONFITADOS 50GR', precio: 1783, imagen: "Confitados-sugus.jpg" },
-      { nombre: 'CHOCOLATE DOS CORAZONES 26GR', precio: 2172, imagen: "Dos-corazones.jpg" },
-      { nombre: 'SALADIX 40GR', precio: 904, imagen: "Saladix.jpg" },
-      { nombre: 'BAGLEY REX', precio: 1497, imagen: "Bagley-rex.jpg" },
-      { nombre: 'JUGO EN POLVO CLIGHT 7,5G', precio: 383, imagen: "Jugo-clight.jpg" },
-      { nombre: 'JUGO EN POLVO TANG 15G', precio: 369, imagen: "Jugo-tang.jpg" },
-      { nombre: 'BARRITA CEREAL MIX 23G', precio: 1173, imagen: "Cereal-mix.jpg" },
-      { nombre: 'FANTOCHE TRIPLE BLANCO 85 GR', precio: 1647, imagen: "alfajor-triple.jpg" },
-      { nombre: 'FANTOCHE TRIPLE NEGRO 85 GR ', precio: 1647, imagen: "alfa-triple-fanto.jpg" },
-      { nombre: 'CARAMELOS HALLS MENTA ', precio: 753, imagen: "halls-variedad.jpg" },
-      { nombre: 'CARAMELOS HALLS MENTHOL', precio: 753, imagen: "halls-variedad.jpg" },
-      { nombre: 'PASTILLAS DRF 23 GR FRUTUS ROJAS/CITRICOS ', precio: 604, imagen: "pastillas-drf.jpg" },
-      { nombre: 'GOMITAS LA CASA GONGYS FRUTILLA X 200 GR ', precio: 3739, imagen: "Gomitas.jpg" },
-      { nombre: 'TABLETA TOBLERONE 100 GR LECHE ', precio: 10622, imagen: "Toblerone.jpg" },
-      { nombre: 'MANTECOL LINGOTE X 500 GR ', precio: 15834, imagen: "Mantecol.jpg" }
-
-]},
-  
-      { nombre: "LIMPIEZA", productos: [
-        { nombre: "Ala liq. Ecolavado DP x 800 ml", precio: 3538, imagen: "ala-liquido.jpg" },
-        { nombre: "Suavizante Vivere Esc Prot Clásico x 900 ml", precio: 3624, imagen: "suavizante-vivere.jpg" },
-        { nombre: "Lavandina Ayudín triple poder 2 Lts", precio: 3516, imagen: "Lavandina-ayudin.jpg" },
-        { nombre: "Cif detergente Bioactive Lima x 500ml", precio: 3822, imagen: "cif-deterg-500-lima.jpg" },
-        { nombre: "Cif detergente Bioactive Limón x 300ml", precio: 2198, imagen: "cif-deterg-300-limon.jpg" },
-        { nombre: "Granby Liquido Limón x 800ml", precio: 2547, imagen: "granby-liq-limon.jpg" },
-        { nombre: "Jabón en pan Ala ecolavado 2x200gr", precio: 3143, imagen: "jabón-ala-x2.jpg" },
-        { nombre: "Papel higiénico Felpita 4x30 h/simple", precio: 2026, imagen: "felpita.jpg" }
-      ]},
-
-      { nombre: "HIGIENE PERSONAL", productos: [
-        { nombre: "Shampoo Sedal bomba Argán x 190 ml", precio: 3120, imagen: "shampoo-sedal-bomba-argan.jpg" },
-        { nombre: "Shampoo Sedal probióticos x 190 ml", precio: 3120, imagen: "shampoo-sedal-pro.jpg" },
-        { nombre: "Shampoo Sedal colageno x 190 ml", precio: 3120, imagen: "shampoo-sedal-colageno.jpg" },
-        { nombre: "Shampoo Sedal ceramidas x 190 ml", precio: 3120, imagen: "shampoo-sedal-ceramidas.jpg" },
-        { nombre: "Acondicionador Sedal liso x 190 ml", precio: 3120, imagen: "Acondicionador-sedal-liso.jpg" },
-        { nombre: "Acondicionador Sedal rizos x 190 ml", precio: 3120, imagen: "Acondicionador-sedal-rizos.jpg" },
-        { nombre: "Pasta de dientes Colgate x 70 grs", precio: 2635, imagen: "pasta-dental-colgate.jpg" },
-        { nombre: "Cepillo dental Colgate", precio: 1334, imagen: "cepíllo-colg-medio.jpg" },
-        { nombre: "Jabón de tocador Plusbelle x 120 grs", precio: 1023, imagen: "jabon-tocador-plusbelle.jpg" }
-      ]}
-];
-/* === CATALOGO-FIN — no borres esta línea === */
+/* === CATALOGO ===
+   Los precios se cargan desde Administración (admin.html), que publica catalogo.json.
+   Esta lista de abajo es solo un respaldo, por si catalogo.json no se pudiera leer. */
+const LP_CATALOGO_RESPALDO = [{"categoria": "Panadería", "producto": "Facturas con crema", "precio": 2584, "unidad": "x 3 un.", "descripcion": "", "foto": "facturas-crema.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Facturas con crema y membrillo", "precio": 3058, "unidad": "x 3 un.", "descripcion": "", "foto": "facturas-crema-membrillo.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Facturas con crema y dulce de leche", "precio": 3058, "unidad": "x 3 un.", "descripcion": "", "foto": "facturas-crema-ddl.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Medialunas con dulce de leche", "precio": 2867, "unidad": "x 3 un.", "descripcion": "", "foto": "medialuna-ddl.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Medialunas dulces", "precio": 2166, "unidad": "x 3 un.", "descripcion": "", "foto": "medialuna-dulce.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Vigilantes de batata", "precio": 2931, "unidad": "x 3 un.", "descripcion": "", "foto": "galleta-comun.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Vigilantes de membrillo", "precio": 3058, "unidad": "x 3 un.", "descripcion": "", "foto": "vigilantes-membrillo.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Bollitos con crema", "precio": 2421, "unidad": "x 3 un.", "descripcion": "", "foto": "bollitos-crema.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Bollitos con dulce de leche", "precio": 2294, "unidad": "x 3 un.", "descripcion": "", "foto": "bollitos-ddl.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Empanaditas de dulce de leche", "precio": 1911, "unidad": "x 3 un.", "descripcion": "", "foto": "empanaditas-ddl.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Pirulines", "precio": 2548, "unidad": "x 3 un.", "descripcion": "", "foto": "pirulines.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Borrachitos", "precio": 2294, "unidad": "x 3 un.", "descripcion": "", "foto": "borrachitos.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Medialunas marplatenses", "precio": 2155, "unidad": "x 3 un.", "descripcion": "", "foto": "medialunas-marplatenses.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Especiales", "precio": 2765, "unidad": "250 grs.", "descripcion": "", "foto": "especiales.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Pan frances", "precio": 866, "unidad": "250 grs.", "descripcion": "", "foto": "pan-frances.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Galleta de campo", "precio": 983, "unidad": "250 grs.", "descripcion": "", "foto": "galleta-comun.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Galleta hojaldrada", "precio": 1191, "unidad": "250 grs.", "descripcion": "", "foto": "galleta-hojaldrada.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Suizos", "precio": 3884, "unidad": "250 grs.", "descripcion": "", "foto": "suizos.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Medialunas saladas grandes", "precio": 3840, "unidad": "x 3 un.", "descripcion": "", "foto": "medialuna-salada-grande.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Medialunas saladas chicas", "precio": 4709, "unidad": "250 grs.", "descripcion": "", "foto": "medialuna-salada-chica.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Croissant", "precio": 2746, "unidad": "x un.", "descripcion": "", "foto": "Croissant.jpg", "activo": "SI"}, {"categoria": "Panadería", "producto": "Pan Rondín", "precio": 873, "unidad": "250 grs.", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Cheese cake individual", "precio": 7091, "unidad": "unidad", "descripcion": "", "foto": "cheesecake-individual.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Torta mini bombon", "precio": 1353, "unidad": "unidad", "descripcion": "", "foto": "torta-mini-bombon.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Torta mini lemon pie", "precio": 1353, "unidad": "unidad", "descripcion": "", "foto": "torta-mini-lemonpie.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Torta mini frutal", "precio": 1729, "unidad": "unidad", "descripcion": "", "foto": "torta-mini-frutal.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Lingote de durazno", "precio": 2327, "unidad": "unidad", "descripcion": "", "foto": "lingote-durazno.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Lingote de frutilla", "precio": 2327, "unidad": "unidad", "descripcion": "", "foto": "lingote-frutilla.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Red Velvet individual", "precio": 2327, "unidad": "unidad", "descripcion": "", "foto": "red-velvet.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Tiramisú individual", "precio": 7091, "unidad": "unidad", "descripcion": "", "foto": "tiramisu-individual.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Masas finas", "precio": 8278, "unidad": "x 7 un.", "descripcion": "", "foto": "masas-finas.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Alfajores de maicena grandes", "precio": 2478, "unidad": "x 2 un.", "descripcion": "", "foto": "alfajor-maicena-grande.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Alfajores de maicena medianos", "precio": 2478, "unidad": "x 3 un.", "descripcion": "", "foto": "alfa-maicena-med.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Alfajores de maicena mini", "precio": 2478, "unidad": "x 5 un.", "descripcion": "", "foto": "alfajor-maicena-grande.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Alfajores de chocolate grande", "precio": 2435, "unidad": "x 2 un.", "descripcion": "", "foto": "alfajor-choco-gr.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Alfajores de chocolate mediano", "precio": 2435, "unidad": "x 3 un.", "descripcion": "", "foto": "alfajor-choco-med.jpg", "activo": "SI"}, {"categoria": "Pastelería", "producto": "Alfajores de chocolate mini", "precio": 2435, "unidad": "x 5 un.", "descripcion": "", "foto": "alfajor-choco-mini.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Torrejas de arroz", "precio": 2205, "unidad": "x 3 unidades", "descripcion": "", "foto": "torrejas-arroz.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Torrejas de acelga", "precio": 2205, "unidad": "x 3 unidades", "descripcion": "", "foto": "torrejas-acelga.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Bandeja de sandwich de miga simple", "precio": 15034, "unidad": "bandeja x 12 un.", "descripcion": "", "foto": "Sandwich-simples.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Bandeja de sandwich de miga triples", "precio": 15902, "unidad": "bandeja x 6 un.", "descripcion": "", "foto": "miga-triple.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Tarta de pollo", "precio": 5310, "unidad": "porción", "descripcion": "", "foto": "tarta-pollo.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Tortilla de acelga", "precio": 5692, "unidad": "porción", "descripcion": "", "foto": "tortilla-acelga.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Tortilla de verduras", "precio": 4863, "unidad": "porción", "descripcion": "", "foto": "Tortilla-verduras.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Terrina acelga", "precio": 4252, "unidad": "porción", "descripcion": "", "foto": "terrina.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Terrina verdura", "precio": 4252, "unidad": "porción", "descripcion": "", "foto": "terrina-verduras.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Papas fritas", "precio": 3033, "unidad": "porción", "descripcion": "", "foto": "papas-fritas.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Patamuslo", "precio": 16215, "unidad": "por 2 un.", "descripcion": "", "foto": "patamuslo.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Sandwich milanesa de pollo", "precio": 6928, "unidad": "por un.", "descripcion": "", "foto": "sandwich-milanesa-pollo.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Sandwich milanesa de carne simple", "precio": 10046, "unidad": "por un.", "descripcion": "", "foto": "sandwich-mila-carne.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Sandwich milanesa de carne completo", "precio": 11843, "unidad": "x un.", "descripcion": "", "foto": "sandwich-mila-carne-completo.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Pebete de jamon y queso", "precio": 3735, "unidad": "x un.", "descripcion": "", "foto": "Pebete.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas de choclo", "precio": 7219, "unidad": "x 3 un.", "descripcion": "", "foto": "empanada-choclo.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanada de jamon y queso", "precio": 5705, "unidad": "x 3 un.", "descripcion": "", "foto": "empanada-jyq.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas calabresa", "precio": 4903, "unidad": "x 3 un.", "descripcion": "", "foto": "empanada-calabresa.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas de verdura", "precio": 5007, "unidad": "x 3 un.", "descripcion": "", "foto": "empanada-verdura.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas carne dulce", "precio": 6243, "unidad": "x 3 un.", "descripcion": "", "foto": "empanada-carne-dulce.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas carne salada", "precio": 6049, "unidad": "x 3 un.", "descripcion": "", "foto": "Empanadas-carne-salada.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas de pollo", "precio": 5792, "unidad": "x 3 un.", "descripcion": "", "foto": "Empanadas-carne-salada.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Empanadas árabes", "precio": 6950, "unidad": "x 3 un", "descripcion": "", "foto": "empanada-pirok.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Milanesas de carne", "precio": 13835, "unidad": "x 3 un.", "descripcion": "", "foto": "Milanesa-carne.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Hamburguesa LP con papas", "precio": 8885, "unidad": "por unidad", "descripcion": "Pan de papa, carne simple, lechuga, tomate, queso cheddar, bacon, cebolla morada o blanca", "foto": "Hamburguesa LP.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Hamburguesa cheddar con papas", "precio": 9901, "unidad": "por unidad", "descripcion": "Pan de papa, doble carne, cheddar, panceta y cebolla", "foto": "Hamburguesa cheddar.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Milanesas de pollo", "precio": 10253, "unidad": "x 3 un.", "descripcion": "", "foto": "milanesa-pollo.jpg", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Tortilla de papas", "precio": 6383, "unidad": "porción", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Rotisería", "producto": "Terrina", "precio": 4367, "unidad": "porción", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "Café con leche grande + 2 medialunas marplatenses", "precio": 6000, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "Café con leche grande + 2 medialunas saladas", "precio": 5800, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "2 Cafés con leche grandes + 4 medialunas saladas", "precio": 8400, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "2 Cafés con leche grandes + 4 medialunas dulces", "precio": 8800, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "Café con leche grande + 2 alfajores de maicena", "precio": 1600, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "Café con leche grande + Croissant", "precio": 6500, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "Café con leche grande + 2 facturas", "precio": 4400, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Cafetería", "producto": "Café con leche grande + 2 alfajores de chocolate", "precio": 6000, "unidad": "Combo", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Picada de fiambres y quesos surtidos LP", "precio": 21890, "unidad": "por bandeja", "descripcion": "", "foto": "Picada-fiambres-surtidos.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Picada de quesos surtidos LP", "precio": 21798, "unidad": "por bandeja", "descripcion": "", "foto": "picada-quesos.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Picada Lario", "precio": 17679, "unidad": "por bandeja", "descripcion": "", "foto": "Picada-Lario.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Picada Paladini", "precio": 17703, "unidad": "por bandeja", "descripcion": "", "foto": "Picada Paladini.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Queso cremoso María Luisa", "precio": 4875, "unidad": "x 500 grs", "descripcion": "", "foto": "queso-cremoso.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Queso barra María Luisa", "precio": 6150, "unidad": "x 500 grs", "descripcion": "", "foto": "queso-barra.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Jamón cocido Lario feteado", "precio": 8950, "unidad": "x 500 grs", "descripcion": "", "foto": "jamón-cocido-Lario.jpg", "activo": "SI"}, {"categoria": "Fiambrería", "producto": "Mortadela Paladini", "precio": 5103, "unidad": "x 300 grs", "descripcion": "", "foto": "mortadela-Paladini.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Milanesas de carne", "precio": 20998, "unidad": "por kg", "descripcion": "", "foto": "milanesas-carne.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Milanesas de pollo", "precio": 14400, "unidad": "por kg", "descripcion": "", "foto": "milanesas-pollo.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Hamburguesa de carne", "precio": 19900, "unidad": "por kg", "descripcion": "", "foto": "hamburguesas-carne-comun.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Filet de pechuga", "precio": 13333, "unidad": "por kg", "descripcion": "", "foto": "filet-pechuga.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Costeletas de cerdo", "precio": 9887, "unidad": "por kg", "descripcion": "", "foto": "costeletas-cerdo.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Carne picada común", "precio": 15900, "unidad": "por kg", "descripcion": "", "foto": "carne-picada-comun.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Carne picada especial", "precio": 22600, "unidad": "por kg", "descripcion": "", "foto": "Carne-picada-especial.jpg", "activo": "SI"}, {"categoria": "Carnicería", "producto": "Hamburguesas carne especial", "precio": 26498, "unidad": "por kg", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Verdulería", "producto": "Paquete acelga", "precio": 4204, "unidad": "", "descripcion": "", "foto": "acelga.jpg", "activo": "SI"}, {"categoria": "Verdulería", "producto": "Cebolla", "precio": 1500, "unidad": "x 1kg", "descripcion": "", "foto": "cebolla.jpg", "activo": "SI"}, {"categoria": "Verdulería", "producto": "Tomate", "precio": 4726, "unidad": "por kg", "descripcion": "", "foto": "tomate-redondo.jpg", "activo": "SI"}, {"categoria": "Verdulería", "producto": "limón", "precio": 2025, "unidad": "x 1kg", "descripcion": "", "foto": "limón.jpg", "activo": "SI"}, {"categoria": "Verdulería", "producto": "Bananas", "precio": 3542, "unidad": "por kg", "descripcion": "", "foto": "banana-ecuador.jpg", "activo": "SI"}, {"categoria": "Verdulería", "producto": "Zanahorias", "precio": 2626, "unidad": "por kg", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Verdulería", "producto": "Manzanas rojas", "precio": 6400, "unidad": "por kg", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Almacén", "producto": "Paté de foie Molto", "precio": 957, "unidad": "por unidad", "descripcion": "", "foto": "pate-foie-molto.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Puré de tomate Arcor", "precio": 1377, "unidad": "x 520 grs", "descripcion": "", "foto": "pure-tomate-Arcor.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Arroz Gallo oro", "precio": 2965, "unidad": "x 1 Kg", "descripcion": "", "foto": "arroz-gallo-oro.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Fideos tallarin Matarazo", "precio": 2137, "unidad": "x 500 grs", "descripcion": "", "foto": "tallarin-matarazzo.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Galletitas Surtido Bagley", "precio": 3942, "unidad": "x un.", "descripcion": "", "foto": "surtido-bagley.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Yerba Sinceridad", "precio": 4334, "unidad": "x 1 Kg", "descripcion": "", "foto": "yerba-sinceridad.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Aceite Natura 900 ml", "precio": 5606, "unidad": "900 ml", "descripcion": "", "foto": "aceite-natura.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Azúcar Ledesma", "precio": 1980, "unidad": "x 1 Kg", "descripcion": "", "foto": "azucar-ledesma.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Celusal fina 500 grs", "precio": 1480, "unidad": "x 500 grs", "descripcion": "", "foto": "celusal-fina.jpg", "activo": "SI"}, {"categoria": "Almacén", "producto": "Jabón liquido p-diluir ALA ropa", "precio": 1710, "unidad": "x 150 ml", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Coca-Cola 1.5L", "precio": 4786, "unidad": "por botella", "descripcion": "", "foto": "coca-cola-15.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Coca-Cola 2.5L", "precio": 6000, "unidad": "por botella", "descripcion": "", "foto": "coca-cola-25.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Agua mineral Villa del sur levité 1.5L", "precio": 2133, "unidad": "", "descripcion": "", "foto": "levite-nar.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Pritty limon 2.25L", "precio": 2225, "unidad": "por botella", "descripcion": "", "foto": "pritty.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Vino Otro loco mas", "precio": 4957, "unidad": "por botella", "descripcion": "", "foto": "otro-loco-mas.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Vino Finjamos demencia", "precio": 5577, "unidad": "por botella", "descripcion": "", "foto": "Finjamos-demencia.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Pepsi 3L", "precio": 3300, "unidad": "por botella", "descripcion": "", "foto": "pepsi-3.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Vino Santa Julia chenin dulce", "precio": 9223, "unidad": "por botella", "descripcion": "", "foto": "santa-julia-chenin.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Vino Hormiga negra", "precio": 3263, "unidad": "por botella", "descripcion": "", "foto": "hormiga-negra.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Cerveza lata Quilmes 473cc", "precio": 2275, "unidad": "por lata", "descripcion": "", "foto": "lata-quilmes.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Cerveza lata Budweiser 473cc", "precio": 2120, "unidad": "por lata", "descripcion": "", "foto": "cerveza-lata-budweiser.png", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Cerveza botella Corona 330cc", "precio": 3910, "unidad": "", "descripcion": "", "foto": "cerveza-corona.jpg", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Agua saborizada Levité x1.5L", "precio": 2958, "unidad": "por botella", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Bebidas", "producto": "Cerveza Corona 330cc SIN ALCOHOL", "precio": 3153, "unidad": "por botella", "descripcion": "", "foto": "", "activo": "SI"}, {"categoria": "Kiosco", "producto": "GALLETITA TITA 18G", "precio": 1182, "unidad": "", "descripcion": "", "foto": "Tita.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "OBLEA  RHODESIA CLÁSICA 22G", "precio": 1105, "unidad": "", "descripcion": "", "foto": "Rhodesia.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "TURRON Y MANÍ ARCOR 25G", "precio": 354, "unidad": "", "descripcion": "", "foto": "Turron.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "BILLIKEN CORAZÓN BOMBÓN FRUTAL  200GR", "precio": 4564, "unidad": "", "descripcion": "", "foto": "billiken-corazon-C.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CARAMELOS ROLLO GOMA MOGUL 12G", "precio": 832, "unidad": "", "descripcion": "", "foto": "Gomitas.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "MANTECOL 41G", "precio": 1524, "unidad": "", "descripcion": "", "foto": "Mantecol.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "TABLETA TOBLERONE 100G", "precio": 10622, "unidad": "", "descripcion": "", "foto": "Toblerone.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CHOCOLATE SHOT CON MANÍ 90G", "precio": 5341, "unidad": "", "descripcion": "", "foto": "Chocolate-shot.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "TABLETA MILKA 67,5G", "precio": 4568, "unidad": "", "descripcion": "", "foto": "Chocolate-milka.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CHICLES BELDENT 10G", "precio": 777, "unidad": "", "descripcion": "", "foto": "Chicle-Beldent.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "ALFAJOR TRIPLE OREO 56G", "precio": 1747, "unidad": "", "descripcion": "", "foto": "Alfajor-oreo.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "ALFAJOR TRIPLE SHOT 60GR", "precio": 2282, "unidad": "", "descripcion": "", "foto": "Alfajor-shot.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CHOCOLATE COFLER BLOCK CON MANÍ 110GR", "precio": 6297, "unidad": "", "descripcion": "", "foto": "Chocolate-block.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CARAMELOS SUGUS CONFITADOS 50GR", "precio": 1783, "unidad": "", "descripcion": "", "foto": "Confitados-sugus.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CHOCOLATE DOS CORAZONES 26GR", "precio": 2172, "unidad": "", "descripcion": "", "foto": "Dos-corazones.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "SALADIX 40GR", "precio": 904, "unidad": "", "descripcion": "", "foto": "Saladix.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "BAGLEY REX", "precio": 1497, "unidad": "", "descripcion": "", "foto": "Bagley-rex.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "JUGO EN POLVO CLIGHT 7,5G", "precio": 383, "unidad": "", "descripcion": "", "foto": "Jugo-clight.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "JUGO EN POLVO TANG 15G", "precio": 369, "unidad": "", "descripcion": "", "foto": "Jugo-tang.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "BARRITA CEREAL MIX 23G", "precio": 1173, "unidad": "", "descripcion": "", "foto": "Cereal-mix.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "FANTOCHE TRIPLE BLANCO 85 GR", "precio": 1647, "unidad": "", "descripcion": "", "foto": "alfajor-triple.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "FANTOCHE TRIPLE NEGRO 85 GR ", "precio": 1647, "unidad": "", "descripcion": "", "foto": "alfa-triple-fanto.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CARAMELOS HALLS MENTA ", "precio": 753, "unidad": "", "descripcion": "", "foto": "halls-variedad.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "CARAMELOS HALLS MENTHOL", "precio": 753, "unidad": "", "descripcion": "", "foto": "halls-variedad.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "PASTILLAS DRF 23 GR FRUTUS ROJAS/CITRICOS ", "precio": 604, "unidad": "", "descripcion": "", "foto": "pastillas-drf.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "GOMITAS LA CASA GONGYS FRUTILLA", "precio": 3739, "unidad": "X 200 GR", "descripcion": "", "foto": "Gomitas.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "TABLETA TOBLERONE 100 GR LECHE ", "precio": 10622, "unidad": "", "descripcion": "", "foto": "Toblerone.jpg", "activo": "SI"}, {"categoria": "Kiosco", "producto": "MANTECOL LINGOTE", "precio": 15834, "unidad": "X 500 GR", "descripcion": "", "foto": "Mantecol.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Ala liq. Ecolavado DP x 800 ml", "precio": 3538, "unidad": "", "descripcion": "", "foto": "ala-liquido.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Suavizante Vivere Esc Prot Clásico x 900 ml", "precio": 3624, "unidad": "x 900 ml", "descripcion": "", "foto": "suavizante-vivere.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Lavandina Ayudín triple poder 2 Lts", "precio": 3516, "unidad": "", "descripcion": "", "foto": "Lavandina-ayudin.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Cif detergente Bioactive Lima x 500ml", "precio": 3822, "unidad": "", "descripcion": "", "foto": "cif-deterg-500-lima.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Cif detergente Bioactive Limón x 300ml", "precio": 2198, "unidad": "", "descripcion": "", "foto": "cif-deterg-300-limon.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Granby Liquido Limón x 800ml", "precio": 2547, "unidad": "", "descripcion": "", "foto": "granby-liq-limon.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Jabón en pan Ala ecolavado 2x200gr", "precio": 3143, "unidad": "", "descripcion": "", "foto": "jabón-ala-x2.jpg", "activo": "SI"}, {"categoria": "Limpieza", "producto": "Papel higiénico Felpita 4x30 h/simple", "precio": 2026, "unidad": "x un.", "descripcion": "", "foto": "felpita.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Shampoo Sedal bomba Argán x 190 ml", "precio": 3120, "unidad": "", "descripcion": "", "foto": "shampoo-sedal-bomba-argan.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Shampoo Sedal probióticos x 190 ml", "precio": 3120, "unidad": "", "descripcion": "", "foto": "shampoo-sedal-pro.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Shampoo Sedal colageno x 190 ml", "precio": 3120, "unidad": "", "descripcion": "", "foto": "shampoo-sedal-colageno.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Shampoo Sedal ceramidas x 190 ml", "precio": 3120, "unidad": "", "descripcion": "", "foto": "shampoo-sedal-ceramidas.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Acondicionador Sedal liso x 190 ml", "precio": 3120, "unidad": "", "descripcion": "", "foto": "Acondicionador-sedal-liso.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Acondicionador Sedal rizos x 190 ml", "precio": 3120, "unidad": "", "descripcion": "", "foto": "Acondicionador-sedal-rizos.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Pasta de dientes Colgate", "precio": 2635, "unidad": "x 70 gr", "descripcion": "", "foto": "pasta-dental-colgate.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Cepillo dental Colgate", "precio": 1334, "unidad": "", "descripcion": "", "foto": "cepíllo-colg-medio.jpg", "activo": "SI"}, {"categoria": "Higiene personal", "producto": "Jabón de tocador Plusbelle", "precio": 1023, "unidad": "x 120 gr", "descripcion": "", "foto": "jabon-tocador-plusbelle.jpg", "activo": "SI"}];
+const LP_FECHA_RESPALDO = "14/8/2026";
+window.LP_FECHA_ACTUAL = LP_FECHA_RESPALDO;
+function LP_AGRUPAR(lista){
+  const limpio = (t) => String(t == null ? '' : t).replace(/[<>"`]/g, '').trim();
+  const orden = [], grupos = {};
+  (Array.isArray(lista) ? lista : []).forEach((p) => {
+    if (!p || typeof p !== 'object') return;
+    const c = limpio(p.categoria).toUpperCase(), nombre = limpio(p.producto);
+    if (!c || !nombre) return;
+    if (!grupos[c]) { grupos[c] = []; orden.push(c); }
+    const foto = limpio(p.foto);
+    grupos[c].push({
+      nombre, precio: Number(p.precio) || 0, unidad: limpio(p.unidad), descripcion: limpio(p.descripcion),
+      imagen: foto ? 'fotos/' + encodeURIComponent(foto) : '',
+      respaldo: foto ? encodeURIComponent(foto) : '',
+      sinStock: String(p.activo).toUpperCase() !== 'SI' || !(Number(p.precio) > 0)
+    });
+  });
+  return orden.map((n) => ({ nombre: n, productos: grupos[n] }));
+}
+let secciones = LP_AGRUPAR(LP_CATALOGO_RESPALDO);
 
 /* ============================================================
    3) LÓGICA — de acá para abajo no hace falta tocar nada
@@ -838,7 +681,9 @@ const secciones = [
     normalizar(seccion).replace(/\s/g, '-') + '--' + normalizar(nombre).replace(/\s/g, '-');
 
   /* ---------- Índice plano de productos ---------- */
-  const catalogo = [];
+  let catalogo = [], porId = {}, nombresSeccion = [];
+  function indexar(){
+  catalogo = [];
   secciones.forEach((sec) => {
     sec.productos.forEach((p) => {
       if (p.sinStock) return;
@@ -849,14 +694,18 @@ const secciones = [
         precio: p.precio,
         unidad: p.unidad || '',
         imagen: p.imagen || '',
-        busqueda: normalizar(sec.nombre + ' ' + p.nombre)
+        respaldo: p.respaldo || '',
+        descripcion: p.descripcion || '',
+        busqueda: normalizar(sec.nombre + ' ' + p.nombre + ' ' + (p.descripcion || ''))
       });
     });
   });
-  const porId = Object.fromEntries(catalogo.map((p) => [p.id, p]));
-  const nombresSeccion = secciones.map((s) => s.nombre).filter(
+  porId = Object.fromEntries(catalogo.map((p) => [p.id, p]));
+  nombresSeccion = secciones.map((s) => s.nombre).filter(
     (n) => catalogo.some((p) => p.seccion === n)
   );
+  }
+  indexar();
 
   /* ---------- Estado ---------- */
   let pedido = cargarPedido();   // { id: cantidad }
@@ -924,11 +773,12 @@ const secciones = [
 
     return `<article class="producto${cant > 0 ? ' en-carrito' : ''}" id="p-${p.id}">
       <div class="producto-foto">
-        <img src="${p.imagen || IMG_VACIA}" alt="${p.nombre}" loading="lazy" decoding="async" width="200" height="200">
+        <img src="${p.imagen || IMG_VACIA}"${p.respaldo ? ` data-respaldo="${p.respaldo}"` : ''} alt="${p.nombre}" loading="lazy" decoding="async" width="200" height="200">
         <span class="etiqueta">${pesos(p.precio)}${p.unidad ? ` <small>${p.unidad}</small>` : ''}</span>
       </div>
       <div class="producto-cuerpo">
         <h3 class="producto-nombre">${p.nombre}</h3>
+        ${p.descripcion ? `<p class="producto-desc">${p.descripcion}</p>` : ''}
         ${control}
       </div>
     </article>`;
@@ -1348,6 +1198,22 @@ const secciones = [
   window.addEventListener('resize', medirBarra);
 
   /* ---------- Arranque ---------- */
+  function aplicarCatalogo(lista, fecha){
+    secciones = LP_AGRUPAR(lista);
+    indexar();
+    for (const id in pedido) if (!porId[id]) delete pedido[id];
+    guardarPedido();
+    if (seccionActiva !== 'TODO' && !nombresSeccion.includes(seccionActiva)) seccionActiva = 'TODO';
+    window.LP_FECHA_ACTUAL = fecha;
+    const f = $('#fechaPrecios'); if (f) f.textContent = 'Precios actualizados el ' + fecha;
+    const b = $('#inpBuscar'); if (b) b.placeholder = 'Buscar entre ' + catalogo.length + ' productos…';
+    pintarFichas(); pintarCatalogo(); refrescarIndicadores();
+    if ($('#fondoPanel').classList.contains('abierto')) pintarPedido();
+  }
+  fetch('catalogo.json?t=' + Date.now(), { cache: 'no-store' })
+    .then((r) => r.ok ? r.json() : null)
+    .then((d) => { if (d && Array.isArray(d.lista) && d.lista.length) aplicarCatalogo(d.lista, String(d.fecha || '')); })
+    .catch(() => {});
   $('#waPie').href = 'https://wa.me/' + CONFIG.whatsapp;
   $('#inpBuscar').placeholder = 'Buscar entre ' + catalogo.length + ' productos…';
   pintarFichas();
