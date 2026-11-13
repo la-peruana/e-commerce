@@ -70,15 +70,29 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     <a href="./">Ver la tienda →</a>
   </div>
 
-  <!-- PASO 1: CLAVE -->
-  <div class="caja" id="cajaClave">
-    <h2><span class="n">1</span>Clave de publicación</h2>
-    <p class="sub">Se pide una sola vez en cada computadora. Después queda guardada y entrás directo.</p>
+  <!-- PASO 1: CLAVE (se pide cada vez) -->
+  <div class="caja" id="cajaClave" hidden>
+    <h2><span class="n">🔒</span>Ingresá la clave</h2>
     <form class="fila" id="formClave">
-      <input type="password" id="inpClave" placeholder="Pegá la clave acá" autocomplete="off" aria-label="Clave de publicación">
+      <input type="password" id="inpClave" placeholder="Clave de Administración" autocomplete="off" aria-label="Clave de Administración">
       <button class="btn" type="submit">Entrar</button>
     </form>
     <p class="error" id="errClave" hidden></p>
+  </div>
+
+  <!-- CONFIGURAR ESTA PC (una sola vez) -->
+  <div class="caja" id="cajaConfig" hidden>
+    <h2><span class="n">⚙</span>Configurar esta computadora</h2>
+    <p class="sub">Se hace una sola vez en cada computadora. Después, cada vez que entres a Administración, solo se pide la clave que elijas acá.</p>
+    <form id="formConfig">
+      <p class="pista" style="margin:0 0 .3rem"><b>1.</b> Clave de GitHub (empieza con <code>github_pat_</code>)</p>
+      <div class="fila"><input type="password" id="inpToken" autocomplete="off" placeholder="github_pat_..." aria-label="Clave de GitHub"></div>
+      <p class="pista" style="margin:.9rem 0 .3rem"><b>2.</b> Elegí la clave de Administración (mínimo 6 caracteres)</p>
+      <div class="fila"><input type="password" id="inpNueva" autocomplete="new-password" placeholder="Clave de Administración" aria-label="Clave de Administración nueva"></div>
+      <div class="fila" style="margin-top:.5rem"><input type="password" id="inpRepite" autocomplete="new-password" placeholder="Repetí la clave" aria-label="Repetir clave"></div>
+      <div class="fila" style="margin-top:.9rem"><button class="btn" type="submit">Guardar y entrar</button></div>
+    </form>
+    <p class="error" id="errConfig" hidden></p>
   </div>
 
   <div id="zona" hidden>
@@ -128,7 +142,10 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       </div>
     </div>
 
-    <p class="pista" style="text-align:right"><a href="#" id="btnSalir" style="color:var(--gris)">Olvidar la clave en esta computadora</a></p>
+    <div class="fila" style="justify-content:space-between">
+      <button class="btn sec" type="button" id="btnCerrar">🔒 Salir</button>
+      <a href="#" id="btnOlvidar" style="color:var(--gris);font-size:.82rem">Borrar la configuración de esta computadora</a>
+    </div>
   </div>
 </main>
 
@@ -148,8 +165,9 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
   const mostrar = (sel, txt) => { const el = $(sel); if (txt !== undefined) el.textContent = txt; el.hidden = false; };
   const ocultar = (sel) => { $(sel).hidden = true; };
 
-  let token = '';
-  try { token = localStorage.getItem('lp_admin_clave') || ''; } catch(e){}
+  let token = '';                       // solo en memoria: al cerrar la ventana se pierde
+  const COFRE = 'lp_admin_cofre';
+  try { localStorage.removeItem('lp_admin_clave'); } catch(e){}   // versión anterior
   let actual = null;      // { lista, fecha, sha }
   let propuesta = null;
 
@@ -171,27 +189,70 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     actual = { lista: datos.lista || [], fecha: datos.fecha || '', sha: j.sha };
   }
 
-  // ---------- Paso 1: clave ----------
-  async function entrar(){
-    ocultar('#errClave');
-    try {
-      const r = await gh('');
-      if (r.status === 401) throw new Error('La clave no es válida o venció.');
-      if (!r.ok) throw new Error('No se pudo verificar la clave (' + r.status + ').');
-      const j = await r.json();
-      if (!j.permissions || !j.permissions.push) throw new Error('Esta clave no tiene permiso para publicar.');
-      await cargarActual();
-      try { localStorage.setItem('lp_admin_clave', token); } catch(e){}
-      ocultar('#cajaClave'); $('#zona').hidden = false;
-    } catch (e) {
-      try { localStorage.removeItem('lp_admin_clave'); } catch(_){}
-      mostrar('#errClave', e.message || 'No se pudo entrar.');
-      $('#cajaClave').hidden = false; $('#zona').hidden = true;
-    }
+  // ---------- Paso 1: clave (se pide cada vez) ----------
+  // La clave de GitHub se guarda cifrada con la clave de Administración (nunca a la vista).
+  const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
+  const deB64 = (t) => Uint8Array.from(atob(t), (c) => c.charCodeAt(0));
+  async function llave(clave, sal){
+    const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(clave), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: sal, iterations: 250000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt','decrypt']);
   }
-  $('#formClave').addEventListener('submit', (e) => { e.preventDefault(); token = $('#inpClave').value.trim(); if (token) entrar(); });
-  $('#btnSalir').addEventListener('click', (e) => { e.preventDefault(); try { localStorage.removeItem('lp_admin_clave'); } catch(_){} location.reload(); });
-  if (token) entrar();
+  async function guardarCofre(clave, secreto){
+    const sal = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+    const datos = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await llave(clave, sal), new TextEncoder().encode(secreto));
+    localStorage.setItem(COFRE, JSON.stringify({ sal: b64(sal), iv: b64(iv), datos: b64(datos) }));
+  }
+  async function abrirCofre(clave){
+    const c = JSON.parse(localStorage.getItem(COFRE));
+    const plano = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: deB64(c.iv) }, await llave(clave, deB64(c.sal)), deB64(c.datos));
+    return new TextDecoder().decode(plano);
+  }
+  let hayCofre = false;
+  try { hayCofre = !!localStorage.getItem(COFRE); } catch(e){}
+
+  async function verificar(){
+    const r = await gh('');
+    if (r.status === 401) throw new Error('La clave de GitHub no es válida o venció.');
+    if (!r.ok) throw new Error('No se pudo conectar con GitHub (' + r.status + ').');
+    const j = await r.json();
+    if (!j.permissions || !j.permissions.push) throw new Error('La clave de GitHub no tiene permiso para publicar.');
+    await cargarActual();
+  }
+  function adentro(){ ocultar('#cajaClave'); ocultar('#cajaConfig'); $('#zona').hidden = false; }
+
+  if (hayCofre) { $('#cajaClave').hidden = false; $('#inpClave').focus(); } else { $('#cajaConfig').hidden = false; }
+
+  $('#formClave').addEventListener('submit', async (e) => {
+    e.preventDefault(); ocultar('#errClave');
+    const clave = $('#inpClave').value;
+    if (!clave) return;
+    try { token = await abrirCofre(clave); }
+    catch (_) { $('#inpClave').value = ''; return mostrar('#errClave', 'Clave incorrecta.'); }
+    try { await verificar(); $('#inpClave').value = ''; adentro(); }
+    catch (err) { token = ''; mostrar('#errClave', err.message); }
+  });
+
+  $('#formConfig').addEventListener('submit', async (e) => {
+    e.preventDefault(); ocultar('#errConfig');
+    const t = $('#inpToken').value.trim(), n = $('#inpNueva').value, r2 = $('#inpRepite').value;
+    if (!t) return mostrar('#errConfig', 'Pegá la clave de GitHub.');
+    if (n.length < 6) return mostrar('#errConfig', 'La clave de Administración tiene que tener al menos 6 caracteres.');
+    if (n !== r2) return mostrar('#errConfig', 'Las dos claves de Administración no coinciden.');
+    token = t;
+    try { await verificar(); }
+    catch (err) { token = ''; return mostrar('#errConfig', err.message); }
+    try { await guardarCofre(n, t); } catch (_) { token = ''; return mostrar('#errConfig', 'Este navegador no permite guardar la configuración. Probá con otro navegador (no en modo incógnito).'); }
+    ['#inpToken','#inpNueva','#inpRepite'].forEach((s) => $(s).value = '');
+    adentro();
+  });
+
+  $('#btnCerrar').addEventListener('click', () => { token = ''; location.reload(); });
+  $('#btnOlvidar').addEventListener('click', (e) => {
+    e.preventDefault();
+    if ($('#btnOlvidar').dataset.ok !== '1') { $('#btnOlvidar').dataset.ok = '1'; $('#btnOlvidar').textContent = 'Tocá de nuevo para confirmar: hay que volver a configurar esta computadora'; return; }
+    try { localStorage.removeItem(COFRE); } catch(_){}
+    token = ''; location.reload();
+  });
 
   // ---------- Paso 2: Excel ----------
   const zona = $('#zonaSubir');
