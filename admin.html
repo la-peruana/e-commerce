@@ -99,9 +99,9 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     <!-- PASO 2: EXCEL -->
     <div class="caja">
       <h2><span class="n">2</span>Subí el Excel de precios</h2>
-      <p class="sub">Columnas: Categoría, Producto, Precio, Unidad, Descripción, Foto y Activo. Precio sin $ ni puntos. Activo: SI se muestra, NO se oculta.</p>
+      <p class="sub">Podés subir directamente el Excel del MK2 (toma solo la hoja <b>Web</b>), o un Excel con las columnas Categoría, Producto, Precio, Unidad, Descripción, Foto y Activo. Antes de subirlo, guardalo en Excel.</p>
       <label class="subir" id="zonaSubir">
-        <input type="file" id="inpExcel" accept=".xlsx,.xls,.csv">
+        <input type="file" id="inpExcel" accept=".xlsx,.xlsm,.xls,.csv">
         <strong>📄 Hacé clic acá para elegir el Excel</strong>
         <span>o arrastralo a este recuadro</span>
       </label>
@@ -271,8 +271,12 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       try {
         await cargarActual();
         const libro = XLSX.read(new Uint8Array(r.result), { type: 'array' });
-        const filas = XLSX.utils.sheet_to_json(libro.Sheets[libro.SheetNames[0]], { defval: '' });
-        analizar(filas, archivo.name);
+        // Usa la hoja "Web" si existe (Excel del MK2); si no, la primera hoja que tenga Categoría, Producto y Precio.
+        const tiene = (nom) => { const f = XLSX.utils.sheet_to_json(libro.Sheets[nom], { header: 1, range: 0 })[0] || []; const h = f.map(norm); return ['categoria','producto','precio'].every((k) => h.includes(k)); };
+        const hoja = libro.SheetNames.find((n) => norm(n) === 'web' && tiene(n)) || libro.SheetNames.find(tiene);
+        if (!hoja) return fallaExcel('No encontré una hoja con las columnas Categoría, Producto y Precio.');
+        const filas = XLSX.utils.sheet_to_json(libro.Sheets[hoja], { defval: '' });
+        analizar(filas, archivo.name + (libro.SheetNames.length > 1 ? ' (hoja "' + hoja + '")' : ''));
       } catch (err) { fallaExcel(err && err.message && err.message.indexOf('lista publicada') >= 0 ? err.message : 'No pudimos leer el archivo. ¿Es un Excel (.xlsx)?'); }
     };
     r.readAsArrayBuffer(archivo);
@@ -295,14 +299,17 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       if (!producto) { errores.push(`Fila ${fila}: falta el nombre del producto.`); return; }
       if (!categoria) errores.push(`Fila ${fila} (${producto}): falta la categoría.`);
       const crudo = f[mapa.precio];
-      const precio = typeof crudo === 'number' ? Math.round(crudo) : Number(String(crudo).replace(/[$\s.]/g,'').replace(',','.'));
-      if (!Number.isFinite(precio) || precio <= 0) errores.push(`Fila ${fila} (${producto}): el precio "${crudo}" no es un número válido.`);
+      let precio = typeof crudo === 'number' ? Math.round(crudo) : Number(String(crudo).replace(/[$\s.]/g,'').replace(',','.'));
       const activo = (val('activo').toUpperCase().replace('SÍ','SI')) || 'SI';
       if (activo !== 'SI' && activo !== 'NO') errores.push(`Fila ${fila} (${producto}): en Activo va SI o NO.`);
+      if (!Number.isFinite(precio) || precio <= 0) {
+        if (activo === 'NO') precio = 0;   // oculto: no necesita precio
+        else errores.push(`Fila ${fila} (${producto}): no tiene precio. En el Excel mirá la columna Estado: elegí A o B en «Usar», cargá el código del MK2, o poné Activo = NO.`);
+      }
       const k = clave({ categoria, producto });
       if (vistos.has(k)) errores.push(`Fila ${fila}: "${producto}" está repetido en ${categoria}.`);
       vistos.add(k);
-      lista.push({ categoria, producto, precio: Math.round(precio), unidad: val('unidad'), descripcion: val('descripcion'), foto: val('foto'), activo });
+      lista.push({ categoria, producto, precio: Math.round(precio) || 0, unidad: val('unidad'), descripcion: val('descripcion'), foto: val('foto'), activo });
     });
 
     const previo = Object.fromEntries(actual.lista.map((p) => [clave(p), p]));
