@@ -78,16 +78,17 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       <button class="btn" type="submit">Entrar</button>
     </form>
     <p class="error" id="errClave" hidden></p>
+    <p class="pista"><a href="#" id="btnOlvide" style="color:var(--gris)">¿Olvidaste la clave? Configurar de nuevo con un código de GitHub</a></p>
   </div>
 
   <!-- CONFIGURAR ESTA PC (una sola vez) -->
   <div class="caja" id="cajaConfig" hidden>
     <h2><span class="n">⚙</span>Configurar esta computadora</h2>
-    <p class="sub">Se hace una sola vez en cada computadora. Después, cada vez que entres a Administración, solo se pide la clave que elijas acá.</p>
+    <p class="sub">Se hace <b>una sola vez</b> y sirve para <b>todas las computadoras</b>. Después, cada vez que entres a Administración, solo se pide la clave que elijas acá.</p>
     <form id="formConfig">
       <p class="pista" style="margin:0 0 .3rem"><b>1.</b> Clave de GitHub (empieza con <code>github_pat_</code>)</p>
       <div class="fila"><input type="password" id="inpToken" autocomplete="off" placeholder="github_pat_..." aria-label="Clave de GitHub"></div>
-      <p class="pista" style="margin:.9rem 0 .3rem"><b>2.</b> Elegí la clave de Administración (mínimo 6 caracteres)</p>
+      <p class="pista" style="margin:.9rem 0 .3rem"><b>2.</b> Elegí la clave de Administración (mínimo 10 caracteres, con letras y números; que no sea fácil de adivinar, por ejemplo dos palabras y un número)</p>
       <div class="fila"><input type="password" id="inpNueva" autocomplete="new-password" placeholder="Clave de Administración" aria-label="Clave de Administración nueva"></div>
       <div class="fila" style="margin-top:.5rem"><input type="password" id="inpRepite" autocomplete="new-password" placeholder="Repetí la clave" aria-label="Repetir clave"></div>
       <div class="fila" style="margin-top:.9rem"><button class="btn" type="submit">Guardar y entrar</button></div>
@@ -144,7 +145,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
 
     <div class="fila" style="justify-content:space-between">
       <button class="btn sec" type="button" id="btnCerrar">🔒 Salir</button>
-      <a href="#" id="btnOlvidar" style="color:var(--gris);font-size:.82rem">Borrar la configuración de esta computadora</a>
+      <a href="#" id="btnOlvidar" style="color:var(--gris);font-size:.82rem">Configurar de nuevo (con un código de GitHub nuevo)</a>
     </div>
   </div>
 </main>
@@ -166,8 +167,8 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
   const ocultar = (sel) => { $(sel).hidden = true; };
 
   let token = '';                       // solo en memoria: al cerrar la ventana se pierde
-  const COFRE = 'lp_admin_cofre';
-  try { localStorage.removeItem('lp_admin_clave'); } catch(e){}   // versión anterior
+  const ACCESO = 'acceso.json';         // código de GitHub cifrado con la clave (vive en la página, no en el navegador)
+  try { localStorage.removeItem('lp_admin_clave'); localStorage.removeItem('lp_admin_cofre'); } catch(e){}   // versiones anteriores
   let actual = null;      // { lista, fecha, sha }
   let propuesta = null;
 
@@ -190,68 +191,95 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
   }
 
   // ---------- Paso 1: clave (se pide cada vez) ----------
-  // La clave de GitHub se guarda cifrada con la clave de Administración (nunca a la vista).
+  // El código de GitHub se guarda en acceso.json, cifrado con la clave de Administración (AES-GCM, PBKDF2).
+  // Así sirve en cualquier computadora y navegador, y nunca queda a la vista.
   const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf)));
   const deB64 = (t) => Uint8Array.from(atob(t), (c) => c.charCodeAt(0));
-  async function llave(clave, sal){
+  const ITER = 600000;
+  async function llave(clave, sal, it){
     const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(clave), 'PBKDF2', false, ['deriveKey']);
-    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: sal, iterations: 250000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt','decrypt']);
+    return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: sal, iterations: it, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['encrypt','decrypt']);
+  }
+  let cofre = null;   // contenido de acceso.json
+  async function leerCofre(){
+    try {   // 1) la copia publicada en la página
+      const r = await fetch(ACCESO + '?t=' + Date.now(), { cache: 'no-store' });
+      if (r.ok) { const j = await r.json(); if (j && j.datos) return j; }
+    } catch(e){}
+    try {   // 2) directo de GitHub (sirve justo después de configurar, antes de que se actualice la página)
+      const r = await fetch(API + '/contents/' + ACCESO + '?ref=' + RAMA + '&t=' + Date.now(), { headers: { 'Accept': 'application/vnd.github+json' } });
+      if (r.ok) { const j = await r.json(); return JSON.parse(deBase64(j.content)); }
+    } catch(e){}
+    return null;
+  }
+  async function abrirCofre(clave){
+    const plano = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: deB64(cofre.iv) }, await llave(clave, deB64(cofre.sal), cofre.it || ITER), deB64(cofre.datos));
+    return new TextDecoder().decode(plano);
   }
   async function guardarCofre(clave, secreto){
     const sal = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
-    const datos = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await llave(clave, sal), new TextEncoder().encode(secreto));
-    localStorage.setItem(COFRE, JSON.stringify({ sal: b64(sal), iv: b64(iv), datos: b64(datos) }));
+    const datos = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, await llave(clave, sal, ITER), new TextEncoder().encode(secreto));
+    const nuevo = { v: 2, it: ITER, sal: b64(sal), iv: b64(iv), datos: b64(datos) };
+    let sha;
+    const prev = await gh('/contents/' + ACCESO + '?ref=' + RAMA + '&t=' + Date.now());
+    if (prev.ok) sha = (await prev.json()).sha;
+    const r = await gh('/contents/' + ACCESO, { method: 'PUT', body: JSON.stringify({
+      message: 'Configuración de Administración', content: aBase64(JSON.stringify(nuevo)), branch: RAMA, sha }) });
+    if (!r.ok) throw new Error('No se pudo guardar la configuración (' + r.status + ').');
+    cofre = nuevo;
   }
-  async function abrirCofre(clave){
-    const c = JSON.parse(localStorage.getItem(COFRE));
-    const plano = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: deB64(c.iv) }, await llave(clave, deB64(c.sal)), deB64(c.datos));
-    return new TextDecoder().decode(plano);
-  }
-  let hayCofre = false;
-  try { hayCofre = !!localStorage.getItem(COFRE); } catch(e){}
 
   async function verificar(){
     const r = await gh('');
-    if (r.status === 401) throw new Error('La clave de GitHub no es válida o venció.');
+    if (r.status === 401) throw new Error('El código de GitHub no es válido o venció. Hay que crear uno nuevo y tocar "Configurar de nuevo".');
     if (!r.ok) throw new Error('No se pudo conectar con GitHub (' + r.status + ').');
     const j = await r.json();
-    if (!j.permissions || !j.permissions.push) throw new Error('La clave de GitHub no tiene permiso para publicar.');
+    if (!j.permissions || !j.permissions.push) throw new Error('El código de GitHub no tiene permiso para publicar.');
     await cargarActual();
   }
   function adentro(){ ocultar('#cajaClave'); ocultar('#cajaConfig'); $('#zona').hidden = false; }
+  function pedirClave(){ ocultar('#cajaConfig'); $('#cajaClave').hidden = false; $('#inpClave').focus(); }
+  function pedirConfig(){ ocultar('#cajaClave'); $('#zona').hidden = true; $('#cajaConfig').hidden = false; }
 
-  if (hayCofre) { $('#cajaClave').hidden = false; $('#inpClave').focus(); } else { $('#cajaConfig').hidden = false; }
+  leerCofre().then((c) => { cofre = c; if (cofre) pedirClave(); else pedirConfig(); });
 
   $('#formClave').addEventListener('submit', async (e) => {
     e.preventDefault(); ocultar('#errClave');
     const clave = $('#inpClave').value;
-    if (!clave) return;
-    try { token = await abrirCofre(clave); }
-    catch (_) { $('#inpClave').value = ''; return mostrar('#errClave', 'Clave incorrecta.'); }
-    try { await verificar(); $('#inpClave').value = ''; adentro(); }
-    catch (err) { token = ''; mostrar('#errClave', err.message); }
+    if (!clave || !cofre) return;
+    const btn = $('#formClave button'); btn.disabled = true; btn.textContent = 'Entrando…';
+    try {
+      try { token = await abrirCofre(clave); }
+      catch (_) { $('#inpClave').value = ''; return mostrar('#errClave', 'Clave incorrecta.'); }
+      try { await verificar(); $('#inpClave').value = ''; adentro(); }
+      catch (err) { token = ''; mostrar('#errClave', err.message); }
+    } finally { btn.disabled = false; btn.textContent = 'Entrar'; }
   });
 
   $('#formConfig').addEventListener('submit', async (e) => {
     e.preventDefault(); ocultar('#errConfig');
     const t = $('#inpToken').value.trim(), n = $('#inpNueva').value, r2 = $('#inpRepite').value;
-    if (!t) return mostrar('#errConfig', 'Pegá la clave de GitHub.');
-    if (n.length < 6) return mostrar('#errConfig', 'La clave de Administración tiene que tener al menos 6 caracteres.');
+    if (!t) return mostrar('#errConfig', 'Pegá el código de GitHub.');
+    if (n.length < 10 || !/[a-zA-Z]/.test(n) || !/[0-9]/.test(n)) return mostrar('#errConfig', 'La clave de Administración tiene que tener al menos 10 caracteres, con letras y números.');
+    if (/peruana|clave|admin|github|123456|qwerty|password/i.test(n)) return mostrar('#errConfig', 'La clave es muy fácil de adivinar: no uses "peruana", "clave", "admin" ni "123456". Probá con dos palabras y un número, por ejemplo: Mostrador7Kiosco.');
     if (n !== r2) return mostrar('#errConfig', 'Las dos claves de Administración no coinciden.');
+    const btn = $('#formConfig button'); btn.disabled = true; btn.textContent = 'Guardando…';
     token = t;
-    try { await verificar(); }
-    catch (err) { token = ''; return mostrar('#errConfig', err.message); }
-    try { await guardarCofre(n, t); } catch (_) { token = ''; return mostrar('#errConfig', 'Este navegador no permite guardar la configuración. Probá con otro navegador (no en modo incógnito).'); }
-    ['#inpToken','#inpNueva','#inpRepite'].forEach((s) => $(s).value = '');
-    adentro();
+    try {
+      await verificar();
+      await guardarCofre(n, t);
+      ['#inpToken','#inpNueva','#inpRepite'].forEach((s) => $(s).value = '');
+      adentro();
+    } catch (err) { token = ''; mostrar('#errConfig', err.message || 'No se pudo guardar.'); }
+    finally { btn.disabled = false; btn.textContent = 'Guardar y entrar'; }
   });
 
+  $('#btnOlvide').addEventListener('click', (e) => { e.preventDefault(); pedirConfig(); });
   $('#btnCerrar').addEventListener('click', () => { token = ''; location.reload(); });
   $('#btnOlvidar').addEventListener('click', (e) => {
     e.preventDefault();
-    if ($('#btnOlvidar').dataset.ok !== '1') { $('#btnOlvidar').dataset.ok = '1'; $('#btnOlvidar').textContent = 'Tocá de nuevo para confirmar: hay que volver a configurar esta computadora'; return; }
-    try { localStorage.removeItem(COFRE); } catch(_){}
-    token = ''; location.reload();
+    if ($('#btnOlvidar').dataset.ok !== '1') { $('#btnOlvidar').dataset.ok = '1'; $('#btnOlvidar').textContent = 'Tocá de nuevo para confirmar: vas a necesitar un código de GitHub'; return; }
+    token = ''; $('#zona').hidden = true; pedirConfig();
   });
 
   // ---------- Paso 2: Excel ----------
