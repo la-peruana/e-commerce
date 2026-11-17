@@ -1,10 +1,10 @@
 {
- "fecha": "14/8/2026",
+ "fecha": "17/11/2026 01:03 p. m.",
  "lista": [
   {
    "categoria": "Panadería",
    "producto": "Facturas con crema",
-   "precio": 2584,
+   "precio": 2737,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "facturas-crema.jpg",
@@ -13,7 +13,7 @@
   {
    "categoria": "Panadería",
    "producto": "Facturas con crema y membrillo",
-   "precio": 3058,
+   "precio": 3284,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "facturas-crema-membrillo.jpg",
@@ -22,7 +22,7 @@
   {
    "categoria": "Panadería",
    "producto": "Facturas con crema y dulce de leche",
-   "precio": 3058,
+   "precio": 3284,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "facturas-crema-ddl.jpg",
@@ -31,7 +31,7 @@
   {
    "categoria": "Panadería",
    "producto": "Medialunas con dulce de leche",
-   "precio": 2867,
+   "precio": 3079,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "medialuna-ddl.jpg",
@@ -40,7 +40,7 @@
   {
    "categoria": "Panadería",
    "producto": "Medialunas dulces",
-   "precio": 2166,
+   "precio": 2326,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "medialuna-dulce.jpg",
@@ -49,7 +49,7 @@
   {
    "categoria": "Panadería",
    "producto": "Vigilantes de batata",
-   "precio": 2931,
+   "precio": 3147,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "galleta-comun.jpg",
@@ -58,7 +58,7 @@
   {
    "categoria": "Panadería",
    "producto": "Vigilantes de membrillo",
-   "precio": 3058,
+   "precio": 2901,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "vigilantes-membrillo.jpg",
@@ -67,7 +67,7 @@
   {
    "categoria": "Panadería",
    "producto": "Bollitos con crema",
-   "precio": 2421,
+   "precio": 2600,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "bollitos-crema.jpg",
@@ -76,7 +76,7 @@
   {
    "categoria": "Panadería",
    "producto": "Bollitos con dulce de leche",
-   "precio": 2294,
+   "precio": 2463,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "bollitos-ddl.jpg",
@@ -85,7 +85,7 @@
   {
    "categoria": "Panadería",
    "producto": "Empanaditas de dulce de leche",
-   "precio": 1911,
+   "precio": 1779,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "empanaditas-ddl.jpg",
@@ -94,7 +94,7 @@
   {
    "categoria": "Panadería",
    "producto": "Pirulines",
-   "precio": 2548,
+   "precio": 2737,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "pirulines.jpg",
@@ -103,7 +103,7 @@
   {
    "categoria": "Panadería",
    "producto": "Borrachitos",
-   "precio": 2294,
+   "precio": 2463,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "borrachitos.jpg",
@@ -112,7 +112,7 @@
   {
    "categoria": "Panadería",
    "producto": "Medialunas marplatenses",
-   "precio": 2155,
+   "precio": 2314,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "medialunas-marplatenses.jpg",
@@ -121,7 +121,7 @@
   {
    "categoria": "Panadería",
    "producto": "Especiales",
-   "precio": 2765,
+   "precio": 2969,
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "especiales.jpg",
@@ -130,7 +130,7 @@
   {
    "categoria": "Panadería",
    "producto": "Pan frances",
-   "precio": 866,
+   "precio": 930,
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "pan-frances.jpg",
@@ -138,8 +138,17 @@
   },
   {
    "categoria": "Panadería",
+   "producto": "Pan Rondín",
+   "precio": 899,
+   "unidad": "250 grs.",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Panadería",
    "producto": "Galleta de campo",
-   "precio": 983,
+   "precio": 1056,
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "galleta-comun.jpg",
@@ -148,7 +157,7 @@
   {
    "categoria": "Panadería",
    "producto": "Galleta hojaldrada",
-   "precio": 1191,
+   "precio": 1279,
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "galleta-hojaldrada.jpg",
@@ -157,7 +166,7 @@
   {
    "categoria": "Panadería",
    "producto": "Suizos",
-   "precio": 3884,
+   "precio": 4171,
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "suizos.jpg",
@@ -166,7 +175,7 @@
   {
    "categoria": "Panadería",
    "producto": "Medialunas saladas grandes",
-   "precio": 3840,
+   "precio": 4124,
    "unidad": "x 3 un.",
    "descripcion": "",
    "foto": "medialuna-salada-grande.jpg",
@@ -175,7 +184,7 @@
   {
    "categoria": "Panadería",
    "producto": "Medialunas saladas chicas",
-   "precio": 4709,
+   "precio": 5057,
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "medialuna-salada-chica.jpg",
@@ -184,19 +193,10 @@
   {
    "categoria": "Panadería",
    "producto": "Croissant",
-   "precio": 2746,
+   "precio": 2949,
    "unidad": "x un.",
    "descripcion": "",
    "foto": "Croissant.jpg",
-   "activo": "SI"
-  },
-  {
-   "categoria": "Panadería",
-   "producto": "Pan Rondín",
-   "precio": 873,
-   "unidad": "250 grs.",
-   "descripcion": "",
-   "foto": "",
    "activo": "SI"
   },
   {
