@@ -311,7 +311,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
         await cargarActual();
         const libro = XLSX.read(new Uint8Array(r.result), { type: 'array' });
         // Usa la hoja "Web" si existe (Excel del MK2); si no, la primera hoja que tenga Categoría, Producto y Precio.
-        const tiene = (nom) => { const f = XLSX.utils.sheet_to_json(libro.Sheets[nom], { header: 1, range: 0 })[0] || []; const h = f.map(norm); return ['categoria','producto','precio'].every((k) => h.includes(k)); };
+        const tiene = (nom) => { const f = XLSX.utils.sheet_to_json(libro.Sheets[nom], { header: 1, range: 0 })[0] || []; const m = mapear(f.map(String)); return ['categoria','producto','precio'].every((k) => m[k]); };
         const hoja = libro.SheetNames.find((n) => norm(n) === 'web' && tiene(n)) || libro.SheetNames.find(tiene);
         if (!hoja) return fallaExcel('No encontré una hoja con las columnas Categoría, Producto y Precio.');
         const filas = XLSX.utils.sheet_to_json(libro.Sheets[hoja], { defval: '' });
@@ -322,10 +322,18 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
   }
 
   const COLS = ['categoria','producto','precio','unidad','descripcion','foto','activo'];
+  const ALIAS = { categoria: ['categoria','sector'], precio: ['precio','precio final'] };
+  function mapear(encabezados){
+    const m = {};
+    encabezados.forEach((h) => { const k = norm(h);
+      for (const c of COLS) if (!m[c] && (ALIAS[c] || [c]).includes(k)) m[c] = h; });
+    // Excel del MK2: si no hay columna "Producto", el nombre está en "Descripción"
+    if (!m.producto && m.descripcion) { m.producto = m.descripcion; delete m.descripcion; }
+    return m;
+  }
   function analizar(filas, nombre){
     if (!filas.length) return fallaExcel('El Excel está vacío.');
-    const mapa = {};
-    Object.keys(filas[0]).forEach((h) => { const k = norm(h); if (COLS.includes(k)) mapa[k] = h; });
+    const mapa = mapear(Object.keys(filas[0]));
     const faltan = ['categoria','producto','precio'].filter((k) => !mapa[k]);
     if (faltan.length) return fallaExcel('Al Excel le falta la columna: ' + faltan.join(', ') + '. La primera fila tiene que tener los títulos.');
 
@@ -339,7 +347,8 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       if (!categoria) errores.push(`Fila ${fila} (${producto}): falta la categoría.`);
       const crudo = f[mapa.precio];
       let precio = typeof crudo === 'number' ? Math.round(crudo) : Number(String(crudo).replace(/[$\s.]/g,'').replace(',','.'));
-      const activo = (val('activo').toUpperCase().replace('SÍ','SI')) || 'SI';
+      const ant = mapa.activo ? null : (actual.lista.find((p) => clave(p) === clave({ categoria, producto })) || null);
+      const activo = mapa.activo ? ((val('activo').toUpperCase().replace('SÍ','SI')) || 'SI') : (ant ? ant.activo : 'SI');
       if (activo !== 'SI' && activo !== 'NO') errores.push(`Fila ${fila} (${producto}): en Activo va SI o NO.`);
       if (!Number.isFinite(precio) || precio <= 0) {
         if (activo === 'NO') precio = 0;   // oculto: no necesita precio
@@ -352,6 +361,13 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     });
 
     const previo = Object.fromEntries(actual.lista.map((p) => [clave(p), p]));
+    lista.forEach((p) => { const a = previo[clave(p)];
+      ['unidad','descripcion','foto'].forEach((c) => { if (!mapa[c]) p[c] = a ? (a[c] || '') : ''; });
+      if (a && !mapa.categoria) p.categoria = a.categoria;
+      if (a) p.categoria = a.categoria;   // mismo nombre de sector que en la web
+    });
+    // Solo se tocan los sectores que vienen en el Excel; los demás quedan como están
+    const sectores = new Set(lista.map((p) => norm(p.categoria)));
     const precios = [], nuevos = [], ocultos = [], vuelven = [], otros = [];
     lista.forEach((p) => {
       const a = previo[clave(p)];
@@ -362,10 +378,13 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       else if ((a.unidad||'') !== p.unidad || (a.descripcion||'') !== p.descripcion || (a.foto||'') !== p.foto) otros.push(p);
     });
     const enExcel = new Set(lista.map(clave));
-    const faltantes = actual.lista.filter((p) => p.activo === 'SI' && !enExcel.has(clave(p)));
+    const faltantes = actual.lista.filter((p) => p.activo === 'SI' && sectores.has(norm(p.categoria)) && !enExcel.has(clave(p)));
+    const nombresSect = [...new Set(lista.map((p) => p.categoria))];
+    const todos = actual.lista.every((p) => sectores.has(norm(p.categoria)));
     const raros = precios.filter((c) => Math.abs(c.p.precio / c.antes - 1) > 0.3);
 
-    $('#txtArchivo').textContent = `Archivo: ${nombre} · ${lista.length} productos · Publicado ahora: lista del ${actual.fecha || '—'}`;
+    $('#txtArchivo').textContent = `Archivo: ${nombre} · ${lista.length} productos · Sectores: ${nombresSect.join(', ')}` +
+      (todos ? '' : ' · Los demás sectores no se tocan') + ` · Publicado ahora: lista del ${actual.fecha || '—'}`;
     const cifra = (n, t, mal) => `<div class="cifra${mal ? ' mal' : ''}"><b>${n}</b><span>${t}</span></div>`;
     $('#cifras').innerHTML = cifra(precios.length, 'precios cambian') + cifra(nuevos.length, 'productos nuevos') +
       cifra(ocultos.length + faltantes.length, 'se ocultan') +
@@ -385,7 +404,17 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     $('#btnPublicar').disabled = errores.length > 0 || sinCambios;
     $('#txtPublicar').textContent = errores.length ? 'Hay errores: no se puede publicar hasta corregirlos.'
       : sinCambios ? 'El Excel es igual a lo que ya está publicado: no hay nada para publicar.' : 'Si está todo bien, tocá PUBLICAR CAMBIOS.';
-    propuesta = errores.length ? null : lista.concat(faltantes.map((p) => Object.assign({}, p, { activo: 'NO' })));
+    if (errores.length) propuesta = null;
+    else {   // arma la lista completa respetando el orden de los sectores
+      const nuevaSect = lista.concat(faltantes.map((p) => Object.assign({}, p, { activo: 'NO' })));
+      const orden = [];
+      actual.lista.concat(nuevaSect).forEach((p) => { const k = norm(p.categoria); if (!orden.includes(k)) orden.push(k); });
+      propuesta = [];
+      orden.forEach((k) => {
+        const src = sectores.has(k) ? nuevaSect : actual.lista;
+        src.forEach((p) => { if (norm(p.categoria) === k) propuesta.push(p); });
+      });
+    }
     $('#cajaRevisar').hidden = false;
     $('#cajaRevisar').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
