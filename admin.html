@@ -78,20 +78,25 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       <button class="btn" type="submit">Entrar</button>
     </form>
     <p class="error" id="errClave" hidden></p>
-    <p class="pista"><a href="#" id="btnOlvide" style="color:var(--gris)">¿Olvidaste la clave? Configurar de nuevo con un código de GitHub</a></p>
+    <p class="pista"><a href="#" id="btnOlvide" style="color:var(--gris)">¿Olvidaste la clave? Hacé clic acá para elegir una clave nueva</a></p>
   </div>
 
   <!-- CONFIGURAR ESTA PC (una sola vez) -->
   <div class="caja" id="cajaConfig" hidden>
-    <h2><span class="n">⚙</span>Configurar esta computadora</h2>
-    <p class="sub">Se hace <b>una sola vez</b> y sirve para <b>todas las computadoras</b>. Después, cada vez que entres a Administración, solo se pide la clave que elijas acá.</p>
+    <h2><span class="n">⚙</span><span id="tituloConfig">Configuración inicial</span></h2>
+    <p class="sub" id="txtConfig">Se hace <b>una sola vez</b> y sirve para <b>todas las computadoras</b>. Después, cada vez que entres a Administración, solo se pide la clave que elijas acá.</p>
+    <div class="pista" style="background:#FFF6E0;border:1px solid #F2D89A;border-radius:10px;padding:.7rem .8rem;margin:0 0 1rem;color:#6B4A00;line-height:1.5">
+      <b>¿Qué es el código de GitHub?</b> Es el código largo que empieza con <code>github_pat_</code> y que guardaron cuando lo crearon.<br>
+      • <b>Si lo tienen guardado:</b> usen <b>ese mismo</b>. <u>No hace falta crear uno nuevo.</u><br>
+      • <b>Solo si lo perdieron:</b> hay que crear uno nuevo en GitHub (cuenta la-peruana → Settings → Developer settings → Fine-grained tokens), con permiso <i>Contents: Read and write</i> sobre <i>e-commerce</i>.
+    </div>
     <form id="formConfig">
-      <p class="pista" style="margin:0 0 .3rem"><b>1.</b> Clave de GitHub (empieza con <code>github_pat_</code>)</p>
-      <div class="fila"><input type="password" id="inpToken" autocomplete="off" placeholder="github_pat_..." aria-label="Clave de GitHub"></div>
+      <p class="pista" style="margin:0 0 .3rem"><b>1.</b> Código de GitHub (empieza con <code>github_pat_</code>)</p>
+      <div class="fila"><input type="password" id="inpToken" autocomplete="off" placeholder="github_pat_..." aria-label="Código de GitHub"></div>
       <p class="pista" style="margin:.9rem 0 .3rem"><b>2.</b> Elegí la clave de Administración (mínimo 10 caracteres, con letras y números; que no sea fácil de adivinar, por ejemplo dos palabras y un número)</p>
       <div class="fila"><input type="password" id="inpNueva" autocomplete="new-password" placeholder="Clave de Administración" aria-label="Clave de Administración nueva"></div>
       <div class="fila" style="margin-top:.5rem"><input type="password" id="inpRepite" autocomplete="new-password" placeholder="Repetí la clave" aria-label="Repetir clave"></div>
-      <div class="fila" style="margin-top:.9rem"><button class="btn" type="submit">Guardar y entrar</button></div>
+      <div class="fila" style="margin-top:.9rem"><button class="btn" type="submit">Guardar y entrar</button><button class="btn sec" type="button" id="btnVolverClave" hidden>← Volver, me acordé la clave</button></div>
     </form>
     <p class="error" id="errConfig" hidden></p>
   </div>
@@ -145,7 +150,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
 
     <div class="fila" style="justify-content:space-between">
       <button class="btn sec" type="button" id="btnCerrar">🔒 Salir</button>
-      <a href="#" id="btnOlvidar" style="color:var(--gris);font-size:.82rem">Configurar de nuevo (con un código de GitHub nuevo)</a>
+      <a href="#" id="btnOlvidar" style="color:var(--gris);font-size:.82rem">Cambiar la clave de Administración</a>
     </div>
   </div>
 </main>
@@ -274,12 +279,18 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     finally { btn.disabled = false; btn.textContent = 'Guardar y entrar'; }
   });
 
-  $('#btnOlvide').addEventListener('click', (e) => { e.preventDefault(); pedirConfig(); });
+  function modoOlvido(){
+    $('#tituloConfig').textContent = 'Elegir una clave nueva';
+    $('#txtConfig').innerHTML = 'Para elegir una clave nueva se pide el <b>código de GitHub</b>. La clave nueva reemplaza a la anterior y sirve en <b>todas las computadoras</b>.';
+    $('#btnVolverClave').hidden = false; pedirConfig();
+  }
+  $('#btnOlvide').addEventListener('click', (e) => { e.preventDefault(); modoOlvido(); });
+  $('#btnVolverClave').addEventListener('click', () => { $('#btnVolverClave').hidden = true; ocultar('#errConfig'); pedirClave(); });
   $('#btnCerrar').addEventListener('click', () => { token = ''; location.reload(); });
   $('#btnOlvidar').addEventListener('click', (e) => {
     e.preventDefault();
-    if ($('#btnOlvidar').dataset.ok !== '1') { $('#btnOlvidar').dataset.ok = '1'; $('#btnOlvidar').textContent = 'Tocá de nuevo para confirmar: vas a necesitar un código de GitHub'; return; }
-    token = ''; $('#zona').hidden = true; pedirConfig();
+    if ($('#btnOlvidar').dataset.ok !== '1') { $('#btnOlvidar').dataset.ok = '1'; $('#btnOlvidar').textContent = 'Tocá de nuevo para confirmar (se pide el código de GitHub que tienen guardado)'; return; }
+    token = ''; $('#zona').hidden = true; modoOlvido();
   });
 
   // ---------- Paso 2: Excel ----------
