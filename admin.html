@@ -352,7 +352,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       if (activo !== 'SI' && activo !== 'NO') errores.push(`Fila ${fila} (${producto}): en Activo va SI o NO.`);
       if (!Number.isFinite(precio) || precio <= 0) {
         if (activo === 'NO') precio = 0;   // oculto: no necesita precio
-        else errores.push(`Fila ${fila} (${producto}): no tiene precio. En el Excel mirá la columna Estado: elegí A o B en «Usar», cargá el código del MK2, o poné Activo = NO.`);
+        else errores.push(`Fila ${fila} (${producto}): no tiene precio. En el Excel revisá el ID MK2 y el peso (mirá la columna Observación). Si no se vende más, borrá la fila.`);
       }
       const k = clave({ categoria, producto });
       if (vistos.has(k)) errores.push(`Fila ${fila}: "${producto}" está repetido en ${categoria}.`);
