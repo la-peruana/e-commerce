@@ -363,6 +363,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     const previo = Object.fromEntries(actual.lista.map((p) => [clave(p), p]));
     lista.forEach((p) => { const a = previo[clave(p)];
       ['unidad','descripcion','foto'].forEach((c) => { if (!mapa[c]) p[c] = a ? (a[c] || '') : ''; });
+      if (mapa.foto && !p.foto && a) p.foto = a.foto || '';   // celda Foto vacía: conserva la foto actual
       if (a && !mapa.categoria) p.categoria = a.categoria;
       if (a) p.categoria = a.categoria;   // mismo nombre de sector que en la web
     });
