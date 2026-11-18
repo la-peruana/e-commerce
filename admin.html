@@ -329,6 +329,9 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       for (const c of COLS) if (!m[c] && (ALIAS[c] || [c]).includes(k)) m[c] = h; });
     // Excel del MK2: si no hay columna "Producto", el nombre está en "Descripción"
     if (!m.producto && m.descripcion) { m.producto = m.descripcion; delete m.descripcion; }
+    // columna "Comentario": el texto que se ve debajo del nombre del producto
+    const com = encabezados.find((h) => norm(h) === 'comentario');
+    if (com) m.descripcion = com;
     return m;
   }
   function analizar(filas, nombre){
@@ -364,6 +367,8 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     lista.forEach((p) => { const a = previo[clave(p)];
       ['unidad','descripcion','foto'].forEach((c) => { if (!mapa[c]) p[c] = a ? (a[c] || '') : ''; });
       if (mapa.foto && !p.foto && a) p.foto = a.foto || '';   // celda Foto vacía: conserva la foto actual
+      if (mapa.descripcion && !p.descripcion && a) p.descripcion = a.descripcion || '';   // Comentario vacío: conserva el actual
+      if (p.descripcion === '-') p.descripcion = '';           // un guion borra el comentario
       if (a && !mapa.categoria) p.categoria = a.categoria;
       if (a) p.categoria = a.categoria;   // mismo nombre de sector que en la web
     });
