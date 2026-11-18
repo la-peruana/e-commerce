@@ -1,5 +1,5 @@
 {
- "fecha": "18/11/2026 03:00 p. m.",
+ "fecha": "18/11/2026 03:33 p. m.",
  "lista": [
   {
    "categoria": "Panadería",
@@ -565,7 +565,7 @@
    "precio": 20426,
    "unidad": "",
    "descripcion": "",
-   "foto": "",
+   "foto": "pirok.jpg",
    "activo": "SI"
   },
   {
