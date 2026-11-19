@@ -369,6 +369,8 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       if (mapa.foto && !p.foto && a) p.foto = a.foto || '';   // celda Foto vacía: conserva la foto actual
       if (mapa.descripcion && !p.descripcion && a) p.descripcion = a.descripcion || '';   // Comentario vacío: conserva el actual
       if (p.descripcion === '-') p.descripcion = '';           // un guion borra el comentario
+      if (mapa.unidad && !p.unidad && a) p.unidad = a.unidad || '';   // Unidad vacía: conserva la actual
+      if (p.unidad === '-') p.unidad = '';                     // un guion borra la unidad
       if (a && !mapa.categoria) p.categoria = a.categoria;
       if (a) p.categoria = a.categoria;   // mismo nombre de sector que en la web
     });
