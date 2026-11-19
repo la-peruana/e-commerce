@@ -643,6 +643,7 @@ function LP_AGRUPAR(lista){
     if (!p || typeof p !== 'object') return;
     const c = limpio(p.categoria).toUpperCase(), nombre = limpio(p.producto);
     if (!c || !nombre) return;
+    if (/^CAF/.test(c)) return;   // la Cafetería tiene su propia página (cafeteria/)
     if (!grupos[c]) { grupos[c] = []; orden.push(c); }
     const foto = limpio(p.foto);
     grupos[c].push({

@@ -355,7 +355,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       if (activo !== 'SI' && activo !== 'NO') errores.push(`Fila ${fila} (${producto}): en Activo va SI o NO.`);
       if (!Number.isFinite(precio) || precio <= 0) {
         if (activo === 'NO') precio = 0;   // oculto: no necesita precio
-        else errores.push(`Fila ${fila} (${producto}): no tiene precio. En el Excel cargá el ID MK2 y el peso, o si ya no se vende poné NO en Activo (mirá la hoja «Para arreglar»).`);
+        else errores.push(`Fila ${fila} (${producto}): no tiene precio. En el Excel cargá el ID MK2 y el peso, o si ya no se vende poné NO en Activo (mirá la columna Observación).`);
       }
       const k = clave({ categoria, producto });
       if (vistos.has(k)) errores.push(`Fila ${fila}: "${producto}" está repetido en ${categoria}.`);
@@ -374,6 +374,9 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     });
     // Solo se tocan los sectores que vienen en el Excel; los demás quedan como están
     const sectores = new Set(lista.map((p) => norm(p.categoria)));
+    // Cafetería: si el Excel trae algún sector de Café, se toman todos los de Café juntos
+    // (así los que cambian de nombre, por ejemplo «Cafetería» → «Café - Combos», no quedan repetidos)
+    if ([...sectores].some((k) => k.startsWith('caf'))) actual.lista.forEach((p) => { const k = norm(p.categoria); if (k.startsWith('caf')) sectores.add(k); });
     const precios = [], nuevos = [], ocultos = [], vuelven = [], otros = [];
     lista.forEach((p) => {
       const a = previo[clave(p)];
