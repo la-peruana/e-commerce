@@ -1,11 +1,11 @@
 {
- "fecha": "19/11/2026 07:38 a. m.",
+ "fecha": "19/11/2026 03:19 p. m.",
  "lista": [
   {
    "categoria": "Panadería",
    "producto": "Facturas con crema",
    "precio": 2737,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "facturas-crema.jpg",
    "activo": "SI"
@@ -14,7 +14,7 @@
    "categoria": "Panadería",
    "producto": "Facturas con crema y membrillo",
    "precio": 3284,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "facturas-crema-membrillo.jpg",
    "activo": "SI"
@@ -23,7 +23,7 @@
    "categoria": "Panadería",
    "producto": "Facturas con crema y dulce de leche",
    "precio": 3284,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "facturas-crema-ddl.jpg",
    "activo": "SI"
@@ -32,7 +32,7 @@
    "categoria": "Panadería",
    "producto": "Medialunas con dulce de leche",
    "precio": 3079,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-ddl.jpg",
    "activo": "SI"
@@ -41,7 +41,7 @@
    "categoria": "Panadería",
    "producto": "Medialunas dulces",
    "precio": 2326,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-dulce.jpg",
    "activo": "SI"
@@ -50,7 +50,7 @@
    "categoria": "Panadería",
    "producto": "Vigilantes de batata",
    "precio": 3147,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "galleta-comun.jpg",
    "activo": "SI"
@@ -59,7 +59,7 @@
    "categoria": "Panadería",
    "producto": "Vigilantes de membrillo",
    "precio": 2901,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "vigilantes-membrillo.jpg",
    "activo": "SI"
@@ -68,7 +68,7 @@
    "categoria": "Panadería",
    "producto": "Bollitos con crema",
    "precio": 2600,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "bollitos-crema.jpg",
    "activo": "SI"
@@ -77,7 +77,7 @@
    "categoria": "Panadería",
    "producto": "Bollitos con dulce de leche",
    "precio": 2463,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "bollitos-ddl.jpg",
    "activo": "SI"
@@ -86,7 +86,7 @@
    "categoria": "Panadería",
    "producto": "Empanaditas de dulce de leche",
    "precio": 1779,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanaditas-ddl.jpg",
    "activo": "SI"
@@ -95,7 +95,7 @@
    "categoria": "Panadería",
    "producto": "Pirulines",
    "precio": 2737,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "pirulines.jpg",
    "activo": "SI"
@@ -104,7 +104,7 @@
    "categoria": "Panadería",
    "producto": "Borrachitos",
    "precio": 2463,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "borrachitos.jpg",
    "activo": "SI"
@@ -113,7 +113,7 @@
    "categoria": "Panadería",
    "producto": "Medialunas marplatenses",
    "precio": 2314,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialunas-marplatenses.jpg",
    "activo": "SI"
@@ -176,7 +176,7 @@
    "categoria": "Panadería",
    "producto": "Medialunas saladas grandes",
    "precio": 4124,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-salada-grande.jpg",
    "activo": "SI"
@@ -185,7 +185,7 @@
    "categoria": "Panadería",
    "producto": "Medialunas saladas chicas",
    "precio": 5057,
-   "unidad": "250 grs.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-salada-chica.jpg",
    "activo": "SI"
@@ -293,7 +293,7 @@
    "categoria": "Pastelería",
    "producto": "Alfajores de maicena medianos",
    "precio": 1789,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "alfa-maicena-med.jpg",
    "activo": "SI"
@@ -320,7 +320,7 @@
    "categoria": "Pastelería",
    "producto": "Alfajores de chocolate mediano",
    "precio": 2392,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "alfajor-choco-med.jpg",
    "activo": "SI"
@@ -338,7 +338,7 @@
    "categoria": "Rotisería",
    "producto": "Torrejas de arroz",
    "precio": 2333,
-   "unidad": "x 3 unidades",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "torrejas-arroz.jpg",
    "activo": "SI"
@@ -347,7 +347,7 @@
    "categoria": "Rotisería",
    "producto": "Torrejas de acelga",
    "precio": 2333,
-   "unidad": "x 3 unidades",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "torrejas-acelga.jpg",
    "activo": "SI"
@@ -473,7 +473,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas de choclo",
    "precio": 7637,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-choclo.jpg",
    "activo": "SI"
@@ -482,7 +482,7 @@
    "categoria": "Rotisería",
    "producto": "Empanada de jamon y queso",
    "precio": 6036,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-jyq.jpg",
    "activo": "SI"
@@ -491,7 +491,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas calabresa",
    "precio": 5187,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-calabresa.jpg",
    "activo": "SI"
@@ -500,7 +500,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas de verdura",
    "precio": 5297,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-verdura.jpg",
    "activo": "SI"
@@ -509,7 +509,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas carne dulce",
    "precio": 6430,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-carne-dulce.jpg",
    "activo": "SI"
@@ -518,7 +518,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas carne salada",
    "precio": 6400,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "Empanadas-carne-salada.jpg",
    "activo": "SI"
@@ -527,7 +527,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas de pollo",
    "precio": 6128,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "Empanadas-carne-salada.jpg",
    "activo": "SI"
@@ -536,7 +536,7 @@
    "categoria": "Rotisería",
    "producto": "Empanadas árabes",
    "precio": 7353,
-   "unidad": "x 3 un",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-pirok.jpg",
    "activo": "SI"
@@ -545,7 +545,7 @@
    "categoria": "Rotisería",
    "producto": "Milanesas de carne",
    "precio": 10249,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "Milanesa-carne.jpg",
    "activo": "SI"
@@ -554,7 +554,7 @@
    "categoria": "Rotisería",
    "producto": "Milanesas de pollo",
    "precio": 6376,
-   "unidad": "x 3 un.",
+   "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "milanesa-pollo.jpg",
    "activo": "SI"
@@ -563,7 +563,7 @@
    "categoria": "Rotisería",
    "producto": "Empanada pirok",
    "precio": 20426,
-   "unidad": "",
+   "unidad": "x 3 uni",
    "descripcion": "x 3 un",
    "foto": "pirok.jpg",
    "activo": "SI"
@@ -611,7 +611,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -620,7 +620,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -629,7 +629,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -638,7 +638,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -647,7 +647,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -656,7 +656,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -665,7 +665,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Cafetería",
@@ -674,7 +674,7 @@
    "unidad": "Combo",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO"
   },
   {
    "categoria": "Fiambrería",
@@ -716,7 +716,7 @@
    "categoria": "Fiambrería",
    "producto": "Queso cremoso María Luisa",
    "precio": 5175,
-   "unidad": "x 500 grs",
+   "unidad": "Trozo x 500 G",
    "descripcion": "Trozo x 500G",
    "foto": "queso-cremoso.jpg",
    "activo": "SI"
@@ -913,7 +913,7 @@
   {
    "categoria": "Almacén",
    "producto": "Puré de tomate Arcor",
-   "precio": 1618,
+   "precio": 1489,
    "unidad": "x 520 grs",
    "descripcion": "",
    "foto": "pure-tomate-Arcor.jpg",
@@ -940,7 +940,7 @@
   {
    "categoria": "Almacén",
    "producto": "Galletitas Surtido Bagley",
-   "precio": 4449,
+   "precio": 4264,
    "unidad": "x un.",
    "descripcion": "",
    "foto": "surtido-bagley.jpg",
@@ -1192,7 +1192,7 @@
   {
    "categoria": "Kiosco",
    "producto": "TURRON Y MANÍ ARCOR 25G",
-   "precio": 479,
+   "precio": 520,
    "unidad": "",
    "descripcion": "",
    "foto": "Turron.jpg",
@@ -1273,7 +1273,7 @@
   {
    "categoria": "Kiosco",
    "producto": "CHOCOLATE COFLER BLOCK CON MANÍ 110GR",
-   "precio": 7021,
+   "precio": 7801,
    "unidad": "",
    "descripcion": "",
    "foto": "Chocolate-block.jpg",
@@ -1336,7 +1336,7 @@
   {
    "categoria": "Kiosco",
    "producto": "BARRITA CEREAL MIX 23G",
-   "precio": 1374,
+   "precio": 1319,
    "unidad": "",
    "descripcion": "",
    "foto": "Cereal-mix.jpg",
@@ -1583,6 +1583,555 @@
    "unidad": "x 120 gr",
    "descripcion": "",
    "foto": "jabon-tocador-plusbelle.jpg",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Café con leche grande + 2 medialunas marplatenses",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Café con leche grande + 2 medialunas saladas",
+   "precio": 6100,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "2 Cafés con leche grandes + 4 medialunas saladas",
+   "precio": 8800,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "2 Cafés con leche grandes + 4 medialunas dulces",
+   "precio": 9300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Café con leche grande + 2 alfajores de maicena",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Café con leche grande + Croissant",
+   "precio": 6500,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Café con leche grande + 2 facturas",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Café con leche grande + 2 alfajores de chocolate",
+   "precio": 5300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "1 cafe grande + 1 tostado",
+   "precio": 8400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "1 cafe c/leche gde + 3 tost lac + 3 dips",
+   "precio": 5800,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "1 cafe cortado + 2 medialunes marplatenses",
+   "precio": 7700,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "1 jugo de naranja + 1 tostado",
+   "precio": 10500,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Submarino 1 + 1 cookies",
+   "precio": 5000,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Cafe c/leche+ huevo rev + tostada + palta",
+   "precio": 7400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Combos",
+   "producto": "Huevos revueltos + tostadas + palta",
+   "precio": 5200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Cafés",
+   "producto": "Cafe con leche grande",
+   "precio": 4600,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Cafés",
+   "producto": "Cafe grande",
+   "precio": 4200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Cafés",
+   "producto": "Capuccino",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Cafés",
+   "producto": "Cortado grande",
+   "precio": 4200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Cafés",
+   "producto": "Cafe jarrito",
+   "precio": 3200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Cafés",
+   "producto": "Submarino",
+   "precio": 5300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Medialunas y facturas",
+   "producto": "Medialunas marplatense x uni",
+   "precio": 1500,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Medialunas y facturas",
+   "producto": "Facturas x uni",
+   "precio": 1400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Medialunas y facturas",
+   "producto": "Medialunas grandes saladas x uni",
+   "precio": 1300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Medialunas y facturas",
+   "producto": "Chipa grande x uni",
+   "precio": 1700,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Medialunas y facturas",
+   "producto": "Medialunas marplatense con j y q x uni",
+   "precio": 3200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Croissant relleno con crema x uni",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Galletitas cookies x uni",
+   "precio": 2500,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Croissant x uni",
+   "precio": 3200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Croissant con jamon y queso x uni",
+   "precio": 3800,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Danesas x uni",
+   "precio": 3200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Turkas x uni",
+   "precio": 3200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Pastelería",
+   "producto": "Rolls x uni",
+   "precio": 3600,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Torta lemon pie x porcion",
+   "precio": 2100,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Torta bombon x porcion",
+   "precio": 2100,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Postre torta chocotorta x porcion",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Torta frutal x porcion",
+   "precio": 2100,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Cheese cake x porcion",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Postre tiramisu x porcion",
+   "precio": 6300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Postre red velvet x porcion",
+   "precio": 4200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Yogurt con granola y cereal",
+   "precio": 7900,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tortas y postres",
+   "producto": "Budin de pan lingote",
+   "precio": 5600,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Alfajores",
+   "producto": "Alfajor de maicena grande x 1 uni",
+   "precio": 900,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Alfajores",
+   "producto": "Alfajor de maicena grande x 2 uni",
+   "precio": 1700,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Alfajores",
+   "producto": "Alfajor triple de chocolate x uni",
+   "precio": 1700,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tostados y sándwiches",
+   "producto": "Tostado jamon y queso x 4 uni",
+   "precio": 8400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tostados y sándwiches",
+   "producto": "Sandwich simple porcion x 4 uni",
+   "precio": 7400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Tostados y sándwiches",
+   "producto": "Sandwich triple porcion x 4 uni",
+   "precio": 7800,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Milanesa pollo a caballo + papas fritas",
+   "precio": 18300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Tallarines caseros c/ salsa LP",
+   "precio": 17900,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Canelones carne- verdura LP",
+   "precio": 16000,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Empanada carne dulce x uni grp 1",
+   "precio": 2800,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Ravioles caseros c/ salsa eleccion LP",
+   "precio": 17900,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "NO"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Hamburguesa LP2 simple",
+   "precio": 13500,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Lasagna x uni (carne verdura y/o jq)",
+   "precio": 17000,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Platos",
+   "producto": "Milanesa pollo + papas fritas",
+   "precio": 16100,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Jugos y licuados",
+   "producto": "Jugo de naranja exprimido",
+   "precio": 7400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Jugos y licuados",
+   "producto": "Licuado con agua leche",
+   "precio": 7400,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Helados",
+   "producto": "Helado bombon escoces La Mont x90gr",
+   "precio": 3200,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Helados",
+   "producto": "Helado 3 bocha",
+   "precio": 5300,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
+   "activo": "SI"
+  },
+  {
+   "categoria": "Café - Helados",
+   "producto": "Helado bombon suizo La Mont x20 unid",
+   "precio": 3000,
+   "unidad": "",
+   "descripcion": "",
+   "foto": "",
    "activo": "SI"
   }
  ]
