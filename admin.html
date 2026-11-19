@@ -50,6 +50,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
 .lf:last-child{border-bottom:none}
 .lf .der{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
 .lf s{color:var(--gris)}
+.idmk{color:#1F4E9E;font-weight:700;white-space:nowrap}
 .lf.err{color:var(--rojo)}
 .pct{display:inline-block;font-size:.75rem;font-weight:700;border-radius:999px;padding:.05rem .45rem;margin-left:.3rem;background:#E7F5EC;color:var(--verde)}
 .pct.baja{background:#EEF2FF;color:#3949AB}.pct.ojo{background:#FDECEC;color:var(--rojo)}
@@ -321,8 +322,8 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     r.readAsArrayBuffer(archivo);
   }
 
-  const COLS = ['categoria','producto','precio','unidad','descripcion','foto','activo'];
-  const ALIAS = { categoria: ['categoria','sector'], precio: ['precio','precio final'] };
+  const COLS = ['categoria','producto','precio','unidad','descripcion','foto','activo','id'];
+  const ALIAS = { categoria: ['categoria','sector'], precio: ['precio','precio final'], id: ['id mk2','id','id art','codigo','codigo mk2'] };
   function mapear(encabezados){
     const m = {};
     encabezados.forEach((h) => { const k = norm(h);
@@ -334,6 +335,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     if (com) m.descripcion = com;
     return m;
   }
+  const idTxt = (p) => p && p.id ? ` <small class="idmk">· ID ${esc(p.id)}</small>` : '';
   function analizar(filas, nombre){
     if (!filas.length) return fallaExcel('El Excel está vacío.');
     const mapa = mapear(Object.keys(filas[0]));
@@ -360,7 +362,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       const k = clave({ categoria, producto });
       if (vistos.has(k)) errores.push(`Fila ${fila}: "${producto}" está repetido en ${categoria}.`);
       vistos.add(k);
-      lista.push({ categoria, producto, precio: Math.round(precio) || 0, unidad: val('unidad'), descripcion: val('descripcion'), foto: val('foto'), activo });
+      lista.push({ categoria, producto, precio: Math.round(precio) || 0, unidad: val('unidad'), descripcion: val('descripcion'), foto: val('foto'), activo, id: val('id') });
     });
 
     const previo = Object.fromEntries(actual.lista.map((p) => [clave(p), p]));
@@ -370,6 +372,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
       if (mapa.descripcion && !p.descripcion && a) p.descripcion = a.descripcion || '';   // Comentario vacío: conserva el actual
       if (p.descripcion === '-') p.descripcion = '';           // un guion borra el comentario
       if (mapa.unidad && !p.unidad && a) p.unidad = a.unidad || '';   // Unidad vacía: conserva la actual
+      if (!p.id) { if (a && a.id) p.id = a.id; else delete p.id; }   // ID MK2: para consultar ante dudas
       if (p.unidad === '-') p.unidad = '';                     // un guion borra la unidad
       if (a && !mapa.categoria) p.categoria = a.categoria;
       if (a) p.categoria = a.categoria;   // mismo nombre de sector que en la web
@@ -405,11 +408,11 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
     const pct = (a, d) => { const v = d / a - 1, r = Math.round(v * 100); return `<span class="pct${Math.abs(v) > .3 ? ' ojo' : (v < 0 ? ' baja' : '')}">${r > 0 ? '+' : ''}${r}%</span>`; };
     $('#detalle').innerHTML =
       bloque('❌ Errores: corregilos en el Excel y volvé a subirlo', errores.map((e) => `<div class="lf err">${esc(e)}</div>`)) +
-      bloque('💲 Cambios de precio', precios.map((c) => `<div class="lf"><span>${esc(c.p.producto)} <small style="color:var(--gris)">· ${esc(c.p.categoria)}</small></span><span class="der"><s>${pesos(c.antes)}</s> → <b>${pesos(c.p.precio)}</b>${pct(c.antes, c.p.precio)}</span></div>`)) +
-      bloque('🆕 Productos nuevos', nuevos.map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der">${pesos(p.precio)}</span></div>`)) +
-      bloque('🙈 Se ocultan de la tienda', ocultos.concat(faltantes).map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der">${enExcel.has(clave(p)) ? 'Activo = NO' : 'no está en el Excel'}</span></div>`)) +
-      bloque('👀 Vuelven a mostrarse', vuelven.map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der">${pesos(p.precio)}</span></div>`)) +
-      bloque('✏️ Cambian texto, unidad o foto', otros.map((p) => `<div class="lf"><span>${esc(p.producto)}</span><span class="der"></span></div>`));
+      bloque('💲 Cambios de precio', precios.map((c) => `<div class="lf"><span>${esc(c.p.producto)} <small style="color:var(--gris)">· ${esc(c.p.categoria)}</small>${idTxt(c.p)}</span><span class="der"><s>${pesos(c.antes)}</s> → <b>${pesos(c.p.precio)}</b>${pct(c.antes, c.p.precio)}</span></div>`)) +
+      bloque('🆕 Productos nuevos', nuevos.map((p) => `<div class="lf"><span>${esc(p.producto)}${idTxt(p)}</span><span class="der">${pesos(p.precio)}</span></div>`)) +
+      bloque('🙈 Se ocultan de la tienda', ocultos.concat(faltantes).map((p) => `<div class="lf"><span>${esc(p.producto)}${idTxt(p)}</span><span class="der">${enExcel.has(clave(p)) ? 'Activo = NO' : 'no está en el Excel'}</span></div>`)) +
+      bloque('👀 Vuelven a mostrarse', vuelven.map((p) => `<div class="lf"><span>${esc(p.producto)}${idTxt(p)}</span><span class="der">${pesos(p.precio)}</span></div>`)) +
+      bloque('✏️ Cambian texto, unidad o foto', otros.map((p) => `<div class="lf"><span>${esc(p.producto)}${idTxt(p)}</span><span class="der"></span></div>`));
 
     const sinCambios = !precios.length && !nuevos.length && !ocultos.length && !faltantes.length && !vuelven.length && !otros.length;
     $('#btnPublicar').disabled = errores.length > 0 || sinCambios;
@@ -454,7 +457,7 @@ input[type=password]{flex:1;min-width:220px;border:1.5px solid var(--linea);bord
   $('#btnDescargar').addEventListener('click', async () => {
     try {
       await cargarActual();
-      const filas = actual.lista.map((p) => ({ 'Categoría': p.categoria, 'Producto': p.producto, 'Precio': p.precio, 'Unidad': p.unidad || '', 'Descripción': p.descripcion || '', 'Foto': p.foto || '', 'Activo': p.activo }));
+      const filas = actual.lista.map((p) => ({ 'Categoría': p.categoria, 'Producto': p.producto, 'Precio': p.precio, 'Unidad': p.unidad || '', 'Descripción': p.descripcion || '', 'Foto': p.foto || '', 'Activo': p.activo, 'ID MK2': p.id || '' }));
       const hoja = XLSX.utils.json_to_sheet(filas);
       hoja['!cols'] = [16,42,11,14,34,28,8].map((w) => ({ wch: w }));
       hoja['!rows'] = filas.concat([{}]).map(() => ({ hpt: 22 }));
