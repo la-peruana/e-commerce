@@ -1,5 +1,5 @@
 {
- "fecha": "18/11/2026 03:33 p. m.",
+ "fecha": "19/11/2026 07:38 a. m.",
  "lista": [
   {
    "categoria": "Panadería",
@@ -564,7 +564,7 @@
    "producto": "Empanada pirok",
    "precio": 20426,
    "unidad": "",
-   "descripcion": "",
+   "descripcion": "x 3 un",
    "foto": "pirok.jpg",
    "activo": "SI"
   },
@@ -717,7 +717,7 @@
    "producto": "Queso cremoso María Luisa",
    "precio": 5175,
    "unidad": "x 500 grs",
-   "descripcion": "",
+   "descripcion": "Trozo x 500G",
    "foto": "queso-cremoso.jpg",
    "activo": "SI"
   },
