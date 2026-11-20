@@ -1,5 +1,5 @@
 {
- "fecha": "20/11/2026 12:56 p. m.",
+ "fecha": "20/11/2026 01:30 p. m.",
  "lista": [
   {
    "categoria": "Panadería",
@@ -2137,7 +2137,7 @@
    "precio": 8400,
    "unidad": "",
    "descripcion": "",
-   "foto": "",
+   "foto": "tostado-jamon-y-queso-x-4-uni.jpg",
    "activo": "SI",
    "id": "67938"
   },
@@ -2147,7 +2147,7 @@
    "precio": 7400,
    "unidad": "",
    "descripcion": "",
-   "foto": "",
+   "foto": "sandwich-simple-porcion-x-4-uni.jpg",
    "activo": "SI",
    "id": "67923"
   },
@@ -2157,7 +2157,7 @@
    "precio": 7800,
    "unidad": "",
    "descripcion": "",
-   "foto": "",
+   "foto": "sandwich-triple-porcion-x-4-uni.jpg",
    "activo": "SI",
    "id": "67925"
   },
