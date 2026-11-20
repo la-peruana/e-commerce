@@ -389,7 +389,7 @@ footer a:hover{text-decoration:underline}
   --oro:#F2B544; --oro-claro:#F7CD74; --papel:#F7EEE3; --linea:#E6D6C2; --cafe:#3B2416;
 }
 .marca{background:#EFDDC9;border-bottom:3px solid var(--rojo)}
-.marca{padding:.5rem 1rem .55rem}
+.marca{padding:0;min-height:3.9rem}
 .marca-logo img{width:min(120px,32vw);-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent),linear-gradient(to bottom,transparent,#000 7%,#000 93%,transparent);mask-composite:intersect}
 .etiqueta{background:var(--rojo);color:#fff;border-radius:999px;transform:none;padding:.22rem .7rem;box-shadow:0 2px 6px rgba(59,36,22,.25)}
 .etiqueta::before{display:none}
@@ -410,9 +410,6 @@ footer a:hover{text-decoration:underline}
 
 <!-- ===================== ENCABEZADO ===================== -->
 <header class="marca">
-  <a class="marca-logo" href="#" aria-label="Café Restó La Peruana, inicio">
-    <img src="logo-cafe.jpg" alt="Café Restó La Peruana — Tradición que nos une" width="360" height="267" fetchpriority="high">
-  </a>
   <button class="btn-carrito-top" id="btnCarritoTop" aria-label="Ver mi pedido">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path fill="currentColor" d="M7 20a2 2 0 110-4 2 2 0 010 4zm10 0a2 2 0 110-4 2 2 0 010 4zM7.16 17h9.69c.87 0 1.64-.56 1.89-1.38l2.22-7.06A1 1 0 0020 7H6.21l-.94-2.36A1 1 0 004.34 4H2a1 1 0 100 2h1.34l3.6 9.36-1.35 2.44A1 1 0 006 19h13a1 1 0 100-2H7.42l.74-1.35z"/></svg>
     <span class="pastilla"><span id="topCant">0</span> · <span id="topMonto">$0</span></span>
