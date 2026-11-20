@@ -1,5 +1,5 @@
 {
- "fecha": "19/11/2026 03:19 p. m.",
+ "fecha": "20/11/2026 11:31 a. m.",
  "lista": [
   {
    "categoria": "Panadería",
@@ -8,7 +8,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "facturas-crema.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -17,7 +18,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "facturas-crema-membrillo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -26,7 +28,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "facturas-crema-ddl.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -35,7 +38,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-ddl.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -44,7 +48,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-dulce.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -53,7 +58,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "galleta-comun.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -62,7 +68,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "vigilantes-membrillo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -71,7 +78,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "bollitos-crema.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -80,7 +88,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "bollitos-ddl.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -89,7 +98,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanaditas-ddl.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -98,7 +108,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "pirulines.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -107,7 +118,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "borrachitos.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "906"
   },
   {
    "categoria": "Panadería",
@@ -116,7 +128,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialunas-marplatenses.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "62979"
   },
   {
    "categoria": "Panadería",
@@ -125,7 +138,8 @@
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "especiales.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "905"
   },
   {
    "categoria": "Panadería",
@@ -134,7 +148,8 @@
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "pan-frances.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "887"
   },
   {
    "categoria": "Panadería",
@@ -142,8 +157,9 @@
    "precio": 899,
    "unidad": "250 grs.",
    "descripcion": "",
-   "foto": "",
-   "activo": "SI"
+   "foto": "pan-rondin.jpg",
+   "activo": "SI",
+   "id": "868"
   },
   {
    "categoria": "Panadería",
@@ -152,7 +168,8 @@
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "galleta-comun.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63140"
   },
   {
    "categoria": "Panadería",
@@ -161,7 +178,8 @@
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "galleta-hojaldrada.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63141"
   },
   {
    "categoria": "Panadería",
@@ -170,7 +188,8 @@
    "unidad": "250 grs.",
    "descripcion": "",
    "foto": "suizos.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "908"
   },
   {
    "categoria": "Panadería",
@@ -179,7 +198,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-salada-grande.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "46658"
   },
   {
    "categoria": "Panadería",
@@ -188,7 +208,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "medialuna-salada-chica.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "23479"
   },
   {
    "categoria": "Panadería",
@@ -197,7 +218,8 @@
    "unidad": "x un.",
    "descripcion": "",
    "foto": "Croissant.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "62928"
   },
   {
    "categoria": "Pastelería",
@@ -206,7 +228,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "cheesecake-individual.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67813"
   },
   {
    "categoria": "Pastelería",
@@ -215,7 +238,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "torta-mini-bombon.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67812"
   },
   {
    "categoria": "Pastelería",
@@ -224,7 +248,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "torta-mini-lemonpie.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67810"
   },
   {
    "categoria": "Pastelería",
@@ -233,7 +258,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "torta-mini-frutal.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67811"
   },
   {
    "categoria": "Pastelería",
@@ -242,7 +268,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "lingote-durazno.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67808"
   },
   {
    "categoria": "Pastelería",
@@ -251,7 +278,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "lingote-frutilla.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67808"
   },
   {
    "categoria": "Pastelería",
@@ -260,7 +288,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "red-velvet.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67804"
   },
   {
    "categoria": "Pastelería",
@@ -269,7 +298,8 @@
    "unidad": "unidad",
    "descripcion": "",
    "foto": "tiramisu-individual.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67806"
   },
   {
    "categoria": "Pastelería",
@@ -278,7 +308,8 @@
    "unidad": "x 7 un.",
    "descripcion": "",
    "foto": "masas-finas.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "883"
   },
   {
    "categoria": "Pastelería",
@@ -287,7 +318,8 @@
    "unidad": "x 2 un.",
    "descripcion": "",
    "foto": "alfajor-maicena-grande.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63243"
   },
   {
    "categoria": "Pastelería",
@@ -296,7 +328,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "alfa-maicena-med.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63243"
   },
   {
    "categoria": "Pastelería",
@@ -305,7 +338,8 @@
    "unidad": "x 5 un.",
    "descripcion": "",
    "foto": "alfajor-maicena-grande.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63243"
   },
   {
    "categoria": "Pastelería",
@@ -314,7 +348,8 @@
    "unidad": "x 2 un.",
    "descripcion": "",
    "foto": "alfajor-choco-gr.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63244"
   },
   {
    "categoria": "Pastelería",
@@ -323,7 +358,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "alfajor-choco-med.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63244"
   },
   {
    "categoria": "Pastelería",
@@ -332,7 +368,8 @@
    "unidad": "x 5 un.",
    "descripcion": "",
    "foto": "alfajor-choco-mini.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63244"
   },
   {
    "categoria": "Rotisería",
@@ -341,7 +378,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "torrejas-arroz.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1029"
   },
   {
    "categoria": "Rotisería",
@@ -350,7 +388,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "torrejas-acelga.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1029"
   },
   {
    "categoria": "Rotisería",
@@ -359,7 +398,8 @@
    "unidad": "bandeja x 12 un.",
    "descripcion": "",
    "foto": "Sandwich-simples.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "991"
   },
   {
    "categoria": "Rotisería",
@@ -368,7 +408,8 @@
    "unidad": "bandeja x 6 un.",
    "descripcion": "",
    "foto": "miga-triple.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "992"
   },
   {
    "categoria": "Rotisería",
@@ -377,7 +418,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1031"
   },
   {
    "categoria": "Rotisería",
@@ -386,7 +428,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "tortilla-acelga.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1032"
   },
   {
    "categoria": "Rotisería",
@@ -395,7 +438,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "terrina.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1032"
   },
   {
    "categoria": "Rotisería",
@@ -404,7 +448,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "papas-fritas.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "62291"
   },
   {
    "categoria": "Rotisería",
@@ -413,7 +458,8 @@
    "unidad": "por unidad",
    "descripcion": "Pan de papa, carne simple, lechuga, tomate, queso cheddar, bacon, cebolla morada o blanca",
    "foto": "Hamburguesa LP.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67082"
   },
   {
    "categoria": "Rotisería",
@@ -422,7 +468,8 @@
    "unidad": "por unidad",
    "descripcion": "Pan de papa, doble carne, cheddar, panceta y cebolla",
    "foto": "Hamburguesa cheddar.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "996"
   },
   {
    "categoria": "Rotisería",
@@ -431,7 +478,8 @@
    "unidad": "por 2 un.",
    "descripcion": "",
    "foto": "patamuslo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2396"
   },
   {
    "categoria": "Rotisería",
@@ -440,7 +488,8 @@
    "unidad": "por un.",
    "descripcion": "",
    "foto": "sandwich-milanesa-pollo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "29774"
   },
   {
    "categoria": "Rotisería",
@@ -449,7 +498,8 @@
    "unidad": "por un.",
    "descripcion": "",
    "foto": "sandwich-mila-carne.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "18543"
   },
   {
    "categoria": "Rotisería",
@@ -458,7 +508,8 @@
    "unidad": "x un.",
    "descripcion": "",
    "foto": "sandwich-mila-carne-completo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "43874"
   },
   {
    "categoria": "Rotisería",
@@ -467,7 +518,8 @@
    "unidad": "x un.",
    "descripcion": "",
    "foto": "Pebete.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "993"
   },
   {
    "categoria": "Rotisería",
@@ -476,7 +528,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-choclo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "25913"
   },
   {
    "categoria": "Rotisería",
@@ -485,7 +538,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-jyq.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "26712"
   },
   {
    "categoria": "Rotisería",
@@ -494,7 +548,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-calabresa.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "22280"
   },
   {
    "categoria": "Rotisería",
@@ -503,7 +558,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-verdura.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "25913"
   },
   {
    "categoria": "Rotisería",
@@ -512,7 +568,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-carne-dulce.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64753"
   },
   {
    "categoria": "Rotisería",
@@ -521,7 +578,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "Empanadas-carne-salada.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70747"
   },
   {
    "categoria": "Rotisería",
@@ -530,7 +588,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "Empanadas-carne-salada.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2275"
   },
   {
    "categoria": "Rotisería",
@@ -539,7 +598,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "empanada-pirok.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "59738"
   },
   {
    "categoria": "Rotisería",
@@ -548,7 +608,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "Milanesa-carne.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1002"
   },
   {
    "categoria": "Rotisería",
@@ -557,7 +618,8 @@
    "unidad": "x 3 uni",
    "descripcion": "",
    "foto": "milanesa-pollo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1001"
   },
   {
    "categoria": "Rotisería",
@@ -566,7 +628,8 @@
    "unidad": "x 3 uni",
    "descripcion": "x 3 un",
    "foto": "pirok.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1736"
   },
   {
    "categoria": "Rotisería",
@@ -575,7 +638,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "tarta-pollo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1041"
   },
   {
    "categoria": "Rotisería",
@@ -584,7 +648,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "Tortilla-verduras.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1031"
   },
   {
    "categoria": "Rotisería",
@@ -593,7 +658,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "terrina-verduras.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1032"
   },
   {
    "categoria": "Rotisería",
@@ -602,79 +668,8 @@
    "unidad": "porción",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "Café con leche grande + 2 medialunas marplatenses",
-   "precio": 6300,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "Café con leche grande + 2 medialunas saladas",
-   "precio": 6100,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "2 Cafés con leche grandes + 4 medialunas saladas",
-   "precio": 8800,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "2 Cafés con leche grandes + 4 medialunas dulces",
-   "precio": 9300,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "Café con leche grande + 2 alfajores de maicena",
-   "precio": 1700,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "Café con leche grande + Croissant",
-   "precio": 6500,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "Café con leche grande + 2 facturas",
-   "precio": 4600,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
-  },
-  {
-   "categoria": "Cafetería",
-   "producto": "Café con leche grande + 2 alfajores de chocolate",
-   "precio": 6300,
-   "unidad": "Combo",
-   "descripcion": "",
-   "foto": "",
-   "activo": "NO"
+   "activo": "SI",
+   "id": "1032"
   },
   {
    "categoria": "Fiambrería",
@@ -683,7 +678,8 @@
    "unidad": "por bandeja",
    "descripcion": "",
    "foto": "Picada-fiambres-surtidos.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68855"
   },
   {
    "categoria": "Fiambrería",
@@ -692,7 +688,8 @@
    "unidad": "por bandeja",
    "descripcion": "",
    "foto": "picada-quesos.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70053"
   },
   {
    "categoria": "Fiambrería",
@@ -701,7 +698,8 @@
    "unidad": "por bandeja",
    "descripcion": "",
    "foto": "Picada-Lario.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "61457"
   },
   {
    "categoria": "Fiambrería",
@@ -710,7 +708,8 @@
    "unidad": "por bandeja",
    "descripcion": "",
    "foto": "Picada Paladini.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "61456"
   },
   {
    "categoria": "Fiambrería",
@@ -719,7 +718,8 @@
    "unidad": "Trozo x 500 G",
    "descripcion": "Trozo x 500G",
    "foto": "queso-cremoso.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "62738"
   },
   {
    "categoria": "Fiambrería",
@@ -728,7 +728,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "62738"
   },
   {
    "categoria": "Fiambrería",
@@ -737,7 +738,8 @@
    "unidad": "x 500 grs",
    "descripcion": "",
    "foto": "queso-barra.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63788"
   },
   {
    "categoria": "Fiambrería",
@@ -746,7 +748,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63788"
   },
   {
    "categoria": "Fiambrería",
@@ -755,7 +758,8 @@
    "unidad": "x 500 grs",
    "descripcion": "",
    "foto": "jamón-cocido-Lario.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "3766"
   },
   {
    "categoria": "Fiambrería",
@@ -764,7 +768,8 @@
    "unidad": "x 300 grs",
    "descripcion": "",
    "foto": "mortadela-Paladini.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "32808"
   },
   {
    "categoria": "Carnicería",
@@ -773,7 +778,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "milanesas-carne.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "53535"
   },
   {
    "categoria": "Carnicería",
@@ -782,7 +788,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "milanesas-pollo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "945"
   },
   {
    "categoria": "Carnicería",
@@ -791,7 +798,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "filet-pechuga.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "20039"
   },
   {
    "categoria": "Carnicería",
@@ -800,7 +808,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "costeletas-cerdo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "935"
   },
   {
    "categoria": "Carnicería",
@@ -809,7 +818,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "hamburguesas-carne-comun.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "946"
   },
   {
    "categoria": "Carnicería",
@@ -818,7 +828,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "931"
   },
   {
    "categoria": "Carnicería",
@@ -827,7 +838,8 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "carne-picada-comun.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "923"
   },
   {
    "categoria": "Carnicería",
@@ -836,70 +848,78 @@
    "unidad": "por kg",
    "descripcion": "",
    "foto": "Carne-picada-especial.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "922"
   },
   {
    "categoria": "Verdulería",
    "producto": "Zanahorias",
-   "precio": 2400,
+   "precio": 2000,
    "unidad": "por kg",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "818"
   },
   {
    "categoria": "Verdulería",
    "producto": "Tomate",
-   "precio": 6187,
+   "precio": 7800,
    "unidad": "por kg",
    "descripcion": "",
    "foto": "tomate-redondo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "828"
   },
   {
    "categoria": "Verdulería",
    "producto": "Manzanas rojas",
-   "precio": 7000,
+   "precio": 6500,
    "unidad": "por kg",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70423"
   },
   {
    "categoria": "Verdulería",
    "producto": "Bananas",
-   "precio": 4263,
+   "precio": 4547,
    "unidad": "por kg",
    "descripcion": "",
    "foto": "banana-ecuador.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "813"
   },
   {
    "categoria": "Verdulería",
    "producto": "Paquete acelga",
-   "precio": 1990,
+   "precio": 1989,
    "unidad": "",
    "descripcion": "",
    "foto": "acelga.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "792"
   },
   {
    "categoria": "Verdulería",
    "producto": "Cebolla",
-   "precio": 1688,
+   "precio": 1588,
    "unidad": "x 1kg",
    "descripcion": "",
    "foto": "cebolla.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "790"
   },
   {
    "categoria": "Verdulería",
    "producto": "limón",
-   "precio": 4800,
+   "precio": 4500,
    "unidad": "x 1kg",
    "descripcion": "",
    "foto": "limón.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "3131"
   },
   {
    "categoria": "Almacén",
@@ -908,7 +928,8 @@
    "unidad": "por unidad",
    "descripcion": "",
    "foto": "pate-foie-molto.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64218"
   },
   {
    "categoria": "Almacén",
@@ -917,7 +938,8 @@
    "unidad": "x 520 grs",
    "descripcion": "",
    "foto": "pure-tomate-Arcor.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68255"
   },
   {
    "categoria": "Almacén",
@@ -926,7 +948,8 @@
    "unidad": "x 1 Kg",
    "descripcion": "",
    "foto": "arroz-gallo-oro.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "9738"
   },
   {
    "categoria": "Almacén",
@@ -935,7 +958,8 @@
    "unidad": "x 500 grs",
    "descripcion": "",
    "foto": "tallarin-matarazzo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67116"
   },
   {
    "categoria": "Almacén",
@@ -944,7 +968,8 @@
    "unidad": "x un.",
    "descripcion": "",
    "foto": "surtido-bagley.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "69958"
   },
   {
    "categoria": "Almacén",
@@ -953,7 +978,8 @@
    "unidad": "x 1 Kg",
    "descripcion": "",
    "foto": "yerba-sinceridad.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1281"
   },
   {
    "categoria": "Almacén",
@@ -962,7 +988,8 @@
    "unidad": "900 ml",
    "descripcion": "",
    "foto": "aceite-natura.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "5913"
   },
   {
    "categoria": "Almacén",
@@ -971,7 +998,8 @@
    "unidad": "x 1 Kg",
    "descripcion": "",
    "foto": "azucar-ledesma.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "45957"
   },
   {
    "categoria": "Almacén",
@@ -980,7 +1008,8 @@
    "unidad": "x 500 grs",
    "descripcion": "",
    "foto": "celusal-fina.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "230"
   },
   {
    "categoria": "Almacén",
@@ -989,7 +1018,8 @@
    "unidad": "x 150 ml",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "61954"
   },
   {
    "categoria": "Bebidas",
@@ -998,16 +1028,18 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "coca-cola-15.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2082"
   },
   {
    "categoria": "Bebidas",
    "producto": "Coca-Cola 2.5L",
-   "precio": 6500,
+   "precio": 6880,
    "unidad": "por botella",
    "descripcion": "",
    "foto": "coca-cola-25.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "31992"
   },
   {
    "categoria": "Bebidas",
@@ -1016,7 +1048,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "5155"
   },
   {
    "categoria": "Bebidas",
@@ -1025,7 +1058,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "5333"
   },
   {
    "categoria": "Bebidas",
@@ -1034,7 +1068,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "levite-nar.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "10494"
   },
   {
    "categoria": "Bebidas",
@@ -1043,7 +1078,8 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "12974"
   },
   {
    "categoria": "Bebidas",
@@ -1052,7 +1088,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "25319"
   },
   {
    "categoria": "Bebidas",
@@ -1061,7 +1098,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67385"
   },
   {
    "categoria": "Bebidas",
@@ -1070,7 +1108,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68970"
   },
   {
    "categoria": "Bebidas",
@@ -1079,7 +1118,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "53282"
   },
   {
    "categoria": "Bebidas",
@@ -1088,7 +1128,8 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "pritty.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "3292"
   },
   {
    "categoria": "Bebidas",
@@ -1097,16 +1138,18 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "pepsi-3.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "26395"
   },
   {
    "categoria": "Bebidas",
    "producto": "Vino Otro loco mas",
-   "precio": 4840,
+   "precio": 5154,
    "unidad": "por botella",
    "descripcion": "",
    "foto": "otro-loco-mas.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "46576"
   },
   {
    "categoria": "Bebidas",
@@ -1115,16 +1158,18 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "Finjamos-demencia.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70703"
   },
   {
    "categoria": "Bebidas",
    "producto": "Vino Hormiga negra",
-   "precio": 3701,
+   "precio": 3692,
    "unidad": "por botella",
    "descripcion": "",
    "foto": "hormiga-negra.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68862"
   },
   {
    "categoria": "Bebidas",
@@ -1133,7 +1178,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "cerveza-corona.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "11794"
   },
   {
    "categoria": "Bebidas",
@@ -1142,7 +1188,8 @@
    "unidad": "por lata",
    "descripcion": "",
    "foto": "lata-quilmes.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "12765"
   },
   {
    "categoria": "Bebidas",
@@ -1151,7 +1198,8 @@
    "unidad": "por lata",
    "descripcion": "",
    "foto": "cerveza-lata-budweiser.png",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "51382"
   },
   {
    "categoria": "Bebidas",
@@ -1160,7 +1208,8 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "santa-julia-chenin.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "23286"
   },
   {
    "categoria": "Bebidas",
@@ -1169,7 +1218,8 @@
    "unidad": "por botella",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "69180"
   },
   {
    "categoria": "Kiosco",
@@ -1178,7 +1228,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Tita.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "58462"
   },
   {
    "categoria": "Kiosco",
@@ -1187,7 +1238,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Rhodesia.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1181"
   },
   {
    "categoria": "Kiosco",
@@ -1196,7 +1248,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Turron.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2028"
   },
   {
    "categoria": "Kiosco",
@@ -1205,7 +1258,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "billiken-corazon-C.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63604"
   },
   {
    "categoria": "Kiosco",
@@ -1214,7 +1268,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Gomitas.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2063"
   },
   {
    "categoria": "Kiosco",
@@ -1223,7 +1278,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Mantecol.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "60524"
   },
   {
    "categoria": "Kiosco",
@@ -1232,7 +1288,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Toblerone.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "3622"
   },
   {
    "categoria": "Kiosco",
@@ -1241,7 +1298,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "31511"
   },
   {
    "categoria": "Kiosco",
@@ -1250,7 +1308,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Chocolate-milka.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "65180"
   },
   {
    "categoria": "Kiosco",
@@ -1259,7 +1318,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Chicle-Beldent.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "56750"
   },
   {
    "categoria": "Kiosco",
@@ -1268,7 +1328,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Alfajor-oreo.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "58459"
   },
   {
    "categoria": "Kiosco",
@@ -1277,7 +1338,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Chocolate-block.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "24741"
   },
   {
    "categoria": "Kiosco",
@@ -1286,7 +1348,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Confitados-sugus.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2081"
   },
   {
    "categoria": "Kiosco",
@@ -1295,7 +1358,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Dos-corazones.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "2039"
   },
   {
    "categoria": "Kiosco",
@@ -1304,7 +1368,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Saladix.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "71736"
   },
   {
    "categoria": "Kiosco",
@@ -1313,7 +1378,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Bagley-rex.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "11497"
   },
   {
    "categoria": "Kiosco",
@@ -1322,7 +1388,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Jugo-clight.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "59177"
   },
   {
    "categoria": "Kiosco",
@@ -1331,7 +1398,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Jugo-tang.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70036"
   },
   {
    "categoria": "Kiosco",
@@ -1340,7 +1408,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Cereal-mix.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1865"
   },
   {
    "categoria": "Kiosco",
@@ -1349,7 +1418,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "alfajor-triple.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64405"
   },
   {
    "categoria": "Kiosco",
@@ -1358,7 +1428,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "halls-variedad.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70834"
   },
   {
    "categoria": "Kiosco",
@@ -1367,7 +1438,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "halls-variedad.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "71125"
   },
   {
    "categoria": "Kiosco",
@@ -1376,7 +1448,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "pastillas-drf.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64145"
   },
   {
    "categoria": "Kiosco",
@@ -1385,7 +1458,8 @@
    "unidad": "X 200 GR",
    "descripcion": "",
    "foto": "Gomitas.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68237"
   },
   {
    "categoria": "Kiosco",
@@ -1394,7 +1468,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Toblerone.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "3622"
   },
   {
    "categoria": "Kiosco",
@@ -1403,7 +1478,8 @@
    "unidad": "X 500 GR",
    "descripcion": "",
    "foto": "Mantecol.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64252"
   },
   {
    "categoria": "Kiosco",
@@ -1412,7 +1488,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Chocolate-shot.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "72625"
   },
   {
    "categoria": "Kiosco",
@@ -1421,7 +1498,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Alfajor-shot.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "1677"
   },
   {
    "categoria": "Kiosco",
@@ -1430,7 +1508,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "alfa-triple-fanto.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64406"
   },
   {
    "categoria": "Limpieza",
@@ -1439,7 +1518,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "ala-liquido.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "61956"
   },
   {
    "categoria": "Limpieza",
@@ -1448,7 +1528,8 @@
    "unidad": "x 900 ml",
    "descripcion": "",
    "foto": "suavizante-vivere.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63940"
   },
   {
    "categoria": "Limpieza",
@@ -1457,7 +1538,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Lavandina-ayudin.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "57519"
   },
   {
    "categoria": "Limpieza",
@@ -1466,7 +1548,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "cif-deterg-500-lima.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "65407"
   },
   {
    "categoria": "Limpieza",
@@ -1475,7 +1558,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "cif-deterg-300-limon.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "64501"
   },
   {
    "categoria": "Limpieza",
@@ -1484,7 +1568,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "granby-liq-limon.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "65846"
   },
   {
    "categoria": "Limpieza",
@@ -1493,7 +1578,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "jabón-ala-x2.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "38466"
   },
   {
    "categoria": "Limpieza",
@@ -1502,7 +1588,8 @@
    "unidad": "x un.",
    "descripcion": "",
    "foto": "felpita.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "31918"
   },
   {
    "categoria": "Higiene personal",
@@ -1511,7 +1598,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "shampoo-sedal-bomba-argan.jpg",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "67061"
   },
   {
    "categoria": "Higiene personal",
@@ -1520,7 +1608,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "shampoo-sedal-pro.jpg",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "67061"
   },
   {
    "categoria": "Higiene personal",
@@ -1529,7 +1618,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "shampoo-sedal-colageno.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "58969"
   },
   {
    "categoria": "Higiene personal",
@@ -1538,7 +1628,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "shampoo-sedal-ceramidas.jpg",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "49492"
   },
   {
    "categoria": "Higiene personal",
@@ -1547,7 +1638,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Acondicionador-sedal-liso.jpg",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "47802"
   },
   {
    "categoria": "Higiene personal",
@@ -1556,7 +1648,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "Acondicionador-sedal-rizos.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "50452"
   },
   {
    "categoria": "Higiene personal",
@@ -1565,7 +1658,8 @@
    "unidad": "x 70 gr",
    "descripcion": "",
    "foto": "pasta-dental-colgate.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70072"
   },
   {
    "categoria": "Higiene personal",
@@ -1574,7 +1668,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "cepíllo-colg-medio.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "15511"
   },
   {
    "categoria": "Higiene personal",
@@ -1583,7 +1678,8 @@
    "unidad": "x 120 gr",
    "descripcion": "",
    "foto": "jabon-tocador-plusbelle.jpg",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "63157"
   },
   {
    "categoria": "Café - Combos",
@@ -1592,7 +1688,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68327"
   },
   {
    "categoria": "Café - Combos",
@@ -1601,7 +1698,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68520"
   },
   {
    "categoria": "Café - Combos",
@@ -1610,7 +1708,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "71606"
   },
   {
    "categoria": "Café - Combos",
@@ -1619,7 +1718,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "72337"
   },
   {
    "categoria": "Café - Combos",
@@ -1628,7 +1728,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68367"
   },
   {
    "categoria": "Café - Combos",
@@ -1637,7 +1738,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68328"
   },
   {
    "categoria": "Café - Combos",
@@ -1646,7 +1748,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "71603"
   },
   {
    "categoria": "Café - Combos",
@@ -1655,7 +1758,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68368"
   },
   {
    "categoria": "Café - Combos",
@@ -1664,7 +1768,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "68326"
   },
   {
    "categoria": "Café - Combos",
@@ -1673,7 +1778,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68385"
   },
   {
    "categoria": "Café - Combos",
@@ -1682,7 +1788,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "68037"
   },
   {
    "categoria": "Café - Combos",
@@ -1691,7 +1798,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "69673"
   },
   {
    "categoria": "Café - Combos",
@@ -1700,7 +1808,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "71381"
   },
   {
    "categoria": "Café - Combos",
@@ -1709,7 +1818,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "72100"
   },
   {
    "categoria": "Café - Combos",
@@ -1718,7 +1828,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "72099"
   },
   {
    "categoria": "Café - Cafés",
@@ -1727,7 +1838,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68012"
   },
   {
    "categoria": "Café - Cafés",
@@ -1736,7 +1848,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68150"
   },
   {
    "categoria": "Café - Cafés",
@@ -1745,7 +1858,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68069"
   },
   {
    "categoria": "Café - Cafés",
@@ -1754,7 +1868,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68369"
   },
   {
    "categoria": "Café - Cafés",
@@ -1763,7 +1878,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68014"
   },
   {
    "categoria": "Café - Cafés",
@@ -1772,7 +1888,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO",
+   "id": "68072"
   },
   {
    "categoria": "Café - Medialunas y facturas",
@@ -1781,7 +1898,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68019"
   },
   {
    "categoria": "Café - Medialunas y facturas",
@@ -1790,7 +1908,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68017"
   },
   {
    "categoria": "Café - Medialunas y facturas",
@@ -1799,7 +1918,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68018"
   },
   {
    "categoria": "Café - Medialunas y facturas",
@@ -1808,7 +1928,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68128"
   },
   {
    "categoria": "Café - Medialunas y facturas",
@@ -1817,7 +1938,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68952"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1826,7 +1948,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67947"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1835,7 +1958,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68575"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1844,7 +1968,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67946"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1853,7 +1978,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67988"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1862,7 +1988,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68954"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1871,7 +1998,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68958"
   },
   {
    "categoria": "Café - Pastelería",
@@ -1880,7 +2008,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68956"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1889,7 +2018,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67915"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1898,7 +2028,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67913"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1907,7 +2038,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67917"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1916,7 +2048,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67914"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1925,7 +2058,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67905"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1934,7 +2068,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67911"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1943,7 +2078,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67908"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1952,7 +2088,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68613"
   },
   {
    "categoria": "Café - Tortas y postres",
@@ -1961,7 +2098,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67985"
   },
   {
    "categoria": "Café - Alfajores",
@@ -1970,7 +2108,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "69910"
   },
   {
    "categoria": "Café - Alfajores",
@@ -1979,7 +2118,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68049"
   },
   {
    "categoria": "Café - Alfajores",
@@ -1988,7 +2128,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68045"
   },
   {
    "categoria": "Café - Tostados y sándwiches",
@@ -1997,7 +2138,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67938"
   },
   {
    "categoria": "Café - Tostados y sándwiches",
@@ -2006,7 +2148,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67923"
   },
   {
    "categoria": "Café - Tostados y sándwiches",
@@ -2015,7 +2158,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67925"
   },
   {
    "categoria": "Café - Platos",
@@ -2024,7 +2168,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "70618"
   },
   {
    "categoria": "Café - Platos",
@@ -2033,7 +2178,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68487"
   },
   {
    "categoria": "Café - Platos",
@@ -2042,7 +2188,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68590"
   },
   {
    "categoria": "Café - Platos",
@@ -2051,7 +2198,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67922"
   },
   {
    "categoria": "Café - Platos",
@@ -2060,7 +2208,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "NO"
+   "activo": "NO",
+   "id": "68474"
   },
   {
    "categoria": "Café - Platos",
@@ -2069,7 +2218,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67930"
   },
   {
    "categoria": "Café - Platos",
@@ -2078,7 +2228,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "69415"
   },
   {
    "categoria": "Café - Platos",
@@ -2087,7 +2238,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "67942"
   },
   {
    "categoria": "Café - Jugos y licuados",
@@ -2096,7 +2248,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68009"
   },
   {
    "categoria": "Café - Jugos y licuados",
@@ -2105,7 +2258,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "SI",
+   "id": "68010"
   },
   {
    "categoria": "Café - Helados",
@@ -2114,7 +2268,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO",
+   "id": "69696"
   },
   {
    "categoria": "Café - Helados",
@@ -2123,7 +2278,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO",
+   "id": "72147"
   },
   {
    "categoria": "Café - Helados",
@@ -2132,7 +2288,8 @@
    "unidad": "",
    "descripcion": "",
    "foto": "",
-   "activo": "SI"
+   "activo": "NO",
+   "id": "69699"
   }
  ]
 }
