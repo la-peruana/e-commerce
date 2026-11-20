@@ -1,5 +1,5 @@
 {
- "fecha": "20/11/2026 01:30 p. m.",
+ "fecha": "20/11/2026 01:49 p. m.",
  "lista": [
   {
    "categoria": "Panadería",
@@ -2247,7 +2247,7 @@
    "precio": 7400,
    "unidad": "",
    "descripcion": "",
-   "foto": "",
+   "foto": "jugo-de-naranja-exprimido.jpg",
    "activo": "SI",
    "id": "68009"
   },
@@ -2257,7 +2257,7 @@
    "precio": 7400,
    "unidad": "",
    "descripcion": "",
-   "foto": "",
+   "foto": "licuado-con-agua-leche.jpg",
    "activo": "SI",
    "id": "68010"
   },
